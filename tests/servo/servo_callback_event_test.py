@@ -22,13 +22,14 @@ try:
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(PARALLAX_SERVO_OUTPUT_PIN, GPIO.OUT)
     GPIO.setup(PARALLAX_SERVO_FEEDBACK_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(PARALLAX_SERVO_FEEDBACK_PIN, GPIO.RISING, callback=servo_callback, bouncetime=200)
+    GPIO.add_event_detect(PARALLAX_SERVO_FEEDBACK_PIN, GPIO.BOTH, callback=servo_callback, bouncetime=200)
 
     pwm = GPIO.PWM(PARALLAX_SERVO_OUTPUT_PIN, 50)
     pwm.start(0)
     #message =  #like the while True
     while message:=float(input("\nPress Enter to exit.\n")) > 0:
-        pwm.ChangeDutyCycle(message)
+        #pwm.ChangeDutyCycle(message)
+        pass
 
 
     GPIO.remove_event_detect(PARALLAX_SERVO_FEEDBACK_PIN)
