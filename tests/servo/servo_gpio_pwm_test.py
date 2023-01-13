@@ -7,7 +7,7 @@ PARALLAX_SERVO_OUTPUT_PIN = 11
 PARALLAX_SERVO_FEEDBACK_PIN = 12
 
 def setup():
-	GPIO.setmode(GPIO.BOARD) #board mode instead of BCM.
+	GPIO.setmode(GPIO.BCM) #board mode instead of BCM.
 
 	GPIO.setup(PARALLAX_SERVO_OUTPUT_PIN, GPIO.OUT) #GPIO.0 Parallax servo pwm.
 	GPIO.setup(PARALLAX_SERVO_FEEDBACK_PIN, GPIO.IN)  #GPIO.1 Parallax servo feedback.
@@ -22,7 +22,9 @@ def clean():
 
 def main():
 	pwm = setup()
-	
+	while True:
+		print(GPIO.input(PARALLAX_SERVO_FEEDBACK_PIN))
+
 	print(GPIO.input(PARALLAX_SERVO_FEEDBACK_PIN))
 	pwm.ChangeDutyCycle(7.5)
 	print(GPIO.input(PARALLAX_SERVO_FEEDBACK_PIN))
