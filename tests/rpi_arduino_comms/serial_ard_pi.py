@@ -2,7 +2,8 @@
 import serial, time
 
 if __name__ == "__main__":
-    serial_arduino = serial.Serial("/dev/ttyACM0", 115200, timeout=1)
+    #serial_arduino = serial.Serial("/dev/ttyACM0", 115200, timeout=1) #via USB.
+    serial_arduino = serial.Serial("/dev/ttyAMA0", 115200, timeout=1) #via RX and TX pins.
     serial_arduino.reset_input_buffer()
 
     try:
