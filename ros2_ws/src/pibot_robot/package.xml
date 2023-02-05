@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>pibot_sim</name>
+  <name>pibot_robot</name>
   <version>0.0.0</version>
-  <description>Package to test the Pibot assets in Gazebo</description>
+  <description>TODO: Package description</description>
   <maintainer email="u.sanz.2019@alumnos.urjc.es">usanz</maintainer>
-  <license>Apache License 2.0</license>
+  <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
