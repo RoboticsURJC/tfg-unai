@@ -1,0 +1,9 @@
+assets urls:
+
+they are all in: https://github.com/JdeRobot/assets/tree/master/jderobot_assets/models
+
+pibot: https://github.com/JdeRobot/assets/blob/master/jderobot_assets/models/pibot/meshes
+
+pibot_minimal: https://github.com/JdeRobot/assets/tree/master/jderobot_assets/models/pibot_minimal/meshes
+
+pibot_us: https://github.com/JdeRobot/assets/tree/master/jderobot_assets/models/pibot_us/meshes
