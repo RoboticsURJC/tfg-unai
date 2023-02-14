@@ -25,8 +25,8 @@ install(DIRECTORY
   launch
   worlds
   models
-#  pddl
-#  config
+  #urdf
+  #sdf
   DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
