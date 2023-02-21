@@ -20,7 +20,7 @@ def generate_launch_description():
   package_name = 'pibot_robot'
   robot_name_in_model = 'pibot'
   sdf_model_path = 'models/sdf/pibot.sdf'
-  world_file_path = 'worlds/cafe.world'
+  world_file_path = 'worlds/bookstore.world'
      
   # Pose where we want to spawn the robot
   spawn_x_val = '0.0'
