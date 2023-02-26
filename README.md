@@ -27,11 +27,13 @@ RViz2 (Debería haber sido instalado durante la instalación de ROS2)
 Para ejecutar la simulación con el mundo de gazebo:
 
 ```
+cd <ros_workspace>/src/pibot_robot
 ros2 launch pibot_robot world.launch.py
 ```
 
 Para ejecutar la simulación con el mundo de gazebo y el robot:
 
 ```
+cd <ros_workspace>/src/pibot_robot
 ros2 launch pibot_robot robot_sdf.launch.py
 ```
