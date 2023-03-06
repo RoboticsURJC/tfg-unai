@@ -4,7 +4,7 @@
     <!-- override the default position of the camera -->
     <gui>
       <camera name='gzclient_camera'>
-        <pose>-5.73 3.76 8.10 0 1.1316 -0.4398</pose>
+        <pose>0 0 2.0 0 0 -0.4398</pose>
       </camera>
     </gui>
     <gravity>0 0 -9.8</gravity>
@@ -30,13 +30,33 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
 
-	<model name="turtlebot3_waffle">
+	<!--model name="turtlebot3_waffle">
         <include>
             <uri>model://turtlebot3_waffle</uri>
         </include>
         <pose frame="">0 0.5 2.317947 0.0 0.000000 0.000000</pose>
-	</model>
+	</model-->
 
+	<model name="pink_sign">
+        <include>
+            <uri>model://signs/pink_sign</uri>
+        </include>
+        <pose frame="">2.522246 -5.971500 2.317947 0.0 0.000000 0.000000</pose>
+	</model>
+    <!--light name='RetailShop_CeilingLight_PS' type='point'>
+      <pose frame=''>2.522246 -5 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light-->
+    
 	<model name="green_sign">
         <include>
             <uri>model://signs/green_sign</uri>
@@ -44,11 +64,71 @@
         <pose frame="">0.522246 -5.971500 2.317947 0.0 0.000000 0.000000</pose>
 	</model>
 
-	<model name="pink_sign">
+    <light name='RetailShop_CeilingLight_GBS' type='point'>
+      <pose frame=''>-0.6 -3.628150 2.350329 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <model name="LightA_GBS">
         <include>
-            <uri>model://signs/pink_sign</uri>
+            <uri>model://aws_robomaker_retail_LightA_01</uri>
         </include>
-        <pose frame="">2.522246 -5.971500 2.317947 0.0 0.000000 0.000000</pose>
+        <pose frame="">-0.6 -3.628150 2.350329 0 -0 0</pose>
+	</model>
+
+    <model name="blue_sign">
+        <include>
+            <uri>model://signs/blue_sign</uri>
+        </include>
+        <pose frame="">-1.722246 -5.971500 2.317947 0.000000 0.000000 0.000000</pose>
+	</model>
+    <!--light name='RetailShop_CeilingLight_BS' type='point'>
+      <pose frame=''>-1.722246 -5 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light-->
+    
+	<model name="red_sign">
+        <include>
+            <uri>model://signs/red_sign</uri>
+        </include>
+        <pose frame="">-3.522246 -5.971500 2.317947 0.000000 0.000000 0.000000</pose>
+	</model>
+
+    <light name='RetailShop_CeilingLight_RYS' type='point'>
+      <pose frame=''>-5.522246 -3.628150 2.350328 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <model name="LightA_RYS">
+        <include>
+            <uri>model://aws_robomaker_retail_LightA_01</uri>
+        </include>
+        <pose frame="">-5.522246 -3.628150 2.350329 0 -0 0</pose>
 	</model>
 
 	<model name="yellow_sign">
@@ -57,12 +137,65 @@
         </include>
         <pose frame="">-5.522246 -5.971500 2.317947 0.0 0.000000 0.000000</pose>
 	</model>
+    <!--light name='RetailShop_CeilingLight_YS' type='point'>
+      <pose frame=''>-5.522246 -5 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light-->
 
 	<model name="orange_sign">
         <include>
             <uri>model://signs/orange_sign</uri>
         </include>
         <pose frame="">0.048280 -0.395708 2.317947 0.000000 0.000000 1.564217</pose>
+	</model>
+
+    <light name='RetailShop_CeilingLight_OCS1' type='point'>
+      <pose frame=''>-1.548280 0.85 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <model name="LightA_OCS1">
+        <include>
+            <uri>model://aws_robomaker_retail_LightA_01</uri>
+        </include>
+        <pose frame="">-1.548280 0.85 2.350329 0 -0 0</pose>
+	</model>
+
+    <light name='RetailShop_CeilingLight_OCS2' type='point'>
+      <pose frame=''>1.548280 0.85 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <model name="LightA_OCS2">
+        <include>
+            <uri>model://aws_robomaker_retail_LightA_01</uri>
+        </include>
+        <pose frame="">1.548280 0.85 2.350329 0 -0 0</pose>
 	</model>
 
     <model name="cyan_sign">
@@ -72,19 +205,33 @@
         <pose frame="">0.048280 2.104862 2.317947 0.000000 0.000000 1.564217</pose>
 	</model>
 
-    <model name="blue_sign">
-        <include>
-            <uri>model://signs/blue_sign</uri>
-        </include>
-        <pose frame="">-1.722246 -5.971500 2.317947 0.000000 0.000000 0.000000</pose>
-	</model>
-    
-	<model name="red_sign">
-        <include>
-            <uri>model://signs/red_sign</uri>
-        </include>
-        <pose frame="">-3.522246 -5.971500 2.317947 0.000000 0.000000 0.000000</pose>
-	</model>
+    <!--light name='RetailShop_CeilingLight_CS1' type='point'>
+      <pose frame=''>1.548280 2.104862 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <light name='RetailShop_CeilingLight_CS2' type='point'>
+      <pose frame=''>-1.548280 2.104862 2.317947 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.32</constant>
+        <linear>0.01</linear>
+        <quadratic>0.03</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light-->
+
 
 
 
@@ -537,14 +684,12 @@
     -->
 	
     <!-- Exclude ceiling, easier to view -->
-	<!--
-        <model name="RetailShopCeiling_01_001">
+    <model name="RetailShopCeiling_01_001">
         <include>
             <uri>model://aws_robomaker_retail_RetailShopCeiling_01</uri>
         </include>
         <pose frame="">0.012365 -0.000353 2.528605 0 -0 0</pose>
 	</model>
-    -->
 
     <!-- Exclude chairs, not in a supermarket -->
     <!--
@@ -1083,7 +1228,7 @@
         <include>
             <uri>model://aws_robomaker_retail_LightA_01</uri>
         </include>
-        <pose frame="">-3.210668 -5.383710 2.350328 0 -0 0</pose>
+        <pose frame="">-3.210668 -3.628150 2.350328 0 -0 0</pose>
 	</model>
 
 	<model name="LightA_01_005">
@@ -1091,6 +1236,13 @@
             <uri>model://aws_robomaker_retail_LightA_01</uri>
         </include>
         <pose frame="">-3.271001 2.685925 2.350328 0 -0 0</pose>
+	</model>
+
+    <model name="LightA_01_006">
+        <include>
+            <uri>model://aws_robomaker_retail_LightA_01</uri>
+        </include>
+        <pose frame="">1.493200 4.692372 2.350329 0 -0 0</pose>
 	</model>
 
 	<model name="MagicCube_01_001">
@@ -1132,9 +1284,9 @@
 
 
 
-    <!--<light name="sun" type="directional">
+    <light name="sun" type="directional">
       <cast_shadows>1</cast_shadows>
-      <pose frame="">0 0 10 0 -0 0</pose>
+      <pose frame="">-2 1 2.45 0 -0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
@@ -1145,7 +1297,6 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
-    -->
 
     <light name='RetailShop_CeilingLight_001' type='point'>
       <pose frame=''>2.774418 -3.628150 2.378466 0 -0 0</pose>
@@ -1187,7 +1338,7 @@
       <direction>0 0 -1</direction>
     </light>
     <light name='RetailShop_CeilingLight_004' type='point'>
-      <pose frame=''>-3.210668 -5.383710 2.378466 0 -0 0</pose>
+      <pose frame=''>-3.210668 -3.628150 2.378466 0 -0 0</pose>
       <diffuse>0.5 0.5 0.5 1</diffuse>
       <specular>0.1 0.1 0.1 1</specular>
       <attenuation>
@@ -1225,5 +1376,7 @@
       <cast_shadows>0</cast_shadows>
       <direction>0 0 -1</direction>
     </light>
+    
+
   </world>
 </sdf>
