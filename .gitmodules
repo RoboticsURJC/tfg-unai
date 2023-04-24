@@ -1,0 +1,3 @@
+[submodule "tests/pibot-vision"]
+	path = tests/pibot-vision
+	url = https://gitlab.etsit.urjc.es/jmvega/pibot-vision/-/tree/master
