@@ -1,5 +1,17 @@
 lectures/links2read.txt
+
 ros2_ws/build/*
 ros2_ws/install/*
 ros2_ws/log/*
+
+ros2_ws/frames*
+
+ros2_ws/src/aws-robomaker-bookstore-world/*
+ros2_ws/src/box_bot/*
+ros2_ws/src/pibot_robot/launch/t3_waffle.launch.py*
 ros2_ws/src/ros_tutorials/*
+ros2_ws/src/turtlebot3/*
+ros2_ws/src/urdf_tutorial_r2d2/
+tests/arduino_feedback_servo_hyoda/
+
+TODO.txt
