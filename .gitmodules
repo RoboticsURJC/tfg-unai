@@ -1,3 +1,6 @@
 [submodule "tests/pibot-vision"]
 	path = tests/pibot-vision
 	url = https://gitlab.etsit.urjc.es/jmvega/pibot-vision/-/tree/master
+[submodule "memoria-tfg"]
+	path = memoria-tfg
+	url = https://gitlab.etsit.urjc.es/jmvega/plantilla-latex-tfg-tfm.git
