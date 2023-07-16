@@ -1,0 +1,77 @@
+\chapter{Introducción}
+\label{cap:capitulo1}
+\setcounter{page}{1}
+
+\begin{flushright}
+\begin{minipage}[]{10cm}
+\emph{Quizás algún fragmento de libro inspirador...}\\
+\end{minipage}\\
+
+Autor, \textit{Título}\\
+\end{flushright}
+
+\vspace{1cm}
+
+a\\
+
+Escribe aquí un párrafo explicando brevemente lo que vas a contar en este capítulo. En este primer capítulo, el de introducción, se trata de dar un contexto amplio y atractivo del trabajo. Comienza hablando de un contexto general y acaba hablando del contexto más específico en el que se enmarca el proyecto. Es el capítulo idóneo para incluir todas las referencias bibliográficas que hayan tratado este tema; suponen un fuerte respaldo al trabajo.\\
+
+\section{La primera sección}
+\label{sec:miseccion} % etiqueta para luego referenciar esta sección
+
+En los textos puedes poner palabras en \textit{cursiva}, para aquellas expresiones en sentido \textit{figurado}, palabras como \textit{robota}, que está fuera del diccionario castellano, o bien para resaltar palabras de una colección: \textit{(a)} es la primera letra del abecedario, \textit{(b)} es la segunda, etc.\\
+
+Al poner las dos líneas del anterior párrafo, este aparecerá separado del anterior. Si no las pongo, los párrafos aparecerán pegados. Sigue el criterio que consideres más oportuno.
+
+\section{Segunda sección}
+\label{sec:segundaseccion}
+
+No olvides incluir imágenes y referenciarlas, como la Figura \ref{fig:roomba}.
+
+\begin{figure} [h!]
+  \begin{center}
+    \includegraphics[width=8cm]{figs/roomba}
+  \end{center}
+  \caption{Robot aspirador Roomba de iRobot.}
+  \label{fig:roomba}
+\end{figure}\
+
+Ni tampoco olvides de poner las URLs como notas al pie. Por ejemplo, si hablo de la Robocup\footnote{\url{http://www.robocup.org}}.
+
+\subsection{Números}
+\label{sec:subseccion}
+
+En lugar de tener secciones interminables, como la Sección \ref{sec:miseccion}, divídelas en subsecciones.
+
+Para hablar de números, mételos en el entorno \textit{math} de \LaTeX, por ejemplo, $1.5Kg$. También puedes usar el símbolo del Euro como aquí: 1.500\euro.
+
+\subsection{Listas}
+
+Cuando describas una colección, usa \texttt{itemize} para ítems o \texttt{enumerate} para enumerados. Por ejemplo:
+
+\begin{itemize}
+ \item \textit{Entorno de simulación.} Hemos usado dos entornos de simulación: uno en 3D y otro en 2D.
+ \item \textit{Entornos reales.} Dentro del campus, hemos realizado experimentos en Biblioteca y en el edificio de Gestión.
+\end{itemize}\
+
+\begin{enumerate}
+ \item Primer elemento de la colección.
+ \item Segundo elemento de la colección.
+\end{enumerate}\
+
+\paragraph{Referencias bibliográficas}
+\label{sec:referencias}
+
+Cita, sobre todo en este capítulo, referencias bibliográficas que respalden tu argumento. Para citarlas basta con poner la instrucción \verb|\cite| con el identificador de la cita. Por ejemplo: libros como \cite{vega12e}, artículos como \cite{vega19b}, URLs como \cite{vega19a}, tesis como \cite{vega18b}, congresos como \cite{vega18a}, u otros trabajos fin de grado como \cite{vega08b}.
+
+Las referencias, con todo su contenido, están recogidas en el fichero \texttt{bibliografia.bib}. El contenido de estas referencias está en formato \texttt{BibTex}. Este formato se puede obtener en muchas ocasiones directamente, desde plataformas como \texttt{Google Scholar} u otros repositorios de recursos científicos.
+
+Existen numerosos estilos para reflejar una referencia bibliográfica. El estilo establecido por defecto en este documento es APA, que es uno de los estilos más comunes, pero lo puedes modificar en el archivo \texttt{memoria.tex}; concretamente, cambiando el campo \verb|apalike| a otro en la instrucción \verb|\bibliographystyle{apalike}|. 
+
+\
+
+\
+
+\
+
+Y, para terminar este capítulo, resume brevemente qué vas a contar en los siguientes.
