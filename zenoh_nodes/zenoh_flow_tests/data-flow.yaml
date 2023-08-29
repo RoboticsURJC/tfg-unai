@@ -1,0 +1,64 @@
+flow: getting-started
+
+vars:
+ BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests"
+
+sources:
+  - id: zenoh-sub
+    configuration:
+      key-expressions:
+        #out: zf/getting-started/hello
+        out: rt/robot1/scan
+    descriptor: "builtin://zenoh"
+
+
+operators:
+  - id: greetings-maker
+    descriptor: "file://{{ BASE_DIR }}/nodes/greetings-maker/greetings-maker.yaml"
+
+
+sinks:
+  - id: file-writer
+    descriptor: "file://{{ BASE_DIR }}/nodes/file-writer/file-writer.yaml"
+
+  - id: zenoh-writer
+    configuration:
+      key-expressions:
+        in: zf/getting-started/greeting
+    descriptor: "builtin://zenoh"
+
+  - id : goal_pose_sink
+    configuration:
+      key-expressions:
+        waypoint: rt/robot1/goal_pose
+    descriptor : "builtin://zenoh"
+
+
+links:
+  - from:
+      node: zenoh-sub
+      output: out
+    to:
+      node: greetings-maker
+      input: name
+
+  - from:
+      node: greetings-maker
+      output: greeting
+    to:
+      node: file-writer
+      input: in
+
+  - from:
+      node: greetings-maker
+      output: goal_pose_wp
+    to:
+      node: goal_pose_sink
+      input: waypoint
+
+  - from:
+      node: greetings-maker
+      output: greeting
+    to:
+      node: zenoh-writer
+      input: in

@@ -1,0 +1,7 @@
+id: file-writer
+
+vars:
+  BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests"
+
+uri: "file://{{ BASE_DIR }}/nodes/file-writer/file-writer.py"
+inputs: [in]
