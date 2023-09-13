@@ -1,0 +1,4 @@
+swarm_size: 2 #Number of robots
+robot_namespaces: ["robot1", "robot2"]
+ns_bytes_length: 64
+int_bytes_length: 4

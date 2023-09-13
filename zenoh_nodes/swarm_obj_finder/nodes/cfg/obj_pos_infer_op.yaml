@@ -1,0 +1,12 @@
+id: obj_pos_infer_op
+
+uri: file:///home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/zenoh-flow_nodes/obj_pos_infer_op.py
+
+configuration:
+  #common_cfg_file: "/home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/config/common_cfg.yaml"
+  lidar_threshold: 6 #+- lidar_threshold / 2 degrees
+  safe_distance: 0.3
+
+inputs: [ObjDetected, CamInfo1, CamInfo2, Lidar1, Lidar2, RobotPose1, RobotPose2]
+outputs: [WorldObjPose, DebugMarkers]
+tags: []

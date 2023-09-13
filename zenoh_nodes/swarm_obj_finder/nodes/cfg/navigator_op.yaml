@@ -1,0 +1,12 @@
+id: navigator_op
+
+uri: file:///home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/zenoh-flow_nodes/navigator_op.py
+
+configuration:
+  #common_cfg_file: "/home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/config/common_cfg.yaml"
+  goal_checker_min_dist: 0.4 #m
+  goal_resend_timeout:   3.0 #s
+
+inputs: [TF1, TF2, NextWP, WorldObjPose]
+outputs: [Waypoint1, Waypoint2, WPRequest, RobotPose1, RobotPose2]
+tags: []
