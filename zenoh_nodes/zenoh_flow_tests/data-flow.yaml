@@ -3,6 +3,14 @@ flow: getting-started
 vars:
  BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests"
 
+configuration:
+  swarm_size: 2 #Number of robots
+  robot_namespaces: ["robot1", "robot2"]
+  ns_bytes_lenght: 64
+  int_bytes_lenght: 4
+
+
+
 sources:
   - id: zenoh-sub
     configuration:

@@ -47,6 +47,7 @@ class GreetingsMaker(Operator):
         outputs: Outputs,
     ):
         print(f"Context: {context}")
+        print(f"Configuration: {configuration}")
         self.output = outputs.take("greeting", str, lambda s: bytes(s, "utf-8"))
         self.output_wp = outputs.take("goal_pose_wp", PoseStamped, serializer=ser_ros2_msg)
 
