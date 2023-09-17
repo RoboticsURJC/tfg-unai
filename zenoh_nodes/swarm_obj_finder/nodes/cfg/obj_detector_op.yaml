@@ -1,11 +1,15 @@
 id: obj_detector_op
 
-uri: file:///home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/zenoh-flow_nodes/obj_detector_op.py
+vars:
+  BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/swarm_obj_finder"
+
+uri: file://{{ BASE_DIR }}/nodes/obj_detector_op.py
 
 configuration:
-  #common_cfg_file: "/home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/config/common_cfg.yaml"
-  lower_color_filter_threshold: [0, 195, 75]
-  upper_color_filter_threshold: [16, 225, 105]
+  #lower_color_filter_threshold: [0, 195, 75]   #min values are: [0, 0, 0]
+  #upper_color_filter_threshold: [16, 225, 105] #max values are: [179, 255, 255]
+  lower_color_filter_threshold: [0, 0, 0]
+  upper_color_filter_threshold: [179, 255, 255]
 
 inputs: [Image1, Image2]
 outputs: [ObjDetected, DebugImgFiltered1, DebugImgFiltered2]
