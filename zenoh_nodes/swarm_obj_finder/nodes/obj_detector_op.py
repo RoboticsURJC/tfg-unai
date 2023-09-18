@@ -46,7 +46,16 @@ class PathsPlanner(Operator):
         self.upper_threshold = np.array(list(configuration.get(
             "upper_color_filter_threshold", [16, 225, 105]))
             )
-
+        
+        # Single outputs:
+        self.output_obj_detected = outputs.take(
+            OUTPUT_OBJ_DETECTED,
+            CentroidMessage,
+            serializer=get_ctrd_msg_serializer(
+                self.ns_bytes_length,
+                self.int_bytes_length)
+            )
+        
         self.inputs_imgs = list()
         self.outputs_debug_imgs = list()
         for in_img, out_debug_img in zip(INPUTS_IMAGES, OUTPUTS_DEBUG_IMGS):
@@ -58,15 +67,6 @@ class PathsPlanner(Operator):
             self.outputs_debug_imgs.append(
                 outputs.take(out_debug_img, Image, serializer=ser_ros2_msg)
                 )
-        
-        # Single outputs:
-        self.output_obj_detected = outputs.take(
-            OUTPUT_OBJ_DETECTED,
-            CentroidMessage,
-            serializer=get_ctrd_msg_serializer(
-                self.ns_bytes_length,
-                self.int_bytes_length)
-            )
         
         # Other attributes needed:
         self.bridge = CvBridge()

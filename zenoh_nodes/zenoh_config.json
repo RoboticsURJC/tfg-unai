@@ -19,6 +19,7 @@
         },
         "zenoh_flow":{
             "required":true,
+            "name":"computer",
             "path":"/etc/zenoh-flow",
             "pid_file": "/var/zenoh-flow/runtime.pid",
             "extensions": "/etc/zenoh-flow/extensions.d",

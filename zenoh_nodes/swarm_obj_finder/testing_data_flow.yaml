@@ -234,8 +234,8 @@ links:
 
 
 
-#mapping:
-  #paths_planner_op: computer
-  #navigator_op: computer
-  #obj_detector_op: computer
-  #obj_pos_infer_op: computer
+mapping:
+#  paths_planner_op: computer
+#  navigator_op: computer
+  obj_detector_op: computer
+#  obj_pos_infer_op: computer

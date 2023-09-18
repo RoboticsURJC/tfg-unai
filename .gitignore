@@ -15,3 +15,4 @@ ros2_ws/src/urdf_tutorial_r2d2/
 tests/arduino_feedback_servo_hyoda/
 
 TODO.txt
+zenoh_nodes/swarm_obj_finder/nodes/__pycache__/*
