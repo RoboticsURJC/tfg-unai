@@ -1,7 +1,7 @@
 from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
 from rclpy.type_support import check_for_type_support
 
-import message_utils
+from message_utils import *
 
 
 
@@ -48,17 +48,40 @@ def get_ctrd_msg_serializer(str_bytes_length: int,
                             int_bytes_length: int): # Returns a function
     return lambda obj: ser_ctrd_msg(obj, str_bytes_length, int_bytes_length)
 
-def ser_ctrd_msg(centroid_msg: message_utils.CentroidMessage,
+def ser_ctrd_msg(centroid_msg: CentroidMessage,
                  str_bytes_length: int,
                  int_bytes_length: int) -> bytes:
-    ser_msg = ser_string(centroid_msg.get_founder(), str_bytes_length)
-    ser_msg += ser_int_list(centroid_msg.get_centroid(), int_bytes_length)
-    return ser_msg
+    ser_founder = ser_string(centroid_msg.get_founder(), str_bytes_length)
+    ser_centroid = ser_int_list(centroid_msg.get_centroid(), int_bytes_length)
+    return ser_founder + ser_centroid
 
+def get_ctrd_msg_deserializer(str_bytes_length: int,
+                              int_bytes_length: int): # Returns a function
+    return lambda obj: deser_ctrd_msg(obj, str_bytes_length, int_bytes_length)
+
+def deser_ctrd_msg(ser_centroid_msg: bytes,
+                   str_bytes_length: int,
+                   int_bytes_length: int) -> CentroidMessage:
+    ser_founder = ser_centroid_msg[:str_bytes_length]
+    founder = deser_string(ser_founder)
+    ser_centroid = ser_centroid_msg[str_bytes_length:]
+    x, y = deser_int_list(ser_centroid, int_bytes_length)
+    return CentroidMessage(x, y, founder)
+
+
+def get_world_pos_msg_serializer(str_bytes_length: int): # Returns a function
+    return lambda obj: ser_world_pos_msg(obj, str_bytes_length)
+
+def ser_world_pos_msg(world_pos_msg: WorldPosition,
+                      str_bytes_length: int) -> bytes:
+    ser_sender = ser_string(world_pos_msg.sender, str_bytes_length)
+    ser_world_pos = ser_ros2_msg(world_pos_msg.world_position)
+    return ser_sender + ser_world_pos
 
 
 # To get the asynchronous functions for the inputs:
-def get_input_func( name, input):
+def get_input_func(name, input):
+    #This doesn't work using lambda function because it's not asynchronous
     async def func():
         return (name, await input.recv())
     return func

@@ -51,9 +51,7 @@ class PathsPlanner(Operator):
         self.output_obj_detected = outputs.take(
             OUTPUT_OBJ_DETECTED,
             CentroidMessage,
-            serializer=get_ctrd_msg_serializer(
-                self.ns_bytes_length,
-                self.int_bytes_length)
+            get_ctrd_msg_serializer(self.ns_bytes_length, self.int_bytes_length)
             )
         
         self.inputs_imgs = list()
@@ -65,7 +63,7 @@ class PathsPlanner(Operator):
                 )
             # Listed outputs:
             self.outputs_debug_imgs.append(
-                outputs.take(out_debug_img, Image, serializer=ser_ros2_msg)
+                outputs.take(out_debug_img, Image, ser_ros2_msg)
                 )
         
         # Other attributes needed:
