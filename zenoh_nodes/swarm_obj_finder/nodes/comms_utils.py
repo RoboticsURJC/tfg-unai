@@ -5,7 +5,10 @@ from message_utils import *
 
 
 
-def ser_string(s: str, s_length: int, fill_char=' ') -> bytes:
+def get_str_serializer(s_length: int, fill_char:str=' '): # Returns a function
+    return lambda obj: ser_string(obj, s_length, fill_char)
+
+def ser_string(s: str, s_length: int, fill_char:str=' ') -> bytes:
     ns_bytes = bytes(s, "utf-8")
     # Fixed ns length of s_length (fill with space characters):
     return bytes(fill_char, "utf-8") * (s_length - len(ns_bytes)) + ns_bytes
@@ -78,6 +81,16 @@ def ser_world_pos_msg(world_pos_msg: WorldPosition,
     ser_world_pos = ser_ros2_msg(world_pos_msg.world_position)
     return ser_sender + ser_world_pos
 
+def get_world_pos_msg_deserializer(str_bytes_length: int): # Returns a function
+    return lambda obj: deser_world_pos_msg(obj, str_bytes_length)
+
+def deser_world_pos_msg(world_pos_msg: bytes,
+                        str_bytes_length: int) -> WorldPosition:
+    ser_sender = world_pos_msg[:str_bytes_length]
+    sender = deser_string(ser_sender)
+    ser_world_pos = world_pos_msg[str_bytes_length:]
+    world_pos = get_ros2_deserializer(PoseStamped)(ser_world_pos)
+    return WorldPosition(world_pos, sender)
 
 # To get the asynchronous functions for the inputs:
 def get_input_func(name, input):

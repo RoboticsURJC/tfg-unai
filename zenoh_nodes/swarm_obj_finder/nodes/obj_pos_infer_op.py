@@ -71,23 +71,18 @@ class PathsPlanner(Operator):
             ser_ros2_msg
             )
         
-        # COMMENTED FOR TESTING PURPOSES:
-        #self.inputs_robot_poses = list()
+        self.inputs_robot_poses = list()
         self.inputs_cam_infos = list()
         self.inputs_lidars = list()
         for in_rob_pose, in_cam_info, in_lidar in zip(INPUTS_ROBOT_POSES,
                                                       INPUTS_CAM_INFOS,
                                                       INPUTS_LIDARS):
-            # COMMENTED FOR TESTING PURPOSES:
             # Listed inputs:
-            #self.inputs_robot_poses.append(inputs.get(in_rob_pose, None))
-            #self.inputs_cam_infos.append(inputs.get(in_cam_info, None))
-            #self.inputs_lidars.append(inputs.get(in_lidar, None))
-            #self.inputs_robot_poses.append(inputs.take(
-            #    in_rob_pose,
-            #    PoseStamped,
-            #    get_ros2_deserializer(PoseStamped))
-            #    )
+            self.inputs_robot_poses.append(inputs.take(
+                in_rob_pose,
+                PoseStamped,
+                get_ros2_deserializer(PoseStamped))
+                )
             self.inputs_cam_infos.append(inputs.take(
                 in_cam_info,
                 CameraInfo,
@@ -177,23 +172,21 @@ class PathsPlanner(Operator):
         #marker_arr.markers.append(get_marker(marker_dict))
         ###
 
-        return (WorldPosition(world_pose), marker_arr)
+        return (WorldPosition(world_pos=world_pose), marker_arr)
 
     def create_task_list(self):
         task_list = [] + self.pending
 
         # For every listed input append an async task to the task_list:
-        for i, (in_rob_pose, in_lidar) in enumerate(
-            zip(INPUTS_ROBOT_POSES, INPUTS_LIDARS)
-            ):
-            # COMMENTED FOR TESTING PURPOSES:
-            #if not any(t.get_name() == in_rob_pose for t in task_list):
-            #    task_list.append(
-            #        asyncio.create_task(
-            #            get_input_func(in_rob_pose, self.inputs_robot_poses[i])(),
-            #            name=in_rob_pose
-            #        )
-            #    )
+        for i, (in_rob_pose, in_lidar) in enumerate(zip(INPUTS_ROBOT_POSES,
+                                                        INPUTS_LIDARS)):
+            if not any(t.get_name() == in_rob_pose for t in task_list):
+                task_list.append(
+                    asyncio.create_task(
+                        get_input_func(in_rob_pose, self.inputs_robot_poses[i])(),
+                        name=in_rob_pose
+                    )
+                )
             if not any(t.get_name() == in_lidar for t in task_list):
                 task_list.append(
                     asyncio.create_task(
@@ -228,17 +221,14 @@ class PathsPlanner(Operator):
             (who, data_msg) = d.result()
 
             msg = data_msg.get_data()
-            # COMMENTED FOR TESTING PURPOSES:
             # Get the robot poses:
-            #if who in INPUTS_ROBOT_POSES:
-            #    index = int(who[-1]) -1 # Who should be RobotPose1, RobotPose2, ...
-            #    self.robot_poses[index] = deser_ros2_msg(data_msg.data,
-            #                                             PoseStamped)
+            if who in INPUTS_ROBOT_POSES:
+                index = int(who[-1]) -1 # Who should be RobotPose1, RobotPose2, ...
+                self.robot_poses[index] = msg
 
             # Get the lidars:
             if who in INPUTS_LIDARS:
                 index = int(who[-1]) -1 # Who should be Lidar1, Lidar2, ...
-                #self.lidars[index] = deser_ros2_msg(data_msg.data, LaserScan)
                 self.lidars[index] = msg
 
             # Object detected by the obj_detector_op node:

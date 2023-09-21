@@ -14,12 +14,12 @@ configuration:
 
 
 sources:
-#  - id : tfs_source
-#    configuration:
-#        key-expressions:
-#          TF1: rt/robot1/tf
-#          TF2: rt/robot2/tf
-#    descriptor : "builtin://zenoh"
+  - id : tfs_source
+    configuration:
+        key-expressions:
+          TF1: rt/robot1/tf
+          TF2: rt/robot2/tf
+    descriptor : "builtin://zenoh"
 
   - id : imgs_source
     configuration:
@@ -53,11 +53,12 @@ operators:
   - id : obj_pos_infer_op
     descriptor : "file://{{ BASE_DIR }}/nodes/cfg/obj_pos_infer_op.yaml"
 
+  - id : navigator_op
+    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/navigator_op.yaml"
+
 #  - id : paths_planner_op
 #    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/paths_planner_op.yaml"
 
-#  - id : navigator_op
-#    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/navigator_op.yaml"
 
 sinks:
   - id : debug_sink
@@ -67,15 +68,15 @@ sinks:
           DebugMarkers: rt/debug/markers    # no namespaces (global topic /debug/markers in ROS2)
           DebugImgFiltered1: rt/robot1/debug/filter_img
           DebugImgFiltered2: rt/robot2/debug/filter_img
-          WorldObjPose: rt/world_obj_pos # TESTING
+          WPRequest: rt/wp_req # TESTING
     descriptor : "builtin://zenoh"
     
-#  - id : goal_pose_sink
-#    configuration:
-#        key-expressions:
-#          Waypoint1: rt/robot1/goal_pose
-#          Waypoint2: rt/robot2/goal_pose
-#    descriptor : "builtin://zenoh"
+  - id : goal_pose_sink
+    configuration:
+        key-expressions:
+          Waypoint1: rt/robot1/goal_pose
+          Waypoint2: rt/robot2/goal_pose
+    descriptor : "builtin://zenoh"
 
 
 
@@ -143,17 +144,11 @@ links:
     input : Lidar2
 
 
-#- from:
-#    node : obj_pos_infer_op
-#    output : WorldObjPose
-#  to:
-#    node : navigator_op
-#    input : WorldObjPose
-- from: # TESTING
+- from:
     node : obj_pos_infer_op
     output : WorldObjPose
   to:
-    node : debug_sink
+    node : navigator_op
     input : WorldObjPose
 - from:
     node : obj_pos_infer_op
@@ -163,6 +158,12 @@ links:
     input : DebugMarkers
 
 
+- from: # TESTING
+    node : navigator_op
+    output : WPRequest
+  to:
+    node : debug_sink
+    input : WPRequest
 #- from:
 #    node : navigator_op
 #    output : WPRequest
@@ -177,32 +178,32 @@ links:
 #    input : NextWP
 
 
-#- from:
-#    node : navigator_op
-#    output : RobotPose1
-#  to:
-#    node : obj_pos_infer_op
-#    input : RobotPose1
-#- from:
-#    node : navigator_op
-#    output : RobotPose2
-#  to:
-#    node : obj_pos_infer_op
-#    input : RobotPose2
+- from:
+    node : navigator_op
+    output : RobotPose1
+  to:
+    node : obj_pos_infer_op
+    input : RobotPose1
+- from:
+    node : navigator_op
+    output : RobotPose2
+  to:
+    node : obj_pos_infer_op
+    input : RobotPose2
 
 
-#- from:
-#    node : tfs_source
-#    output : TF1
-#  to:
-#    node : navigator_op
-#    input : TF1
-#- from:
-#    node : tfs_source
-#    output : TF2
-#  to:
-#    node : navigator_op
-#    input : TF2
+- from:
+    node : tfs_source
+    output : TF1
+  to:
+    node : navigator_op
+    input : TF1
+- from:
+    node : tfs_source
+    output : TF2
+  to:
+    node : navigator_op
+    input : TF2
 
 
 #- from:
@@ -219,23 +220,23 @@ links:
 #    input : DebugMapDiv
 
 
-#- from:
-#    node : navigator_op
-#    output : Waypoint1
-#  to:
-#    node : goal_pose_sink
-#    input : Waypoint1
-#- from:
-#    node : navigator_op
-#    output : Waypoint2
-#  to:
-#    node : goal_pose_sink
-#    input : Waypoint2
+- from:
+    node : navigator_op
+    output : Waypoint1
+  to:
+    node : goal_pose_sink
+    input : Waypoint1
+- from:
+    node : navigator_op
+    output : Waypoint2
+  to:
+    node : goal_pose_sink
+    input : Waypoint2
 
 
 
 mapping:
 #  paths_planner_op: computer
-#  navigator_op: computer
+  navigator_op: computer
   obj_detector_op: computer
   obj_pos_infer_op: computer

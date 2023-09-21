@@ -6,10 +6,9 @@ vars:
 uri: file://{{ BASE_DIR }}/nodes/obj_pos_infer_op.py
 
 configuration:
-  lidar_threshold: 6 #+- lidar_threshold / 2 [degrees]
-  safe_distance: 0.3 #[m]
+  lidar_threshold: 6   #+- lidar_threshold / 2 [degrees]
+  safe_distance:   0.3 #[m]
 
-#inputs: [ObjDetected, CamInfo1, CamInfo2, Lidar1, Lidar2, RobotPose1, RobotPose2]
-inputs: [ObjDetected, CamInfo1, CamInfo2, Lidar1, Lidar2] # For tests
+inputs: [ObjDetected, CamInfo1, CamInfo2, Lidar1, Lidar2, RobotPose1, RobotPose2]
 outputs: [WorldObjPose, DebugMarkers]
 tags: []
