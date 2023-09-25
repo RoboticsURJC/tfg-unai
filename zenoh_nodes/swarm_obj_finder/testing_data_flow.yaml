@@ -56,19 +56,18 @@ operators:
   - id : navigator_op
     descriptor : "file://{{ BASE_DIR }}/nodes/cfg/navigator_op.yaml"
 
-#  - id : paths_planner_op
-#    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/paths_planner_op.yaml"
+  - id : paths_planner_op
+    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/paths_planner_op.yaml"
 
 
 sinks:
   - id : debug_sink
     configuration:
         key-expressions:
-          #DebugMapDiv: rt/debug/map_div_img # no namespaces (global topic /debug/map_div_img in ROS2)
+          DebugMapDiv: rt/debug/map_div_img # no namespaces (global topic /debug/map_div_img in ROS2)
           DebugMarkers: rt/debug/markers    # no namespaces (global topic /debug/markers in ROS2)
           DebugImgFiltered1: rt/robot1/debug/filter_img
           DebugImgFiltered2: rt/robot2/debug/filter_img
-          WPRequest: rt/wp_req # TESTING
     descriptor : "builtin://zenoh"
     
   - id : goal_pose_sink
@@ -158,24 +157,18 @@ links:
     input : DebugMarkers
 
 
-- from: # TESTING
+- from:
     node : navigator_op
     output : WPRequest
   to:
-    node : debug_sink
+    node : paths_planner_op
     input : WPRequest
-#- from:
-#    node : navigator_op
-#    output : WPRequest
-#  to:
-#    node : paths_planner_op
-#    input : WPRequest
-#- from:
-#    node : paths_planner_op
-#    output : NextWP
-#  to:
-#    node : navigator_op
-#    input : NextWP
+- from:
+    node : paths_planner_op
+    output : NextWP
+  to:
+    node : navigator_op
+    input : NextWP
 
 
 - from:
@@ -206,18 +199,18 @@ links:
     input : TF2
 
 
-#- from:
-#    node : paths_planner_op
-#    output : DebugMarkers
-#  to:
-#    node : debug_sink
-#    input : DebugMarkers
-#- from:
-#    node : paths_planner_op
-#    output : DebugMapDiv
-#  to:
-#    node : debug_sink
-#    input : DebugMapDiv
+- from:
+    node : paths_planner_op
+    output : DebugMarkers
+  to:
+    node : debug_sink
+    input : DebugMarkers
+- from:
+    node : paths_planner_op
+    output : DebugMapDiv
+  to:
+    node : debug_sink
+    input : DebugMapDiv
 
 
 - from:
@@ -236,7 +229,7 @@ links:
 
 
 mapping:
-#  paths_planner_op: computer
+  paths_planner_op: computer
   navigator_op: computer
   obj_detector_op: computer
   obj_pos_infer_op: computer

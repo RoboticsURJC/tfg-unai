@@ -3,11 +3,8 @@ from zenoh_flow import Input, Output
 from zenoh_flow.types import Context
 from typing import Dict, Any
 
-import asyncio, time, yaml
+import asyncio, time
 from math import sqrt
-
-from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
-from rclpy.type_support import check_for_type_support
 
 from geometry_msgs.msg import PoseStamped
 from builtin_interfaces.msg import Duration
@@ -16,7 +13,9 @@ import tf2_ros, rclpy
 
 
 import sys, os, inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+currentdir = os.path.dirname(
+    os.path.abspath(inspect.getfile(inspect.currentframe()))
+    )
 sys.path.insert(0, currentdir)
 from comms_utils import *
 from geom_utils import *
@@ -57,13 +56,11 @@ class Navigator(Operator):
             )
         
         # Single inputs:
-        #self.input_next_wp = inputs.get(INPUT_NEXT_WP, None)
-        #self.input_world_pos = inputs.get(INPUT_WORLD_OBJ_POSE, None)
-        #self.input_next_wp = inputs.take(
-        #    INPUT_NEXT_WP,
-        #    WorldPosition,
-        #    get_world_pos_msg_deserializer(self.ns_bytes_length)
-        #    )
+        self.input_next_wp = inputs.take(
+            INPUT_NEXT_WP,
+            WorldPosition,
+            get_world_pos_msg_deserializer(self.ns_bytes_length)
+            )
         self.input_world_pos = inputs.take(
             INPUT_WORLD_OBJ_POSE,
             WorldPosition,
@@ -71,7 +68,6 @@ class Navigator(Operator):
             )
 
         # Single outputs:
-        #self.output_wp_req = outputs.get(OUTPUT_WP_REQ, None)
         self.output_wp_req = outputs.take(
             OUTPUT_WP_REQ,
             str,
@@ -84,13 +80,10 @@ class Navigator(Operator):
                                                OUTPUTS_ROBOT_POSES,
                                                OUTPUTS_WPS):
             # Listed inputs:
-            #self.inputs_tfs.append(inputs.get(in_tf, None))
             self.inputs_tfs.append(
                 inputs.take(in_tf, TFMessage, get_ros2_deserializer(TFMessage))
                 )
             # Listed outputs:
-            #self.outputs_robot_poses.append(outputs.get(out_rob_pose, None))
-            #self.outputs_wps.append(outputs.get(out_wp, None))
             self.outputs_robot_poses.append(
                 outputs.take(out_rob_pose, PoseStamped, ser_ros2_msg)
                 )
@@ -117,12 +110,12 @@ class Navigator(Operator):
                     )
                 )
         # Append single inputs async task to the task_list one by one:
-        #if not any(t.get_name() == INPUT_NEXT_WP for t in task_list):
-        #    task_list.append(
-        #        asyncio.create_task(get_input_func(INPUT_NEXT_WP,
-        #                                           self.input_next_wp)(),
-        #                            name=INPUT_NEXT_WP)
-        #    )
+        if not any(t.get_name() == INPUT_NEXT_WP for t in task_list):
+            task_list.append(
+                asyncio.create_task(get_input_func(INPUT_NEXT_WP,
+                                                   self.input_next_wp)(),
+                                    name=INPUT_NEXT_WP)
+            )
         if not any(t.get_name() == INPUT_WORLD_OBJ_POSE for t in task_list):
             task_list.append(
                 asyncio.create_task(get_input_func(INPUT_WORLD_OBJ_POSE,
@@ -137,8 +130,6 @@ class Navigator(Operator):
         if self.first_time:
             for ns in self.robot_namespaces:
                 print(f"NAVIGATOR_OP -> {ns} sending first waypoint request...")
-                #ns_ser = ser_string(ns, self.ns_bytes_length, ' ')
-                #await self.output_wp_req.send(ns_ser)
                 await self.output_wp_req.send(ns)
             self.first_time = False
 
@@ -151,21 +142,24 @@ class Navigator(Operator):
             (who, data_msg) = d.result()
 
             # Get the next waypoint:
-            #if who == INPUT_NEXT_WP and not self.object_found:
-            #    ns = deser_string(data_msg.data[:self.ns_bytes_length], ' ')
-            #    index = self.robot_namespaces.index(ns)
-            #    
-            #    ser_current_wp = data_msg.data[self.ns_bytes_length:]
-            #    self.current_wps[index] = [deser_ros2_msg(ser_current_wp, PoseStamped),
-            #                               time.time(), -1.0]
-            #    print(f"NAVIGATOR_OP -> {self.robot_namespaces[index]} received next waypoint, sending it: {get_xy_from_pose(self.current_wps[index][0])}")
-            #    await self.outputs_wps[index].send(ser_current_wp)
+            if who == INPUT_NEXT_WP and not self.object_found:
+                msg = data_msg.get_data()
+                ns = msg.get_sender()
+                current_wp = msg.get_world_position()
 
-            # Get the robots poses:
+                index = self.robot_namespaces.index(ns)
+                self.current_wps[index] = [current_wp, time.time(), -1.0]
+                print(f"NAVIGATOR_OP -> sending {self.robot_namespaces[index]} to the next waypoint: {get_xy_from_pose(self.current_wps[index][0])}")
+                await self.outputs_wps[index].send(current_wp)
+
+            # Get the robots poses to check if they have reached their goals:
+            # TODO: Since these TFs are a little bit too imprecise, maybe we can
+            # check the /robot**/cmd_vel_nav topic to see when they stop moving,
+            # which means that the goal was reached or the robot got stuck.
+            # This will aslo simplify the code.
             if who in INPUTS_TFS:
                 index = int(who[-1]) -1 # Who should be TF1, TF2, ...
                 ns = self.robot_namespaces[index]
-                #self.tf_msg = deser_ros2_msg(data_msg.data, TFMessage)
                 self.tf_msg = data_msg.get_data()
                 for tf in self.tf_msg.transforms:
 
@@ -186,8 +180,6 @@ class Navigator(Operator):
                             robot_pose.pose.position.x = new_tf.transform.translation.x
                             robot_pose.pose.position.y = new_tf.transform.translation.y
                             robot_pose.pose.orientation = new_tf.transform.rotation
-                            #ser_pose = ser_ros2_msg(robot_pose)
-                            #await self.outputs_robot_poses[index].send(ser_pose)
                             await self.outputs_robot_poses[index].send(robot_pose)
 
                             x_dist = new_tf.transform.translation.x - self.current_wps[index][0].pose.position.x
@@ -196,10 +188,8 @@ class Navigator(Operator):
                             self.current_wps[index][2] = dist
                             if (dist < self.goal_checker_min_dist
                                 and not self.object_found):
-                                print("NAVIGATOR_OP -> Waypoint reached, sending next request...")
+                                print(f"NAVIGATOR_OP -> Waypoint reached by {ns}, requesting the next one...")
                                 ns = self.robot_namespaces[index]
-                                #ns_ser = ser_string(ns, self.ns_bytes_length, ' ')
-                                #await self.output_wp_req.send(ns_ser)
                                 await self.output_wp_req.send(ns)
                             
                         except Exception as e:
@@ -209,20 +199,16 @@ class Navigator(Operator):
             # Get the object's 3D pose:
             if who == INPUT_WORLD_OBJ_POSE:
                 self.object_found = True
-                #ser_ns = data_msg.data[:self.ns_bytes_length]
-                #ns = deser_string(ser_ns)
                 wp_msg = data_msg.get_data() # it's a WorldPosition type object.
 
                 #WE MAY NOT NEED TO GET THE INDEX OR NAMESPACE HERE:
                 ns = wp_msg.get_sender()
                 index = self.robot_namespaces.index(ns)
                 
-                #ser_obj_pos = data_msg.data[self.ns_bytes_length:] #We don't need to deserialize it
                 # Send all the robots to the object's pose and stop following paths:
                 for i, output in enumerate(self.outputs_wps):
                     obj_pose = wp_msg.get_world_position()
                     print(f"NAVIGATOR_OP -> Sending {self.robot_namespaces[i]} to object's position in: {obj_pose}")
-                    #output.send(ser_obj_pos)
                     output.send(obj_pose)
     
     def finalize(self) -> None:

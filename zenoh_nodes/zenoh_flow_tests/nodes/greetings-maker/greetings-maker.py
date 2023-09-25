@@ -71,8 +71,8 @@ class GreetingsMaker(Operator):
             #name=LaserScan()
             print(name)
         wp = PoseStamped()
-        wp.pose.position.x = 0.5
-        wp.pose.position.y = 0.5
+        wp.pose.position.x = 0.7
+        wp.pose.position.y = 0.7
         wp.pose.position.z = 0.0
         await self.output_wp.send(wp)
         print("WP SENT")

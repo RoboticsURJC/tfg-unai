@@ -11,7 +11,9 @@ from sensor_msgs.msg import CameraInfo, LaserScan
 from visualization_msgs.msg import MarkerArray
 
 import sys, os, inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+currentdir = os.path.dirname(
+    os.path.abspath(inspect.getfile(inspect.currentframe()))
+    )
 sys.path.insert(0, currentdir)
 from comms_utils import *
 from geom_utils import *

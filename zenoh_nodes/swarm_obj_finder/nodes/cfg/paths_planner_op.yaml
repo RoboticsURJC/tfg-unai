@@ -1,11 +1,13 @@
 id: paths_planner_op
 
-uri: file:///home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/zenoh-flow_nodes/paths_planner_op.py
+vars:
+  BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/swarm_obj_finder"
+
+uri: file://{{ BASE_DIR }}/nodes/paths_planner_op.py
 
 configuration:
-  #common_cfg_file: "/home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/config/common_cfg.yaml"
-  map_yaml_file: "/home/usanz/zs_t3/t3_ws/src/swarm_obj_finder/maps/turtlebot3_world/turtlebot3_world.yaml"
-  waypoint_separation: 0.5 # in meters
+  map_yaml_file: "/home/usanz/ros2_humble_ws/src/navigation2/nav2_bringup/maps/turtlebot3_world.yaml"
+  waypoint_separation: 0.5 #[m]
 
 inputs: [WPRequest]
 outputs: [DebugMapDiv, DebugMarkers, NextWP]

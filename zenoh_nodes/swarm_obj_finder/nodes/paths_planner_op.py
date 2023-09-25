@@ -6,15 +6,18 @@ from typing import Dict, Any
 import yaml
 
 from visualization_msgs.msg import MarkerArray
+from sensor_msgs.msg import Image
 
 import sys, os, inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+currentdir = os.path.dirname(
+    os.path.abspath(inspect.getfile(inspect.currentframe()))
+    )
 sys.path.insert(0, currentdir)
 from geom_utils import *
 from comms_utils import *
 from marker_utils import *
 from map_utils import *
-
+from message_utils import WorldPosition
 
 
 INPUT_WP_REQUEST = "WPRequest"
@@ -44,25 +47,6 @@ class PathsPlanner(Operator):
     ):
         configuration = {} if configuration is None else configuration
 
-        # Single inputs:
-        self.input_wp_req = inputs.get(INPUT_WP_REQUEST, None)
-        # Single outputs:
-        self.output_debug_img = outputs.get(OUTPUT_DEBUG_MAP_DIV, None)
-        self.output_markers = outputs.get(OUTPUT_DEBUG_MARKER, None)
-        self.output_next_wp = outputs.get(OUTPUT_NEXT_WP, None)
-
-        # TODO: With the new update the common config file is not needed anymore
-        # since the it can be put directly in the data-flow yaml file:
-
-        # Add the common configuration to this node's configuration
-        common_cfg_file = str(configuration.get("common_cfg_file",
-                                                "config/common_cfg.yaml"))
-        common_cfg_yaml_file = open(common_cfg_file)
-        common_cfg_dict = yaml.load(common_cfg_yaml_file,
-                                    Loader=yaml.FullLoader)
-        common_cfg_yaml_file.close()
-        configuration.update(common_cfg_dict)
-
         # Get configuration values:
         self.robot_num = int(configuration.get("swarm_size", 2))
         self.robot_namespaces = list(configuration.get("robot_namespaces",
@@ -73,6 +57,21 @@ class PathsPlanner(Operator):
                                 "map_yaml_file",
                                 "maps/turtlebot3_world/turtlebot3_world.yaml")
                             )
+        
+        # Single inputs:
+        self.input_wp_req = inputs.take(INPUT_WP_REQUEST, str, deser_string)
+        # Single outputs:
+        self.output_debug_img = outputs.take(
+            OUTPUT_DEBUG_MAP_DIV, Image, ser_ros2_msg
+            )
+        self.output_markers = outputs.take(
+            OUTPUT_DEBUG_MARKER, MarkerArray, ser_ros2_msg
+            )
+        self.output_next_wp = outputs.take(
+            OUTPUT_NEXT_WP,
+            WorldPosition,
+            get_world_pos_msg_serializer(self.ns_bytes_length)
+            )
 
         # Other attributes needed:
         self.debug_img_sent = False
@@ -85,29 +84,34 @@ class PathsPlanner(Operator):
         self.load_map(map_yaml_path)
 
         # Get the bounding box and divide the map (get the bounding corners):
-        divs, self.debug_div_img_msg_ser = divide_map(self.img_interpr,
-                                                      self.map_img,
-                                                      self.robot_num,
-                                                      (self.map_free_thresh,
-                                                       self.map_occupied_thresh),
-                                                      True)
+        divs, self.debug_div_img_msg = divide_map(
+            self.img_interpr,
+            self.map_img,
+            self.robot_num,
+            (self.map_free_thresh, self.map_occupied_thresh),
+            True
+            )
         # For each division get the path and store it:
         marker_array_msg = MarkerArray()
         marker_array_msg.markers = []
         self.paths = []
         invert = False
         for div, ns in zip(divs, self.robot_namespaces):
-            path = get_path_from_area(div, self.img_interpr,
-                                      (self.map_free_thresh,
-                                       self.map_occupied_thresh),
-                                      self.wp_world_separation, self.map_origin,
-                                      self.map_resolution, invert)
-            # Invert every odd path to separete the
+            path = get_path_from_area(
+                div,
+                self.img_interpr,
+                (self.map_free_thresh, self.map_occupied_thresh),
+                self.wp_world_separation,
+                self.map_origin,
+                self.map_resolution,
+                invert
+                )
+            # Invert every odd path to spread the
             # robots (different starting points):
             invert = not invert
             self.paths.append(path)
             marker_array_msg.markers += self.get_markers_from_path(path, ns)
-        self.marker_array_msg_ser = ser_ros2_msg(marker_array_msg)
+        self.marker_array_msg = marker_array_msg
         
     def load_map(self, map_yaml_path: str) -> None:
         map_yaml_file = open(map_yaml_path)
@@ -159,18 +163,17 @@ class PathsPlanner(Operator):
     async def iteration(self) -> None:
         if not self.debug_img_sent:
             print("PATHS_PLANNER_OP -> Sending debug information")
-            await self.output_debug_img.send(self.debug_div_img_msg_ser)
-            await self.output_markers.send(self.marker_array_msg_ser)
+            await self.output_debug_img.send(self.debug_div_img_msg)
+            await self.output_markers.send(self.marker_array_msg)
             self.debug_img_sent = True
 
         # Process waypoint requests:
         data_msg = await self.input_wp_req.recv()
+        ns = data_msg.get_data() #We are receiveing names/namespaces as requests
 
-        ns = deser_string(data_msg.data, ' ') # Who (namespace)
         index = self.robot_namespaces.index(ns)
         next_wp = self.paths[index].pop(0)
-        next_wp_ser = ser_ros2_msg(next_wp)
-        await self.output_next_wp.send(data_msg.data + next_wp_ser)
+        await self.output_next_wp.send(WorldPosition(next_wp, ns))
         print(f"PATHS_PLANNER_OP -> Sending next waypoint to {ns}")
 
         return None

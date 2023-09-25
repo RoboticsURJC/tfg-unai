@@ -85,7 +85,7 @@ def get_map_right_bound(itpr_map_img: np.ndarray, thresholds: tuple) -> int:
     
 def divide_map(itpr_map_img: np.ndarray, map_img: np.ndarray,
                div_num: int, thresholds: tuple,
-               debug: bool) -> list:
+               debug: bool) -> tuple:
     left_top_point = [
         get_map_left_bound(itpr_map_img, thresholds),
         get_map_upper_bound(itpr_map_img, thresholds)]
@@ -141,7 +141,7 @@ def divide_map(itpr_map_img: np.ndarray, map_img: np.ndarray,
                             2, 0, 2, -1)
         cv_bridge = CvBridge()
         debug_img_msg = cv_bridge.cv2_to_imgmsg(debug_div_img)
-        return (bboxes, ser_ros2_msg(debug_img_msg))
+        return (bboxes, debug_img_msg)
     ###
 
     return bboxes
