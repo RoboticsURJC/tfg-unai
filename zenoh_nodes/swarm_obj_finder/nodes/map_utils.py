@@ -2,6 +2,7 @@ import cv2, numpy as np
 from math import pi
 
 from geometry_msgs.msg import PoseStamped
+from rclpy.clock import Clock
 
 from cv_bridge import CvBridge
 from comms_utils import *
@@ -148,6 +149,8 @@ def divide_map(itpr_map_img: np.ndarray, map_img: np.ndarray,
 
 def map2world(map_pose: PoseStamped, origin: list, resolution: int) -> PoseStamped:
     world_pose = PoseStamped()
+    world_pose.header.frame_id = "map" # Header needed for Nav2 planner server.
+    world_pose.header.stamp = Clock().now().to_msg()
     world_pose.pose.position.x = (map_pose.pose.position.x + origin[0]) * resolution
     world_pose.pose.position.y = (map_pose.pose.position.y + origin[1]) * resolution
     world_pose.pose.orientation = map_pose.pose.orientation
@@ -187,8 +190,6 @@ def get_path_from_area(area: list, itpr_map_img: np.ndarray, thresholds: tuple,
         for y in vertical_range:
             wp = PoseStamped()
             wp.header.frame_id = "map"
-            wp.header.stamp.sec = 0
-            wp.header.stamp.nanosec = 0
             wp.pose.position.x, wp.pose.position.y = img2map((x, y),
                                                              itpr_map_img.shape)
             wp.pose.orientation = euler2quat(

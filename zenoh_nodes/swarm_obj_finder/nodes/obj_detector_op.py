@@ -143,8 +143,9 @@ class PathsPlanner(Operator):
                 # If the object is detected, its centroid won't be None:
                 if centroid_msg != None:
                     centroid_msg.set_founder(self.robot_namespaces[index])
+                    #TESTING: NEVER SEND (TO SEE IF THEY FOLLOW THE PATH)
                     print(f"OBJ_DETECTOR_OP -> object detected by: {centroid_msg.get_founder()} in {centroid_msg.get_centroid()}")
-                    await self.output_obj_detected.send(centroid_msg)
+                    #await self.output_obj_detected.send(centroid_msg)
         
         return None
 
