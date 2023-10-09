@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="files_scheme.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-grids="true"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="835.09311"
+     inkscape:cy="444.77017"
+     inkscape:window-width="1866"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-paths="false">
+    <sodipodi:guide
+       position="-204.25834,264.50416"
+       orientation="0,-1"
+       id="guide632" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect7235"
+       is_visible="true"
+       lpeversion="1"
+       satellites_param="F,0,0,1,0,10.422885,0,1 @ F,0,0,1,0,10.422885,0,1 @ F,0,0,1,0,10.422885,0,1 @ F,0,0,1,0,11.925887,0,1 @ F,0,0,1,0,11.925887,0,1"
+       unit="px"
+       method="auto"
+       mode="F"
+       radius="0"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient49870">
+      <stop
+         style="stop-color:#e92a23;stop-opacity:1;"
+         offset="0"
+         id="stop49866" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0"
+         offset="1"
+         id="stop49868" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1654">
+      <rect
+         style="opacity:0.76;fill:#f8dad0;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4.1"
+         id="rect1656"
+         width="45.72234"
+         height="72.506882"
+         x="25.268162"
+         y="74.704742" />
+    </clipPath>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.61300184,0,0,-0.62447476,161.92294,124.16846)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,47.430242,157.73034)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-03"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.66777404,0,0,-0.62447476,115.84761,124.28731)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-7"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.61300184,0,0,-0.62447476,211.04876,124.08827)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,1.3437942,80.053325)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2-8"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,2.1190188,132.72589)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2-9"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,2.0053031,182.32862)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2-1"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,2.2637002,231.11009)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2-1-7"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,-45.081464,230.98262)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2-1-70"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-2.2787977,0,0,-0.62479898,318.88167,213.07148)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-0-2-1-8-9"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.99485256,0,0,-0.62447476,-47.325234,132.59546)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient52262-03-8"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169"
+       gradientTransform="matrix(-0.66777404,0,0,-0.62447476,115.84761,171.18936)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient78643"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.66777404,0,0,-0.62447476,166.23825,171.18936)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient78647"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.66777404,0,0,-0.62447476,216.24126,171.18936)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient78651"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.1837623,0,0,-0.62447476,337.48326,171.18936)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient103227"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.4610191,0,0,-0.62185285,243.04807,236.96762)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient103233"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.4713213,0,0,-0.62235303,1.0267142,150.14206)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient635"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.99284976,0,0,-0.62447476,-44.541559,324.01147)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient751"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.66777404,0,0,-0.62447476,-37.49189,176.22842)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient753"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.66777404,0,0,-0.62447476,-87.882584,176.22842)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient759"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.99284976,0,0,-0.62447476,-49.580592,276.20352)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient761"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.61462529,0,0,-0.62447476,257.42057,176.22842)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49870"
+       id="radialGradient11616"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.4713213,0,0,-0.62235303,48.421417,167.06202)"
+       cx="95.528656"
+       cy="86.742767"
+       fx="95.528656"
+       fy="86.742767"
+       r="103.04169" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       style="opacity:0.5;fill:#fae4dc;stroke:#000000;stroke-width:0.780119;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 0.66577885,10.949118 V 177.17135 A 10.422885,10.422885 45 0 0 11.088664,187.59423 H 285.49714 a 10.422885,10.422885 135 0 0 10.42288,-10.42288 V 123.48647 A 28.791643,28.791643 67.500003 0 0 287.48715,103.1277 L 193.31554,8.9560816 A 28.790964,28.790964 22.499532 0 0 172.95678,0.52340111 L 11.088664,0.52606196 A 10.423056,10.423056 134.99953 0 0 0.66577885,10.949118 Z"
+       id="path4873"
+       inkscape:path-effect="#path-effect7235"
+       inkscape:original-d="M 0.66577885,0.5262333 V 187.59423 H 295.92002 V 111.56058 L 184.88267,0.52320507 Z" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient78651);fill-opacity:1;stroke:none;stroke-width:1.49201;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect78649"
+       width="91.998276"
+       height="1.10504"
+       x="178.39723"
+       y="116.46754" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient11616);fill-opacity:1;stroke:none;stroke-width:1.24868;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect11614"
+       width="64.656593"
+       height="1.1012855"
+       x="-124.46002"
+       y="112.5291"
+       transform="matrix(-0.94103094,-0.33832052,-0.31931028,0.94765022,0,0)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient103233);fill-opacity:1;stroke:none;stroke-width:1.24868;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect103231"
+       width="64.656593"
+       height="1.1012855"
+       x="-171.85524"
+       y="95.608948"
+       transform="matrix(-0.94103094,-0.33832052,-0.31931028,0.94765022,0,0)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient103227);fill-opacity:1;stroke:none;stroke-width:1.2438;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect103225"
+       width="64.203873"
+       height="1.1004003"
+       x="71.377251"
+       y="182.47815"
+       transform="matrix(0.94016984,-0.34070614,0.31703914,0.94841245,0,0)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2-1-8-9);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3-4-8-6"
+       width="43.718376"
+       height="1.10504"
+       x="-164.22127"
+       y="77.874222"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2-1-70);fill-opacity:1;stroke:none;stroke-width:1.55704;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3-4-4"
+       width="100.14079"
+       height="1.1056137"
+       x="51.120575"
+       y="158.32245"
+       transform="matrix(0.98543383,-0.17005932,0.17731444,0.98415425,0,0)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262);fill-opacity:1;stroke:none;stroke-width:1.07367;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699"
+       width="47.640575"
+       height="1.10504"
+       x="79.543388"
+       y="69.44722" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-03);fill-opacity:1;stroke:none;stroke-width:1.12061;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-2"
+       width="51.897297"
+       height="1.10504"
+       x="26.107376"
+       y="69.566063" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-03-8);fill-opacity:1;stroke:none;stroke-width:1.12061;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-2-1"
+       width="51.897297"
+       height="1.10504"
+       x="26.10738"
+       y="116.46754" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0"
+       width="43.718376"
+       height="1.10504"
+       x="-69.465881"
+       y="103.00912"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3"
+       width="43.718376"
+       height="1.10504"
+       x="-115.55223"
+       y="25.332142"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2-8);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3-8"
+       width="43.718376"
+       height="1.10504"
+       x="-114.77702"
+       y="78.004677"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2-9);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3-3"
+       width="43.718376"
+       height="1.10504"
+       x="-114.89071"
+       y="127.60741"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2-1);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3-4"
+       width="43.718376"
+       height="1.10504"
+       x="-114.63241"
+       y="176.38879"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-0-2-1-7);fill-opacity:1;stroke:none;stroke-width:1.02853;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-0-3-4-6"
+       width="43.718376"
+       height="1.10504"
+       x="-161.97754"
+       y="176.26132"
+       transform="rotate(-90)" />
+    <g
+       id="g55709"
+       transform="matrix(0.73250605,0,0,0.73250605,3.1746957,2.748979)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="115.8318"
+         y="4.8430395"
+         id="text4564-0-5-2"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="115.8318"
+           y="4.8430395"
+           id="tspan12016-6-7">data-flow.yaml</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/yaml_file_icon.svg"
+         id="image10784-4-4"
+         x="122.14863"
+         y="6.5715098" />
+    </g>
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient52262-7);fill-opacity:1;stroke:none;stroke-width:1.07367;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect32699-5"
+       width="47.640575"
+       height="1.10504"
+       x="128.66916"
+       y="69.36702" />
+    <g
+       id="g19694"
+       transform="matrix(0.73250605,0,0,0.73250605,6.4236087,51.232046)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="140.459"
+         y="0.1167942"
+         id="text4564-0-5-5"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="140.459"
+           y="0.1167942"
+           id="tspan12016-6-9">navigator_op.yaml</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/yaml_file_icon.svg"
+         id="image10784-1"
+         x="151.17023"
+         y="1.766941" />
+    </g>
+    <g
+       id="g19732"
+       transform="matrix(0.73250605,0,0,0.73250605,3.1746957,51.214411)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="205.77568"
+         y="0.14086875"
+         id="text4564-0-5-5-9"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="205.77568"
+           y="0.14086875"
+           id="tspan12016-6-9-0">paths_planner_op.yaml</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/yaml_file_icon.svg"
+         id="image10784-5"
+         x="222.19745"
+         y="1.766941" />
+    </g>
+    <g
+       id="g30315"
+       transform="matrix(0.73250605,0,0,0.73250605,0.3676303,46.380185)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="6.0561562"
+         y="70.302574"
+         id="text4564"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="6.0561562"
+           y="70.302574"
+           id="tspan4566">obj_detector_op.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957"
+         x="21.413939"
+         y="72.97802" />
+    </g>
+    <g
+       id="g30281"
+       transform="matrix(0.73250605,0,0,0.73250605,10.667273,46.437378)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="62.317703"
+         y="70.224487"
+         id="text4564-7"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="62.317703"
+           y="70.224487"
+           id="tspan4566-6">obj_pos_infer_op.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957-3"
+         x="79.262985"
+         y="72.89994" />
+    </g>
+    <g
+       id="g30281-1"
+       transform="matrix(0.73250605,0,0,0.73250605,10.667273,91.401156)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="67.609375"
+         y="122.08285"
+         id="text4564-7-7"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="67.609375"
+           y="122.08285"
+           id="tspan4566-6-5">message_utils.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957-3-7"
+         x="79.262985"
+         y="72.89994" />
+    </g>
+    <g
+       id="g30247"
+       transform="matrix(0.73250605,0,0,0.73250605,14.744875,46.389881)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="131.33171"
+         y="70.28936"
+         id="text4564-7-8"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="131.33171"
+           y="70.28936"
+           id="tspan4566-6-1">navigator_op.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957-3-2"
+         x="141.39774"
+         y="72.964775" />
+    </g>
+    <g
+       id="g30247-1"
+       transform="matrix(0.73250605,0,0,0.73250605,14.744875,91.35366)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="131.86087"
+         y="122.14769"
+         id="text4564-7-8-6"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="131.86087"
+           y="122.14769"
+           id="tspan4566-6-1-9">marker_utils.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957-3-2-8"
+         x="141.39774"
+         y="72.964775" />
+    </g>
+    <g
+       id="g30213"
+       transform="matrix(0.73250605,0,0,0.73250605,25.74631,46.24165)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="176.02562"
+         y="70.491692"
+         id="text4564-7-8-2"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="176.02562"
+           y="70.491692"
+           id="tspan4566-6-1-6">paths_planner_op.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957-3-2-9"
+         x="192.97072"
+         y="73.167145" />
+    </g>
+    <g
+       id="g30213-1"
+       transform="matrix(0.73250605,0,0,0.73250605,25.74631,91.205423)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="187.13797"
+         y="122.35005"
+         id="text4564-7-8-2-3"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="187.13797"
+           y="122.35005"
+           id="tspan4566-6-1-6-3">map_utils.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image10957-3-2-9-3"
+         x="192.97072"
+         y="73.167145" />
+    </g>
+    <g
+       id="g19618"
+       transform="matrix(0.73250605,0,0,0.73250605,3.1746957,51.253336)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="1.1675696"
+         y="0.087730974"
+         id="text4564-0"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="1.1675696"
+           y="0.087730974"
+           id="tspan12016">obj_detector_op.yaml</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/yaml_file_icon.svg"
+         id="image10784"
+         x="15.994299"
+         y="1.766941" />
+    </g>
+    <g
+       id="g19656"
+       transform="matrix(0.73250605,0,0,0.73250605,6.9217814,51.289418)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="63.242737"
+         y="0.038470361"
+         id="text4564-0-5"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="63.242737"
+           y="0.038470361"
+           id="tspan12016-6">obj_pos_infer_op.yaml</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/yaml_file_icon.svg"
+         id="image10784-4"
+         x="82.788742"
+         y="1.766941" />
+    </g>
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient78643);fill-opacity:1;stroke:none;stroke-width:1.12061;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect78641"
+       width="51.897297"
+       height="1.10504"
+       x="76.497726"
+       y="116.46754" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient78647);fill-opacity:1;stroke:none;stroke-width:1.12061;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect78645"
+       width="51.897297"
+       height="1.10504"
+       x="126.49998"
+       y="116.46754" />
+    <g
+       id="g78659"
+       transform="matrix(0.73250605,0,0,0.73250605,71.097619,91.205423)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="186.60881"
+         y="122.35004"
+         id="text78655"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="186.60881"
+           y="122.35004"
+           id="tspan78653">geom_utils.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image78657"
+         x="192.97072"
+         y="73.167145" />
+    </g>
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient635);fill-opacity:1;stroke:none;stroke-width:1.0275;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect633"
+       width="43.630363"
+       height="1.10504"
+       x="-161.2023"
+       y="269.29071"
+       transform="rotate(-90)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient753);fill-opacity:1;stroke:none;stroke-width:1.12061;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect747"
+       width="51.897297"
+       height="1.10504"
+       x="-177.62154"
+       y="121.5065"
+       transform="scale(-1,1)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient751);fill-opacity:1;stroke:none;stroke-width:1.12061;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect749"
+       width="51.897297"
+       height="1.10504"
+       x="-127.23196"
+       y="121.5065"
+       transform="scale(-1,1)" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient761);fill-opacity:1;stroke:none;stroke-width:1.07509;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect755"
+       width="47.766743"
+       height="1.10504"
+       x="174.81827"
+       y="121.5065" />
+    <rect
+       style="opacity:0.75;mix-blend-mode:lighten;fill:url(#radialGradient759);fill-opacity:1;stroke:none;stroke-width:1.0275;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect757"
+       width="43.630363"
+       height="1.10504"
+       x="-166.24127"
+       y="221.48001"
+       transform="rotate(-90)" />
+    <g
+       id="g818"
+       transform="matrix(0.73250605,0,0,0.73250605,118.7749,91.205423)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;line-height:1.25;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.129977"
+         x="184.49217"
+         y="122.35004"
+         id="text814"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.19908px;font-family:Cousine;-inkscape-font-specification:'Cousine, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.129977"
+           x="184.49217"
+           y="122.35004"
+           id="tspan812">comms_utils.py</tspan></text>
+      <image
+         preserveAspectRatio="none"
+         inkscape:svg-dpi="96"
+         width="30.281937"
+         height="42.827316"
+         xlink:href="Downloads/downloaded_images/python_file_icon.svg"
+         id="image816"
+         x="192.97072"
+         y="73.167145" />
+    </g>
+  </g>
+</svg>
