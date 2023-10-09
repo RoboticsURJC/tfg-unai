@@ -1,0 +1,97 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+  case_sensitive = False
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.75
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+  [[zf_layout]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:0
+      maximised = True
+      fullscreen = False
+      size = 1866, 1043
+      title = usanz@usanz-linux: ~
+      last_active_term = 490c5be0-6720-44bb-b445-5dd9bb58835c
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 520
+      ratio = 0.5009633911368016
+    [[[child2]]]
+      type = HPaned
+      parent = child1
+      order = 0
+      position = 618
+      ratio = 0.3320795271359484
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      title = Gazebo Sim
+      uuid = fb67bb75-9bc2-422d-873a-a53f9ec782fc
+      command = cd ~/Desktop/Uni/22-23/tfg-unai; echo -e "\033[1;36m./zenoh_nodes/config_network.sh\033[0m"; echo -e "\033[1;36mROS_LOCALHOST_ONLY=1 ros2 launch nav2_bringup multi_tb3_simulation_launch.py autostart:=True use_sim_time:=True use_composition:=False verbose:=True\033[0m"; bash
+    [[[child4]]]
+      type = HPaned
+      parent = child2
+      order = 1
+      position = 618
+      ratio = 0.4991922455573506
+    [[[terminal5]]]
+      type = Terminal
+      parent = child4
+      order = 0
+      profile = default
+      title = Zenoh Router
+      uuid = 716d2a31-1290-4c75-accf-b725c582bb7a
+      command = echo -e "\033[1;36mzenohd -c ~/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_config.json\033[0m"; bash
+    [[[terminal6]]]
+      type = Terminal
+      parent = child4
+      order = 1
+      profile = default
+      title = Zenoh Bridge DDS
+      uuid = 490c5be0-6720-44bb-b445-5dd9bb58835c
+      command = echo -e "\033[1;36mzs_t3/zenoh-bridge-dds\033[0m"; bash
+    [[[child7]]]
+      type = HPaned
+      parent = child1
+      order = 1
+      position = 930
+      ratio = 0.4997313272434175
+    [[[terminal8]]]
+      type = Terminal
+      parent = child7
+      order = 0
+      profile = default
+      title = ROS2 Commands
+      uuid = 82e98507-64ad-4356-b5e0-5cdb7f6331e6
+      command = code ~/Desktop/Uni/22-23/tfg-unai/;  bash
+    [[[terminal9]]]
+      type = Terminal
+      parent = child7
+      order = 1
+      profile = default
+      title = Data-flow Manager
+      uuid = 1c90bfff-cb4f-41a1-968d-cde83f94cd90
+      command = echo -e "\033[1;36mzf_uuid=\$(zfctl launch ./Desktop/Uni/22-23/tfg-unai/zenoh_nodes/swarm_obj_finder/data_flow.yaml)\033[0m"; echo -e "To stop it use: \033[1;33mzfctl destroy \$zf_uuid\033[0m"; bash
+      directory = ""
+[plugins]
