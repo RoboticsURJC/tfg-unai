@@ -16,3 +16,4 @@ tests/arduino_feedback_servo_hyoda/
 
 TODO.txt
 zenoh_nodes/swarm_obj_finder/nodes/__pycache__/*
+tests/pibot-vision
