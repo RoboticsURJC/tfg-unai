@@ -48,7 +48,7 @@
       profile = default
       title = Gazebo Sim
       uuid = fb67bb75-9bc2-422d-873a-a53f9ec782fc
-      command = cd ~/Desktop/Uni/22-23/tfg-unai; echo -e "\033[1;36m./zenoh_nodes/config_network.sh\033[0m"; echo -e "\033[1;36mROS_LOCALHOST_ONLY=1 ros2 launch nav2_bringup multi_tb3_simulation_launch.py autostart:=True use_sim_time:=True use_composition:=False verbose:=True\033[0m"; bash
+      command = cd ~/Desktop/Uni/22-23/tfg-unai; echo -e "\033[1;36m./zenoh_nodes/config_network.sh\033[0m"; bash
     [[[child4]]]
       type = HPaned
       parent = child2
@@ -70,7 +70,7 @@
       profile = default
       title = Zenoh Bridge DDS
       uuid = 490c5be0-6720-44bb-b445-5dd9bb58835c
-      command = echo -e "\033[1;36mzs_t3/zenoh-bridge-dds\033[0m"; bash
+      command = echo -e "\033[1;36mROS_LOCALHOST_ONLY=1 zs_t3/zenoh-bridge-dds\033[0m"; bash
     [[[child7]]]
       type = HPaned
       parent = child1
@@ -92,6 +92,6 @@
       profile = default
       title = Data-flow Manager
       uuid = 1c90bfff-cb4f-41a1-968d-cde83f94cd90
-      command = echo -e "\033[1;36mzf_uuid=\$(zfctl launch ./Desktop/Uni/22-23/tfg-unai/zenoh_nodes/swarm_obj_finder/data_flow.yaml)\033[0m"; echo -e "To stop it use: \033[1;33mzfctl destroy \$zf_uuid\033[0m"; bash
+      command = '''echo -e "\033[1;36mzf_uuid=\$(zfctl launch ./Desktop/Uni/22-23/tfg-unai/zenoh_nodes/swarm_obj_finder/data_flow.yaml)\033[0m"; echo -e "To stop it use: \033[1;36mzfctl destroy \$zf_uuid\033[0m"; echo -e "\033[1;33mCOMMON ERRORS:\033[0m";  echo -e ' - If the router gives an error saying something like "\033[0;31mEmpty: \\"Empty\\"\033[0m" when running the data-flow you can kill it using "\033[1;33mkillall zenohd\033[0m" and run it again.'; echo -e ' - Once the data-flow has been launched, the zenoh router can only be stoped by killing it: "\033[1;33mkillall zenohd\033[0m".'; bash'''
       directory = ""
 [plugins]
