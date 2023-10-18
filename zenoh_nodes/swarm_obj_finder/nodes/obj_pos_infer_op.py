@@ -34,7 +34,7 @@ MARKER_FRAME_ID = "map"
 
 
 
-class PathsPlanner(Operator):
+class ObjPosInfer(Operator):
     def __init__(
         self,
         context: Context,
@@ -265,4 +265,4 @@ class PathsPlanner(Operator):
 
 
 def register():
-    return PathsPlanner
+    return ObjPosInfer

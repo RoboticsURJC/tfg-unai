@@ -26,7 +26,7 @@ OUTPUTS_DEBUG_IMGS  = ["DebugImgFiltered1", "DebugImgFiltered2"]
 
 
 
-class PathsPlanner(Operator):
+class ObjDetector(Operator):
     def __init__(
         self,
         context: Context,
@@ -83,9 +83,80 @@ class PathsPlanner(Operator):
         self.pending = list()
         self.depths = [PointCloud2()] * self.robot_num
 
-    def detect_object(self, img: np.ndarray, index: int) -> tuple:
-        height, width, _ = img.shape # 1920 x 1080
-        hsv_img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+    def get_point_cloud_values(self, pc: PointCloud2, size: int) -> tuple:
+        height, width = size
+
+        ### self.depths[index].data goes from 32 bytes to 32 bytes, where the
+        ### first 4 are the x coord, the next 4 are the y, the next 4 are the z
+        ### and the other 20 divides in 4 void bytes are the values rgb:
+        x_offset = pc.fields[0].offset
+        y_offset = pc.fields[1].offset
+        z_offset = pc.fields[2].offset
+        rgb_offset = pc.fields[3].offset
+        
+        # Redimension to 320x240x32:
+        points = np.reshape(pc.data, (height, width, pc.point_step))
+        
+        endianness = '>' if pc.is_bigendian else '<'
+        # Format info of the fields in https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointField.html:
+        """
+        uint8 INT8    = 1
+        uint8 UINT8   = 2
+        uint8 INT16   = 3
+        uint8 UINT16  = 4
+        uint8 INT32   = 5
+        uint8 UINT32  = 6
+        uint8 FLOAT32 = 7
+        uint8 FLOAT64 = 8
+        """
+        # List that contains the format character and the bytes size:
+        size_list = [['b', 1], ['B', 1], ['h', 2], ['H', 2],
+                        ['i', 4], ['I', 4], ['f', 4], ['d', 8]]
+        depth_format_strings = (
+            endianness + size_list[pc.fields[0].datatype - 1][0],
+            endianness + size_list[pc.fields[1].datatype - 1][0],
+            endianness + size_list[pc.fields[2].datatype - 1][0])
+        
+        depths = (
+            points[
+                :,
+                :,
+                x_offset : x_offset + size_list[pc.fields[0].datatype - 1][1]
+                ], 
+            points[
+                :,
+                :,
+                y_offset : y_offset + size_list[pc.fields[1].datatype - 1][1]
+                ], 
+            points[
+                :,
+                :,
+                z_offset : z_offset + size_list[pc.fields[2].datatype - 1][1]
+                ]
+            ) # 4 Bytes each (float32)
+        img = points[
+            :,
+            :,
+            rgb_offset : rgb_offset + size_list[pc.fields[3].datatype - 1][1]
+            ] # 3 Bytes (R, G and B).
+        
+        return (img, depths, depth_format_strings)
+
+    def detect_object(self, pc: PointCloud2) -> tuple:
+
+        height, width = (240, 320) # 240 x 320 x 3
+        ### Getting RGB needed values from pointcloud:
+        # In this case RGB values are already integers, so deserialization is
+        # not needed:
+        rgb_vals, depth_vals_ser, depth_fstrs = self.get_point_cloud_values(
+            pc,
+            (height, width)
+            )
+        x_depth_values, y_depth_values, z_depth_values = depth_vals_ser
+        x_fstr, y_fstr, z_fstr = depth_fstrs
+
+        ### Image filtering:
+        hsv_img = cv2.cvtColor(rgb_vals, cv2.COLOR_RGB2HSV)
 
         #mask = cv2.inRange(hsv_img, self.lower_threshold, self.upper_threshold)
         #result = cv2.bitwise_and(img, img, mask = mask)
@@ -95,7 +166,7 @@ class PathsPlanner(Operator):
         centroid = [0, 0]
         centroid_msg = None
         num = 0
-        # Iterate only through a few spaced pixels to reduce comuting:
+        # Iterate only through a few spaced pixels to reduce compute time:
         for i in range(0, width, x_pix_step):
             for j in range(0, height, y_pix_step):
                 # Color filter:
@@ -104,85 +175,43 @@ class PathsPlanner(Operator):
                     centroid[0] += i
                     centroid[1] += j
                     num += 1
-                    cv2.circle(img, (i, j), 10, (255, 255, 0), -1) #DEBUG
+                    cv2.circle(hsv_img, (i, j), 5, (255, 255, 0), 2) #DEBUG
 
-        if num != 0 and len(self.depths[index].data) > 0:
+        ### When object is detected:
+        if num != 0:
             centroid[0] /= num
             centroid[1] /= num
 
-            ### self.depths[index].data goes from 32 bytes to 32 bytes, where
-            ### the first 4 are the x coord, the next 4 are the y, the next 4
-            ### are the z and the other 20 are the values rgb.
+            ### Create debug image:
+            # Put a different circle in the centroid.
+            cv2.circle(
+                hsv_img,
+                (int(centroid[0]), int(centroid[1])),
+                10,
+                (255, 0, 255),
+                -1) #DEBUG
 
-            #print(type(self.depths[index])) # array.array
-            x_offset = self.depths[index].fields[0].offset
-            y_offset = self.depths[index].fields[1].offset
-            z_offset = self.depths[index].fields[2].offset
-            rgb_offset = self.depths[index].fields[3].offset
-            depths = np.reshape(self.depths[index].data,
-                                (width, height, self.depths[index].point_step)
-                                ) # redimension to 320x240x32
-            #print(type(depths))
-            #print(depths.shape)
-            z_values_ser = depths[:,:,y_offset:z_offset]
+            ### Get depth values:
+            #struct.unpack() returns a one element tuple, so we get the index 0:
+            x_val = struct.unpack(
+                x_fstr,
+                bytes(x_depth_values[int(centroid[0]), int(centroid[1]), :])
+                )[0]
+            y_val = struct.unpack(
+                y_fstr,
+                bytes(y_depth_values[int(centroid[0]), int(centroid[1]), :])
+                )[0]
+            z_val = struct.unpack(
+                z_fstr,
+                bytes(z_depth_values[int(centroid[0]), int(centroid[1]), :])
+                )[0]
 
-            #Each coordinate is four bytes length, represented as np.uint8:
-            x_val_ser = depths[
-                int(centroid[1]), int(centroid[0]), x_offset:x_offset + 4
-                ]
-            y_val_ser = depths[
-                int(centroid[1]), int(centroid[0]), y_offset:y_offset + 4
-                ]
-            z_val_ser = depths[
-                int(centroid[1]), int(centroid[0]), z_offset:z_offset + 4
-                ]
-            #print(type(z_val_ser[0])) #np.unit8
-            
-            ### These 2 things are the same:
-            #print(bytes(z_val_ser[:]), struct.pack('4B', *z_val_ser[:]))
-            endianness = '>' if self.depths[index].is_bigendian else '<'
-            # Format info in https://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/PointField.html:
-            """
-            uint8 INT8    = 1
-            uint8 UINT8   = 2
-            uint8 INT16   = 3
-            uint8 UINT16  = 4
-            uint8 INT32   = 5
-            uint8 UINT32  = 6
-            uint8 FLOAT32 = 7
-            uint8 FLOAT64 = 8
-            """
-            size_list = ['b', 'B', 'h', 'H', 'i', 'I', 'f', 'd']
-            x_format = endianness + size_list[self.depths[index].fields[0].datatype - 1]
-            y_format = endianness + size_list[self.depths[index].fields[1].datatype - 1]
-            z_format = endianness + size_list[self.depths[index].fields[2].datatype - 1]
-            
+            centroid_msg = CentroidMessage(x_val, y_val)
 
-            x_val = struct.unpack(x_format, bytes(x_val_ser[:]))
-            y_val = struct.unpack(y_format, bytes(y_val_ser[:]))
-            z_val = struct.unpack(z_format, bytes(z_val_ser[:]))
-            
-            print("X:", x_val)
-            print("Y:", y_val)
-            print("Z:", z_val)
-            #z_val = struct.unpack('>f', bytes(z_val_ser[:])) #This one is definetfly not correct.
-            #print("AAA:", z_val)
-            
-            
-            #print(z_values)
-            #print(z_values.shape)
-            #depth_value_index = int(centroid[0]) * width + int(centroid[1])  # bad values
-            #depth_value_index = int(centroid[0]) + height * int(centroid[1]) # bad values
-            #depth_value_index = int(centroid[0]) * height + int(centroid[1]) # index error
-            #depth_value_index = int(centroid[0]) + width * int(centroid[1]) # bad values
-            #print(f"OBJ_DEPTH: {depth_value_index}/{len(self.depths[index])} aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-            #obj_depth = int(self.depths[index][depth_value_index])
-            #print(f"OBJ_DEPTH: {obj_depth} aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-            centroid_msg = CentroidMessage(centroid[0], centroid[1])
+        rgb_img = cv2.cvtColor(hsv_img, cv2.COLOR_HSV2RGB)
+        debug_img_msg = self.bridge.cv2_to_imgmsg(rgb_img, encoding='rgb8')
 
-        img_msg = self.bridge.cv2_to_imgmsg(img, encoding='rgb8')
-        #img_msg = self.bridge.cv2_to_imgmsg(mask, encoding='passthrough')
-        return (centroid_msg, img_msg)
+        return (centroid_msg, debug_img_msg)
 
     def create_task_list(self):
         task_list = [] + self.pending
@@ -219,7 +248,16 @@ class PathsPlanner(Operator):
                 index = int(who[-1]) -1
                 point_cloud_msg = data_msg.get_data()
                 self.depths[index] = point_cloud_msg
+                centroid_msg, debug_img_msg = self.detect_object(point_cloud_msg)
+                await self.outputs_debug_imgs[index].send(debug_img_msg)
+                if centroid_msg != None:
+                    centroid_msg.set_founder(self.robot_namespaces[index])
+                    print(f"OBJ_DETECTOR_OP -> object detected by: {centroid_msg.get_founder()} in {centroid_msg.get_centroid()}")
+                    await self.output_obj_detected.send(centroid_msg)
 
+            #TODO: get the camera info from the topic /robot*/intel_realsense_r200_depth/depth/camera_info
+
+            """
             if who in INPUTS_IMAGES:
                 # We take the last character of who, because it will conatin
                 # "Image1", "Image2", ..., so substracting 1 we have the index
@@ -231,14 +269,15 @@ class PathsPlanner(Operator):
                 img = self.bridge.imgmsg_to_cv2(img_msg,
                                                 desired_encoding='passthrough')
                 # Apply a color filter to search the object:
-                centroid_msg, debug_img_msg = self.detect_object(img, index)
-                await self.outputs_debug_imgs[index].send(debug_img_msg)
+                centroid_msg, debug_img_msg = self.detect_object_old(img, index)
+                #await self.outputs_debug_imgs[index].send(debug_img_msg)
 
                 # If the object is detected, its centroid won't be None:
                 if centroid_msg != None:
                     centroid_msg.set_founder(self.robot_namespaces[index])
                     print(f"OBJ_DETECTOR_OP -> object detected by: {centroid_msg.get_founder()} in {centroid_msg.get_centroid()}")
                     await self.output_obj_detected.send(centroid_msg)
+            """
         
         return None
 
@@ -248,4 +287,4 @@ class PathsPlanner(Operator):
 
 
 def register():
-    return PathsPlanner
+    return ObjDetector
