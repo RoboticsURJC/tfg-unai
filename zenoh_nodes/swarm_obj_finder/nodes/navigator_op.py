@@ -150,7 +150,7 @@ class Navigator(Operator):
                 index = self.robot_namespaces.index(ns)
                 self.current_wps[index] = [current_wp, time.time(), -1.0]
                 print(f"NAVIGATOR_OP -> sending {self.robot_namespaces[index]} to the next waypoint: {get_xy_from_pose(self.current_wps[index][0])}")
-                await self.outputs_wps[index].send(current_wp)
+                #await self.outputs_wps[index].send(current_wp)
 
             # Get the robots poses to check if they have reached their goals:
             # TODO: Since these TFs are a little bit too imprecise, maybe we can
@@ -209,7 +209,7 @@ class Navigator(Operator):
                 for i, output in enumerate(self.outputs_wps):
                     obj_pose = wp_msg.get_world_position()
                     print(f"NAVIGATOR_OP -> Sending {self.robot_namespaces[i]} to object's position in: {obj_pose}")
-                    output.send(obj_pose)
+                    #output.send(obj_pose)
     
     def finalize(self) -> None:
         return None

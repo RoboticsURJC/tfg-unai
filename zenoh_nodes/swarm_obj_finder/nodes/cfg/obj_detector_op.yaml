@@ -6,9 +6,10 @@ vars:
 uri: file://{{ BASE_DIR }}/nodes/obj_detector_op.py
 
 configuration:
-  lower_color_filter_threshold: [0, 195, 75]   #min values are: [0, 0, 0]
-  upper_color_filter_threshold: [16, 225, 105] #max values are: [179, 255, 255]
+  lower_color_filter_threshold: [0, 195, 75]   #Min values are: [0, 0, 0]
+  upper_color_filter_threshold: [16, 225, 105] #Max values are: [179, 255, 255]
+  pix_step: 30 #Number of pixels ignored to make the algorithm faster.
 
-inputs: [Image1, Image2]
+inputs: [Image1, Image2, Depth1, Depth2]
 outputs: [ObjDetected, DebugImgFiltered1, DebugImgFiltered2]
 tags: []

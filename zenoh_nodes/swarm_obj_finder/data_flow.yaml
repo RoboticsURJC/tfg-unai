@@ -24,19 +24,22 @@ sources:
   - id : imgs_source
     configuration:
         key-expressions:
-          #Image1: rt/robot1/camera/image_raw
-          Image1: rt/robot1/intel_realsense_r200_depth/image_raw # Another camera/topic is being used now.
-          #Image2: rt/robot2/camera/image_raw
-          Image2: rt/robot2/intel_realsense_r200_depth/image_raw # Another camera/topic is being used now.
+          Image1: rt/robot1/intel_realsense_r200_depth/image_raw
+          Image2: rt/robot2/intel_realsense_r200_depth/image_raw
+    descriptor : "builtin://zenoh"
+
+  - id : depths_source
+    configuration:
+        key-expressions:
+          Depth1: rt/robot1/intel_realsense_r200_depth/points
+          Depth2: rt/robot2/intel_realsense_r200_depth/points
     descriptor : "builtin://zenoh"
 
   - id : cams_info_source
     configuration:
         key-expressions:
-          #CamInfo1: rt/robot1/camera/camera_info
-          CamInfo1: rt/robot1/intel_realsense_r200_depth/depth/camera_info # Another camera/topic is being used now.
-          #CamInfo2: rt/robot2/camera/camera_info
-          CamInfo2: rt/robot2/intel_realsense_r200_depth/depth/camera_info # Another camera/topic is being used now.
+          CamInfo1: rt/robot1/intel_realsense_r200_depth/depth/camera_info
+          CamInfo2: rt/robot2/intel_realsense_r200_depth/depth/camera_info
     descriptor : "builtin://zenoh"
 
   - id : scans_source
@@ -93,6 +96,18 @@ links:
   to:
     node : obj_detector_op
     input : Image2
+- from:
+    node : depths_source
+    output : Depth1
+  to:
+    node : obj_detector_op
+    input : Depth1
+- from:
+    node : depths_source
+    output : Depth2
+  to:
+    node : obj_detector_op
+    input : Depth2
 
 
 - from:
