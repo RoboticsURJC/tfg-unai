@@ -49,7 +49,7 @@ class ObjPosInfer(Operator):
         self.robot_namespaces = list(configuration.get("robot_namespaces",
                                                        ["robot1", "robot2"]))
         self.ns_bytes_length = int(configuration.get("ns_bytes_length", 64))
-        self.int_bytes_length = int(configuration.get("int_bytes_length", 4))
+        self.float_bytes_length = int(configuration.get("float_bytes_length", 8))
         self.lidar_threshold = int(configuration.get("lidar_threshold", 4))
         self.safe_distance = float(configuration.get("safe_distance", 0.3))
         
@@ -59,7 +59,8 @@ class ObjPosInfer(Operator):
             CentroidMessage,
             get_ctrd_msg_deserializer(
                 self.ns_bytes_length,
-                self.int_bytes_length)
+                self.float_bytes_length
+                )
             )
         # Single outputs:
         self.output_world_pos = outputs.take(
@@ -238,13 +239,14 @@ class ObjPosInfer(Operator):
                 centroid_msg = msg
                 ns = centroid_msg.get_founder()
                 if self.first_obj_found:
-                    self.firs_robot = ns
+                    self.first_robot = ns
                     self.first_obj_found = False
                 
-                if ns == self.firs_robot:
+                if ns == self.first_robot:
                     index = self.robot_namespaces.index(ns)
                     # Get the centroid from the msg:
                     centroid = centroid_msg.get_centroid()
+                    print(f"CENTROID RECEIVED: {centroid}")
                     # Convert it from 2D to 3D thanks to the lidar:
                     world_pose, debug_marker_msg = self.img2world(
                         tuple(centroid), index

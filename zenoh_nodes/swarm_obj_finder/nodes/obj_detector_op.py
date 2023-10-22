@@ -40,7 +40,7 @@ class ObjDetector(Operator):
         self.robot_namespaces = list(configuration.get("robot_namespaces",
                                                        ["robot1", "robot2"]))
         self.ns_bytes_length = int(configuration.get("ns_bytes_length", 64))     
-        self.int_bytes_length = int(configuration.get("int_bytes_length", 4))
+        self.float_bytes_length = int(configuration.get("float_bytes_length", 8))
 
         self.lower_threshold = np.array(list(configuration.get(
             "lower_color_filter_threshold", [0, 195, 75]))
@@ -54,7 +54,10 @@ class ObjDetector(Operator):
         self.output_obj_detected = outputs.take(
             OUTPUT_OBJ_DETECTED,
             CentroidMessage,
-            get_ctrd_msg_serializer(self.ns_bytes_length, self.int_bytes_length)
+            get_ctrd_msg_serializer(
+                self.ns_bytes_length,
+                self.float_bytes_length
+                )
             )
         
         self.inputs_cam_infos = list()
