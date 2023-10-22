@@ -3,6 +3,8 @@ from rclpy.type_support import check_for_type_support
 
 from message_utils import *
 
+import struct
+
 
 
 def get_str_serializer(s_length: int, fill_char:str=' '): # Returns a function
@@ -26,49 +28,79 @@ def get_ros2_deserializer(ros2_type): # Returns a function
     return lambda obj: _rclpy.rclpy_deserialize(obj, ros2_type)
 
 
-def get_int_serializer(int_bystes_length: int): # Returns a function
-    return lambda i: i.to_bytes(int_bystes_length, 'big')
+def get_uint_serializer(int_bytes_length: int): # Returns a function
+    return lambda i: i.to_bytes(int_bytes_length, 'big')
 
-def deser_int(int_bytes: bytes) -> int:
+def deser_uint(int_bytes: bytes) -> int:
     return int.from_bytes(int_bytes, 'big')
 
 
-def ser_int_list(l: list, int_bytes_length) -> bytes:
+def ser_uint_list(l: list, int_bytes_length) -> bytes:
     b = bytes()
-    serializer = get_int_serializer(int_bytes_length)
+    serializer = get_uint_serializer(int_bytes_length)
     for i in l:
         b += serializer(int(i))
     return b
 
-def deser_int_list(bytes_list: list, int_bytes_length) -> list:
+def deser_uint_list(bytes_list: list, int_bytes_length: int) -> list:
     l = list()
     for i in range(0, len(bytes_list), int_bytes_length):
-        l.append(deser_int(bytes_list[i:i+int_bytes_length]))
+        l.append(deser_uint(bytes_list[i:i + int_bytes_length]))
+    return l
+
+
+def get_float_packing_format(float_bytes_length: int) -> str:
+    format = "d" # C double 8 bytes = 64 bits (python default)
+    if float_bytes_length == 4: # C float 4 bytes = 32 bits
+        format = "f"
+    return format
+
+def get_float_serializer(float_bytes_length: int): # Returns a function
+    format = get_float_packing_format(float_bytes_length)
+    return lambda f: struct.pack(format, f)
+
+def deser_float(float_bytes: bytes, float_bytes_length: int) -> float:
+    format = get_float_packing_format(float_bytes_length)
+    return struct.unpack(format, float_bytes)[0]
+
+
+def ser_float_list(l: list, float_bytes_length: int) -> bytes:
+    b = bytes()
+    serializer = get_float_serializer(float_bytes_length)
+    for i in l:
+        b += serializer(float(i))
+    return b
+
+def deser_float_list(bytes_list: list, float_bytes_length: int) -> list:
+    l = list()
+    for i in range(0, len(bytes_list), float_bytes_length):
+        l.append(deser_float(bytes_list[i:i + float_bytes_length], float_bytes_length))
     return l
 
 
 def get_ctrd_msg_serializer(str_bytes_length: int,
-                            int_bytes_length: int): # Returns a function
-    return lambda obj: ser_ctrd_msg(obj, str_bytes_length, int_bytes_length)
+                            float_bytes_length: int): # Returns a function
+    return lambda obj: ser_ctrd_msg(obj, str_bytes_length, float_bytes_length)
 
 def ser_ctrd_msg(centroid_msg: CentroidMessage,
                  str_bytes_length: int,
-                 int_bytes_length: int) -> bytes:
+                 float_bytes_length: int) -> bytes:
     ser_founder = ser_string(centroid_msg.get_founder(), str_bytes_length)
-    ser_centroid = ser_int_list(centroid_msg.get_centroid(), int_bytes_length)
+    ser_centroid = ser_float_list(centroid_msg.get_centroid(),
+                                  float_bytes_length)
     return ser_founder + ser_centroid
 
 def get_ctrd_msg_deserializer(str_bytes_length: int,
-                              int_bytes_length: int): # Returns a function
-    return lambda obj: deser_ctrd_msg(obj, str_bytes_length, int_bytes_length)
+                              float_bytes_length: int): # Returns a function
+    return lambda obj: deser_ctrd_msg(obj, str_bytes_length, float_bytes_length)
 
 def deser_ctrd_msg(ser_centroid_msg: bytes,
                    str_bytes_length: int,
-                   int_bytes_length: int) -> CentroidMessage:
+                   float_bytes_length: int) -> CentroidMessage:
     ser_founder = ser_centroid_msg[:str_bytes_length]
     founder = deser_string(ser_founder)
     ser_centroid = ser_centroid_msg[str_bytes_length:]
-    x, y = deser_int_list(ser_centroid, int_bytes_length)
+    x, y = deser_float_list(ser_centroid, float_bytes_length)
     return CentroidMessage(x, y, founder)
 
 

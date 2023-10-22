@@ -5,7 +5,7 @@ from typing import Dict, Any
 
 import asyncio, numpy as np, cv2, struct
 
-from sensor_msgs.msg import Image, PointCloud2
+from sensor_msgs.msg import Image, CameraInfo, PointCloud2
 from cv_bridge import CvBridge
 
 import sys, os, inspect
@@ -18,7 +18,7 @@ from message_utils import CentroidMessage
 
 
 
-INPUTS_IMAGES = ["Image1", "Image2"]
+INPUTS_CAM_INFOS = ["CamInfo1", "CamInfo2"]
 INPUTS_DEPTHS = ["Depth1", "Depth2"]
 
 OUTPUT_OBJ_DETECTED = "ObjDetected"
@@ -57,15 +57,18 @@ class ObjDetector(Operator):
             get_ctrd_msg_serializer(self.ns_bytes_length, self.int_bytes_length)
             )
         
-        self.inputs_imgs = list()
+        self.inputs_cam_infos = list()
         self.inputs_depths = list()
         self.outputs_debug_imgs = list()
-        for in_img, in_depth, out_debug_img in zip(INPUTS_IMAGES,
-                                                   INPUTS_DEPTHS,
-                                                   OUTPUTS_DEBUG_IMGS):
+        for in_cam_info, in_depth, out_debug_img in zip(INPUTS_CAM_INFOS,
+                                                        INPUTS_DEPTHS,
+                                                        OUTPUTS_DEBUG_IMGS):
             # Listed inputs:
-            self.inputs_imgs.append(
-                inputs.take(in_img, Image, get_ros2_deserializer(Image))
+            self.inputs_cam_infos.append(
+                inputs.take(in_cam_info,
+                            CameraInfo,
+                            get_ros2_deserializer(CameraInfo)
+                            )
                 )
             self.inputs_depths.append(
                 inputs.take(in_depth,
@@ -79,21 +82,26 @@ class ObjDetector(Operator):
                 )
         
         # Other attributes needed:
+        self.first_time = True
         self.bridge = CvBridge()
         self.pending = list()
+        self.cam_infos = [CameraInfo()] * self.robot_num
         self.depths = [PointCloud2()] * self.robot_num
 
     def get_point_cloud_values(self, pc: PointCloud2, size: int) -> tuple:
         height, width = size
-
-        ### self.depths[index].data goes from 32 bytes to 32 bytes, where the
-        ### first 4 are the x coord, the next 4 are the y, the next 4 are the z
-        ### and the other 20 divides in 4 void bytes are the values rgb:
-        x_offset = pc.fields[0].offset
-        y_offset = pc.fields[1].offset
-        z_offset = pc.fields[2].offset
-        rgb_offset = pc.fields[3].offset
         
+        ### Data step is 32 bytes, where the fisrt 12 are the x, y and z coords
+        ### (4 bytes each) and so on with y and z coords. The other 20 are 4
+        ### void bytes, 3 rgb values bytes and the rest void bytes again.
+        datatypes = list()
+        offsets = list()
+        for field in pc.fields:
+            datatypes.append(field.datatype)
+            offsets.append(field.offset)
+        x_datatype, y_datatype, z_datatype, rgb_datatype = datatypes
+        x_offset, y_offset, z_offset, rgb_offset = offsets
+
         # Redimension to 320x240x32:
         points = np.reshape(pc.data, (height, width, pc.point_step))
         
@@ -112,39 +120,27 @@ class ObjDetector(Operator):
         # List that contains the format character and the bytes size:
         size_list = [['b', 1], ['B', 1], ['h', 2], ['H', 2],
                         ['i', 4], ['I', 4], ['f', 4], ['d', 8]]
+
         depth_format_strings = (
-            endianness + size_list[pc.fields[0].datatype - 1][0],
-            endianness + size_list[pc.fields[1].datatype - 1][0],
-            endianness + size_list[pc.fields[2].datatype - 1][0])
-        
+            endianness + size_list[x_datatype - 1][0],
+            endianness + size_list[y_datatype - 1][0],
+            endianness + size_list[z_datatype - 1][0]
+            )
         depths = (
-            points[
-                :,
-                :,
-                x_offset : x_offset + size_list[pc.fields[0].datatype - 1][1]
-                ], 
-            points[
-                :,
-                :,
-                y_offset : y_offset + size_list[pc.fields[1].datatype - 1][1]
-                ], 
-            points[
-                :,
-                :,
-                z_offset : z_offset + size_list[pc.fields[2].datatype - 1][1]
-                ]
+            points[:, :, x_offset : x_offset + size_list[x_datatype - 1][1]], 
+            points[:, :, y_offset : y_offset + size_list[y_datatype - 1][1]], 
+            points[:, :, z_offset : z_offset + size_list[z_datatype - 1][1]]
             ) # 4 Bytes each (float32)
         img = points[
             :,
             :,
-            rgb_offset : rgb_offset + size_list[pc.fields[3].datatype - 1][1]
+            rgb_offset : rgb_offset + size_list[rgb_datatype - 1][1]
             ] # 3 Bytes (R, G and B).
         
         return (img, depths, depth_format_strings)
 
-    def detect_object(self, pc: PointCloud2) -> tuple:
-
-        height, width = (240, 320) # 240 x 320 x 3
+    def detect_object(self, pc: PointCloud2, shape: tuple) -> tuple:
+        height, width = shape # 240 x 320 x 3
         ### Getting RGB needed values from pointcloud:
         # In this case RGB values are already integers, so deserialization is
         # not needed:
@@ -152,7 +148,7 @@ class ObjDetector(Operator):
             pc,
             (height, width)
             )
-        x_depth_values, y_depth_values, z_depth_values = depth_vals_ser
+        x_depth_vals_ser, y_depth_vals_ser, z_depth_vals_ser = depth_vals_ser
         x_fstr, y_fstr, z_fstr = depth_fstrs
 
         ### Image filtering:
@@ -195,16 +191,21 @@ class ObjDetector(Operator):
             #struct.unpack() returns a one element tuple, so we get the index 0:
             x_val = struct.unpack(
                 x_fstr,
-                bytes(x_depth_values[int(centroid[0]), int(centroid[1]), :])
+                bytes(x_depth_vals_ser[int(centroid[1]), int(centroid[0]), :])
                 )[0]
             y_val = struct.unpack(
                 y_fstr,
-                bytes(y_depth_values[int(centroid[0]), int(centroid[1]), :])
+                bytes(y_depth_vals_ser[int(centroid[1]), int(centroid[0]), :])
                 )[0]
             z_val = struct.unpack(
                 z_fstr,
-                bytes(z_depth_values[int(centroid[0]), int(centroid[1]), :])
+                bytes(z_depth_vals_ser[int(centroid[1]), int(centroid[0]), :])
                 )[0]
+            #TODO: see how inf. values (infinite) affect the program
+            #TODO: Is there min/max values?
+            print(x_val)
+            print(y_val)
+            print(z_val)
 
             centroid_msg = CentroidMessage(x_val, y_val)
 
@@ -216,15 +217,7 @@ class ObjDetector(Operator):
     def create_task_list(self):
         task_list = [] + self.pending
         # For every listed input append an async task to task_list:
-        for i, (in_img, in_depth) in enumerate(zip(INPUTS_IMAGES,
-                                                   INPUTS_DEPTHS)):
-            if not any(t.get_name() == in_img for t in task_list):
-                task_list.append(
-                    asyncio.create_task(
-                        get_input_func(in_img, self.inputs_imgs[i])(),
-                        name=in_img
-                    )
-                )
+        for i, in_depth in enumerate(INPUTS_DEPTHS):
             if not any(t.get_name() == in_depth for t in task_list):
                 task_list.append(
                     asyncio.create_task(
@@ -235,6 +228,12 @@ class ObjDetector(Operator):
         return task_list
 
     async def iteration(self) -> None:
+        # Get the cam info of each robot only once:
+        if self.first_time:
+            for i in range(self.robot_num):
+                cam_info_msg = await self.inputs_cam_infos[i].recv()
+                self.cam_infos[i] = cam_info_msg.get_data()
+            self.first_time = False
 
         (done, pending) = await asyncio.wait(
             self.create_task_list(),
@@ -248,36 +247,16 @@ class ObjDetector(Operator):
                 index = int(who[-1]) -1
                 point_cloud_msg = data_msg.get_data()
                 self.depths[index] = point_cloud_msg
-                centroid_msg, debug_img_msg = self.detect_object(point_cloud_msg)
+                shape = (self.cam_infos[index].height,
+                         self.cam_infos[index].width)
+                centroid_msg, debug_img_msg = self.detect_object(
+                    point_cloud_msg, shape
+                    )
                 await self.outputs_debug_imgs[index].send(debug_img_msg)
                 if centroid_msg != None:
                     centroid_msg.set_founder(self.robot_namespaces[index])
                     print(f"OBJ_DETECTOR_OP -> object detected by: {centroid_msg.get_founder()} in {centroid_msg.get_centroid()}")
                     await self.output_obj_detected.send(centroid_msg)
-
-            #TODO: get the camera info from the topic /robot*/intel_realsense_r200_depth/depth/camera_info
-
-            """
-            if who in INPUTS_IMAGES:
-                # We take the last character of who, because it will conatin
-                # "Image1", "Image2", ..., so substracting 1 we have the index
-                # of the input/output or namespace lists:
-                index = int(who[-1]) -1
-                
-                img_msg = data_msg.get_data()
-                # Get the cv2 image from the ROS2 message:
-                img = self.bridge.imgmsg_to_cv2(img_msg,
-                                                desired_encoding='passthrough')
-                # Apply a color filter to search the object:
-                centroid_msg, debug_img_msg = self.detect_object_old(img, index)
-                #await self.outputs_debug_imgs[index].send(debug_img_msg)
-
-                # If the object is detected, its centroid won't be None:
-                if centroid_msg != None:
-                    centroid_msg.set_founder(self.robot_namespaces[index])
-                    print(f"OBJ_DETECTOR_OP -> object detected by: {centroid_msg.get_founder()} in {centroid_msg.get_centroid()}")
-                    await self.output_obj_detected.send(centroid_msg)
-            """
         
         return None
 
