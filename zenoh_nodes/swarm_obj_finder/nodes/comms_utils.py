@@ -100,8 +100,8 @@ def deser_ctrd_msg(ser_centroid_msg: bytes,
     ser_founder = ser_centroid_msg[:str_bytes_length]
     founder = deser_string(ser_founder)
     ser_centroid = ser_centroid_msg[str_bytes_length:]
-    x, y = deser_float_list(ser_centroid, float_bytes_length)
-    return CentroidMessage(x, y, founder)
+    x, y, z = deser_float_list(ser_centroid, float_bytes_length)
+    return CentroidMessage(x, y, z, founder)
 
 
 def get_world_pos_msg_serializer(str_bytes_length: int): # Returns a function

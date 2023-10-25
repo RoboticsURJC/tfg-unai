@@ -3,18 +3,21 @@ from geometry_msgs.msg import PoseStamped
 
 
 class CentroidMessage:
-    def __init__(self, x:float=0.0, y:float=0.0, founder:str="") -> None:
+    def __init__(self, x:float=0.0, y:float=0.0, z:float=0.0,
+                 founder:str="") -> None:
         self.x = x
         self.y = y
+        self.z = z
         self.found_by = founder
 
 
-    def set_centroid(self, x:float, y:float):
+    def set_centroid(self, x:float, y:float, z:float):
         self.x = x
         self.y = y
+        self.z = z
 
     def get_centroid(self):
-        return (self.x, self.y)
+        return (self.x, self.y, self.z)
 
 
     def set_founder(self, founder: str):

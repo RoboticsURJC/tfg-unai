@@ -21,13 +21,6 @@ sources:
           TF2: rt/robot2/tf
     descriptor : "builtin://zenoh"
 
-  #- id : imgs_source
-  #  configuration:
-  #      key-expressions:
-  #        Image1: rt/robot1/intel_realsense_r200_depth/image_raw
-  #        Image2: rt/robot2/intel_realsense_r200_depth/image_raw
-  #  descriptor : "builtin://zenoh"
-
   - id : depths_source
     configuration:
         key-expressions:
@@ -40,13 +33,6 @@ sources:
         key-expressions:
           CamInfo1: rt/robot1/intel_realsense_r200_depth/depth/camera_info
           CamInfo2: rt/robot2/intel_realsense_r200_depth/depth/camera_info
-    descriptor : "builtin://zenoh"
-
-  - id : scans_source
-    configuration:
-        key-expressions:
-          Lidar1: rt/robot1/scan
-          Lidar2: rt/robot2/scan
     descriptor : "builtin://zenoh"
 
 operators:
@@ -142,20 +128,6 @@ links:
   to:
     node : obj_pos_infer_op
     input : CamInfo2
-
-
-- from:
-    node : scans_source
-    output : Lidar1
-  to:
-    node : obj_pos_infer_op
-    input : Lidar1
-- from:
-    node : scans_source
-    output : Lidar2
-  to:
-    node : obj_pos_infer_op
-    input : Lidar2
 
 
 - from:

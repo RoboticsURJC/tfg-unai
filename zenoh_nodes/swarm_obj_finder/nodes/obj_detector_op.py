@@ -206,11 +206,8 @@ class ObjDetector(Operator):
                 )[0]
             #TODO: see how inf. values (infinite) affect the program
             #TODO: Is there min/max values?
-            print(x_val)
-            print(y_val)
-            print(z_val)
 
-            centroid_msg = CentroidMessage(x_val, y_val)
+            centroid_msg = CentroidMessage(x_val, y_val, z_val)
 
         rgb_img = cv2.cvtColor(hsv_img, cv2.COLOR_HSV2RGB)
         debug_img_msg = self.bridge.cv2_to_imgmsg(rgb_img, encoding='rgb8')

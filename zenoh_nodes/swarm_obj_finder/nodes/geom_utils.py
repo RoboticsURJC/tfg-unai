@@ -20,3 +20,7 @@ def quat2euler(q: Quaternion) -> tuple:
 
 def get_xy_from_pose(pose: PoseStamped):
     return (pose.pose.position.x, pose.pose.position.y)
+
+
+def hypotenuse(cat1, cat2) -> float:
+    return math.sqrt(cat1**2 + cat2**2)
