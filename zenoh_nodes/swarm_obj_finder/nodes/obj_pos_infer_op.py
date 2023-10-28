@@ -193,7 +193,8 @@ class ObjPosInfer(Operator):
                     world_pose.set_sender(ns)
                     # Send the 3D pose:
                     await self.output_world_pos.send(world_pose)
-                    print(f"OBJ_POS_INFER_OP -> object position infer from: {ns} in {world_pose.get_world_position()}")
+                    position = world_pose.get_world_position()
+                    print(f"OBJ_POS_INFER_OP -> object position infer from: {ns} in ({position.pose.position.x}, {position.pose.position.x})")
                     
                     await self.output_debug_marker.send(debug_marker_msg)
                     self.last_time = time.time()

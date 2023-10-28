@@ -150,7 +150,7 @@ class Navigator(Operator):
                 index = self.robot_namespaces.index(ns)
                 self.current_wps[index] = [current_wp, time.time(), -1.0]
                 print(f"NAVIGATOR_OP -> sending {self.robot_namespaces[index]} to the next waypoint: {get_xy_from_pose(self.current_wps[index][0])}")
-                #await self.outputs_wps[index].send(current_wp)
+                await self.outputs_wps[index].send(current_wp)
 
             # Get the robots poses to check if they have reached their goals:
             # TODO: Since these TFs are a little bit too imprecise, maybe we can
@@ -204,12 +204,14 @@ class Navigator(Operator):
                 #WE MAY NOT NEED TO GET THE INDEX OR NAMESPACE HERE:
                 ns = wp_msg.get_sender()
                 index = self.robot_namespaces.index(ns)
-                
+
                 # Send all the robots to the object's pose and stop following paths:
-                for i, output in enumerate(self.outputs_wps):
-                    obj_pose = wp_msg.get_world_position()
-                    print(f"NAVIGATOR_OP -> Sending {self.robot_namespaces[i]} to object's position in: {obj_pose}")
-                    #output.send(obj_pose)
+                obj_pose = wp_msg.get_world_position()
+                # Header needed for Nav2 planner server:
+                obj_pose.header.frame_id = "map"
+                print(f"NAVIGATOR_OP -> Sending all robots to object's position in: ({obj_pose.pose.position.x}, {obj_pose.pose.position.y})")    
+                for output in self.outputs_wps:
+                    await output.send(obj_pose)
     
     def finalize(self) -> None:
         return None
