@@ -198,20 +198,24 @@ class Navigator(Operator):
 
             # Get the object's 3D pose:
             if who == INPUT_WORLD_OBJ_POSE:
-                self.object_found = True
                 wp_msg = data_msg.get_data() # it's a WorldPosition type object.
-
-                #WE MAY NOT NEED TO GET THE INDEX OR NAMESPACE HERE:
+                # Set the master robot who will be the only one sending the
+                # object's pose:
                 ns = wp_msg.get_sender()
-                index = self.robot_namespaces.index(ns)
+                if not self.object_found:
+                    self.master_robot = ns
+                    self.object_found = True
 
-                # Send all the robots to the object's pose and stop following paths:
+
+                # Stop following the paths and send all the robots to the
+                # object's pose only if this robot is the master:
                 obj_pose = wp_msg.get_world_position()
                 # Header needed for Nav2 planner server:
                 obj_pose.header.frame_id = "map"
-                print(f"NAVIGATOR_OP -> Sending all robots to object's position in: ({obj_pose.pose.position.x}, {obj_pose.pose.position.y})")    
-                for output in self.outputs_wps:
-                    await output.send(obj_pose)
+                print(f"NAVIGATOR_OP -> Sending all robots to object's position (found by {ns}) in: ({obj_pose.pose.position.x}, {obj_pose.pose.position.y})")    
+                if ns == self.master_robot:
+                    for output in self.outputs_wps:
+                        await output.send(obj_pose)
     
     def finalize(self) -> None:
         return None
