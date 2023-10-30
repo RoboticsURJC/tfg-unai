@@ -135,9 +135,7 @@ class ObjDetector(Operator):
             points[:, :, z_offset : z_offset + size_list[z_datatype - 1][1]]
             ) # 4 Bytes each (float32)
         img = points[
-            :,
-            :,
-            rgb_offset : rgb_offset + size_list[rgb_datatype - 1][1]
+            :, :, rgb_offset : rgb_offset + size_list[rgb_datatype - 1][1]
             ] # 3 Bytes (R, G and B).
         
         return (img, depths, depth_format_strings)
@@ -162,50 +160,52 @@ class ObjDetector(Operator):
         
         x_pix_step = self.pix_step
         y_pix_step = self.pix_step
-        centroid = [0, 0]
         centroid_msg = None
-        num = 0
+        points = list()
         # Iterate only through a few spaced pixels to reduce compute time:
         for i in range(0, width, x_pix_step):
             for j in range(0, height, y_pix_step):
                 # Color filter:
                 if ((self.lower_threshold < hsv_img[j, i]).all() and
                     (hsv_img[j, i] < self.upper_threshold).all()):
-                    centroid[0] += i
-                    centroid[1] += j
-                    num += 1
-                    cv2.circle(hsv_img, (i, j), 5, (255, 255, 0), 2) #DEBUG
+                    points.append((i, j))
+                    cv2.circle(hsv_img, (i, j), 3, (0, 0, 255), -1)
+                    cv2.circle(hsv_img, (i, j), 4, (0, 0, 0), 1)
 
         ### When object is detected:
-        if num != 0:
-            centroid[0] /= num
-            centroid[1] /= num
+        if len(points) > 0:
+            points = np.array(points)
+            centroid = (int(np.mean(points[:, 0])), int(np.mean(points[:, 1])))
 
             ### Create debug image:
             # Put a different circle in the centroid.
-            cv2.circle(
-                hsv_img,
-                (int(centroid[0]), int(centroid[1])),
-                10,
-                (255, 0, 255),
-                -1) #DEBUG
+            cv2.circle(hsv_img, centroid, 9, (0, 255, 255), -1)
+            cv2.circle(hsv_img, centroid, 10, (50, 255, 255), 2)
+            cv2.putText(
+                hsv_img, "Centroid", (centroid[0] - 33, centroid[1] - 15),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA
+                )
 
             ### Get depth values:
-            #struct.unpack() returns a one element tuple, so we get the index 0:
-            x_val = struct.unpack(
-                x_fstr,
-                bytes(x_depth_vals_ser[int(centroid[1]), int(centroid[0]), :])
-                )[0]
-            y_val = struct.unpack(
-                y_fstr,
-                bytes(y_depth_vals_ser[int(centroid[1]), int(centroid[0]), :])
-                )[0]
-            z_val = struct.unpack(
-                z_fstr,
-                bytes(z_depth_vals_ser[int(centroid[1]), int(centroid[0]), :])
-                )[0]
-            #TODO: see how inf. values (infinite) affect the program
-            #TODO: Is there min/max values?
+            depth_vals = list()
+            for point in points:
+                # The function struct.unpack() returns a tuple with a single
+                # element, so we get the index 0 to get the value inside of it:
+                depth_vals.append([
+                    struct.unpack(
+                        x_fstr, bytes(x_depth_vals_ser[point[1], point[0], :])
+                        )[0],
+                    struct.unpack(
+                        y_fstr, bytes(y_depth_vals_ser[point[1], point[0], :])
+                        )[0],
+                    struct.unpack(
+                        z_fstr, bytes(z_depth_vals_ser[point[1], point[0], :])
+                        )[0]
+                ])
+            depth_vals = np.array(depth_vals)
+            x_val = np.mean(depth_vals[:, 0])
+            y_val = np.mean(depth_vals[:, 1])
+            z_val = np.mean(depth_vals[:, 2])
 
             centroid_msg = CentroidMessage(x_val, y_val, z_val)
 

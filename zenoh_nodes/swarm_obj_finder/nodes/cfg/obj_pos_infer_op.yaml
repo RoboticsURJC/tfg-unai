@@ -5,8 +5,7 @@ vars:
 
 uri: file://{{ BASE_DIR }}/nodes/obj_pos_infer_op.py
 
-configuration:
-  safe_distance:   0.3 #[m]
+
 
 inputs: [ObjDetected, CamInfo1, CamInfo2, RobotPose1, RobotPose2]
 outputs: [WorldObjPose, DebugMarkers]
