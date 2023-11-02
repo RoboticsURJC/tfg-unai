@@ -184,7 +184,7 @@ class Navigator(Operator):
 
                             x_dist = new_tf.transform.translation.x - self.current_wps[index][0].pose.position.x
                             y_dist = new_tf.transform.translation.y - self.current_wps[index][0].pose.position.y
-                            dist = sqrt(x_dist**2 + y_dist**2)
+                            dist = math.hypot(x_dist, y_dist)
                             self.current_wps[index][2] = dist
                             if (dist < self.goal_checker_min_dist
                                 and not self.object_found):
