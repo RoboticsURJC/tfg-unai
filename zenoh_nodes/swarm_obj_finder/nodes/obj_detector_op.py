@@ -8,6 +8,7 @@ import asyncio, numpy as np, cv2, struct
 from sensor_msgs.msg import Image, CameraInfo, PointCloud2
 from cv_bridge import CvBridge
 
+from math import hypot
 import sys, os, inspect
 currentdir = os.path.dirname(
     os.path.abspath(inspect.getfile(inspect.currentframe()))
@@ -49,6 +50,7 @@ class ObjDetector(Operator):
             "upper_color_filter_threshold", [16, 225, 105]))
             )
         self.pix_step = configuration.get("pix_step", 30)
+        self.max_depth_detection = configuration.get("max_depth_detection", 1.7)
         
         # Single outputs:
         self.output_obj_detected = outputs.take(
@@ -255,9 +257,10 @@ class ObjDetector(Operator):
                 await self.outputs_debug_imgs[index].send(debug_img_msg)
                 if centroid_msg != None:
                     centroid_msg.set_founder(self.robot_namespaces[index])
-                    print(f"OBJ_DETECTOR_OP -> object detected by: {centroid_msg.get_founder()} in {centroid_msg.get_centroid()}")
-                    await self.output_obj_detected.send(centroid_msg)
-        
+                    cent_x, _, cent_z = centroid_msg.get_centroid()
+                    h = hypot(cent_x, cent_z)
+                    if h < self.max_depth_detection:
+                        await self.output_obj_detected.send(centroid_msg)
         return None
 
     def finalize(self) -> None:
