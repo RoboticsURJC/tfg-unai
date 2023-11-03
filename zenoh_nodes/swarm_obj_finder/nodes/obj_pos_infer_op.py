@@ -98,7 +98,7 @@ class ObjPosInfer(Operator):
 
     def robot2world(self, centroid: tuple, index: int) -> tuple:
         x, _, z = centroid
-        h = hypotenuse(x, z)
+        h = math.hypot(x, z)
         obj_angle = arcsin(x / h)
         _, _, robot_yaw = quat2euler(self.robot_poses[index].pose.orientation)
 
