@@ -110,9 +110,6 @@ class ObjPosInfer(Operator):
         world_pose.pose.position.y = self.robot_poses[index].pose.position.y\
             + h * sin(world_angle)
         world_pose.pose.orientation = self.robot_poses[index].pose.orientation
-        #print("OBJ WORLDPOS:",
-        #      world_pose.pose.position.x,
-        #      world_pose.pose.position.y)
 
         ### DEBUG (for markers):
         marker_arr = MarkerArray()
@@ -194,7 +191,11 @@ class ObjPosInfer(Operator):
                     # Send the 3D pose:
                     await self.output_world_pos.send(world_pose)
                     position = world_pose.get_world_position()
-                    print(f"OBJ_POS_INFER_OP -> object position infer from {ns} in ({position.pose.position.x}, {position.pose.position.x})")
+                    print(
+                        f"OBJ_POS_INFER_OP| Object position from {ns} is ("
+                        f"{round(position.pose.position.x, 2)}, "
+                        f"{round(position.pose.position.z, 2)})"
+                        )
                     
                     await self.output_debug_marker.send(debug_marker_msg)
                     self.last_time = time.time()

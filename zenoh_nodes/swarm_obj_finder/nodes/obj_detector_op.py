@@ -260,6 +260,11 @@ class ObjDetector(Operator):
                     cent_x, _, cent_z = centroid_msg.get_centroid()
                     h = hypot(cent_x, cent_z)
                     if h < self.max_depth_detection:
+                        print(
+                            f"OBJ_DETECTOR_OP\t| Object detected in: "
+                            f"({round(cent_x, 2)}, {round(cent_z, 2)}) from "
+                            f"{centroid_msg.get_founder()}"
+                            )
                         await self.output_obj_detected.send(centroid_msg)
         return None
 

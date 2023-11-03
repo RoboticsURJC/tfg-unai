@@ -123,8 +123,7 @@ class PathsPlanner(Operator):
                        MAP_KEY_OCCU_THRESH, MAP_KEY_FREE_THRESH]
         if (not all(map(lambda x: x in self.map_data_dict.keys(), keys_needed))\
             or len(self.map_data_dict.get(MAP_KEY_ORIGIN)) != 3): # [x, y, yaw]
-            print(f"ERROR: required field/s ({keys_needed}) missing in map yaml file")
-            raise Exception("ERROR: required field/s missing")
+            raise Exception("ERROR: required field/s missing in map yaml file")
         
         self.map_img = cv2.imread(self.map_data_dict.get(MAP_KEY_IMAGE),
                                   cv2.IMREAD_GRAYSCALE)
@@ -161,20 +160,23 @@ class PathsPlanner(Operator):
         return markers
 
     async def iteration(self) -> None:
+        # Sending debug information:
         if not self.debug_img_sent:
-            print("PATHS_PLANNER_OP -> Sending debug information")
             await self.output_debug_img.send(self.debug_div_img_msg)
             await self.output_markers.send(self.marker_array_msg)
             self.debug_img_sent = True
 
         # Process waypoint requests:
         data_msg = await self.input_wp_req.recv()
-        ns = data_msg.get_data() #We are receiveing names/namespaces as requests
+        ns = data_msg.get_data() # We receive here names/namespaces as requests
 
         index = self.robot_namespaces.index(ns)
         next_wp = self.paths[index].pop(0)
         await self.output_next_wp.send(WorldPosition(next_wp, ns))
-        print(f"PATHS_PLANNER_OP -> Sending next waypoint to {ns}")
+        print(
+            f"PATHS_PLANNER_OP| Sending waypoint requested by {ns} to "
+            f"NAVIGATOR_OP"
+            )
 
         return None
 

@@ -129,7 +129,6 @@ class Navigator(Operator):
         # Make the first request for each robot only once:
         if self.first_time:
             for ns in self.robot_namespaces:
-                print(f"NAVIGATOR_OP -> {ns} sending first waypoint request...")
                 await self.output_wp_req.send(ns)
             self.first_time = False
 
@@ -145,18 +144,17 @@ class Navigator(Operator):
             if who == INPUT_NEXT_WP and not self.object_found:
                 msg = data_msg.get_data()
                 ns = msg.get_sender()
+                index = self.robot_namespaces.index(ns)
                 current_wp = msg.get_world_position()
 
-                index = self.robot_namespaces.index(ns)
                 self.current_wps[index] = [current_wp, time.time(), -1.0]
-                print(f"NAVIGATOR_OP -> sending {self.robot_namespaces[index]} to the next waypoint: {get_xy_from_pose(self.current_wps[index][0])}")
+                x, y = get_xy_from_pose(self.current_wps[index][0])
+                print(
+                    f"NAVIGATOR_OP\t| Sending {self.robot_namespaces[index]} "
+                    f"to the next waypoint: {round(x, 2)}, {round(y, 2)}"
+                    )
                 await self.outputs_wps[index].send(current_wp)
 
-            # Get the robots poses to check if they have reached their goals:
-            # TODO: Since these TFs are a little bit too imprecise, maybe we can
-            # check the /robot**/cmd_vel_nav topic to see when they stop moving,
-            # which means that the goal was reached or the robot got stuck.
-            # This will aslo simplify the code.
             if who in INPUTS_TFS:
                 index = int(who[-1]) -1 # Who should be TF1, TF2, ...
                 ns = self.robot_namespaces[index]
@@ -188,7 +186,6 @@ class Navigator(Operator):
                             self.current_wps[index][2] = dist
                             if (dist < self.goal_checker_min_dist
                                 and not self.object_found):
-                                print(f"NAVIGATOR_OP -> Waypoint reached by {ns}, requesting the next one...")
                                 ns = self.robot_namespaces[index]
                                 await self.output_wp_req.send(ns)
                             
@@ -202,20 +199,18 @@ class Navigator(Operator):
                 # Set the master robot who will be the only one sending the
                 # object's pose:
                 ns = wp_msg.get_sender()
-                if not self.object_found:
-                    self.master_robot = ns
-                    self.object_found = True
-
+                #index = self.robot_namespaces.index(ns)
+                #if not self.object_found:
+                #    self.master_robot = ns
+                #    print(f"NAVIGATOR_OP\t| {ns} selected to be the master robot")
+                #    self.object_found = True
 
                 # Stop following the paths and send all the robots to the
                 # object's pose only if this robot is the master:
                 obj_pose = wp_msg.get_world_position()
                 # Header needed for Nav2 planner server:
                 obj_pose.header.frame_id = "map"
-                print(f"NAVIGATOR_OP -> Sending all robots to object's position (found by {ns}) in: ({obj_pose.pose.position.x}, {obj_pose.pose.position.y})")    
-                if ns == self.master_robot:
-                    for output in self.outputs_wps:
-                        await output.send(obj_pose)
+                #print(f"NAVIGATOR_OP\t| Sending all robots to object's position (found by {ns}) in: ({obj_pose.pose.position.x}, {obj_pose.pose.position.y})")
     
     def finalize(self) -> None:
         return None
