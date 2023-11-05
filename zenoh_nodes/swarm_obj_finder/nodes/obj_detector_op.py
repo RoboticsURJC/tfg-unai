@@ -168,8 +168,8 @@ class ObjDetector(Operator):
         for i in range(0, width, x_pix_step):
             for j in range(0, height, y_pix_step):
                 # Color filter:
-                if ((self.lower_threshold < hsv_img[j, i]).all() and
-                    (hsv_img[j, i] < self.upper_threshold).all()):
+                if ((self.lower_threshold <= hsv_img[j, i]).all() and
+                    (hsv_img[j, i] <= self.upper_threshold).all()):
                     points.append((i, j))
                     cv2.circle(hsv_img, (i, j), 3, (0, 0, 255), -1)
                     cv2.circle(hsv_img, (i, j), 4, (0, 0, 0), 1)
@@ -207,9 +207,12 @@ class ObjDetector(Operator):
             depth_vals = np.array(depth_vals)
             x_val = np.mean(depth_vals[:, 0])
             y_val = np.mean(depth_vals[:, 1])
-            z_val = np.mean(depth_vals[:, 2])
-
-            centroid_msg = CentroidMessage(x_val, y_val, z_val)
+            z_vals = [i for i in depth_vals[:, 2] if i < self.max_depth_detection]
+            # In case there's no z value within the detecting range centroid_msg
+            # variable is still None:
+            if len(z_vals) > 0:
+                z_val = np.mean(z_vals)
+                centroid_msg = CentroidMessage(x_val, y_val, z_val)
 
         rgb_img = cv2.cvtColor(hsv_img, cv2.COLOR_HSV2RGB)
         debug_img_msg = self.bridge.cv2_to_imgmsg(rgb_img, encoding='rgb8')
