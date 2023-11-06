@@ -30,6 +30,9 @@ OUTPUT_WP_REQ       = "WPRequest"
 OUTPUTS_ROBOT_POSES = ["RobotPose1", "RobotPose2"]
 OUTPUTS_WPS         = ["Waypoint1", "Waypoint2"]
 
+#MODES
+SEARCH_MODE, APPROACH_MODE = 0, 1
+
 
 
 class Navigator(Operator):
@@ -51,8 +54,14 @@ class Navigator(Operator):
         self.goal_checker_min_dist = float(
             configuration.get("goal_checker_min_dist", 0.3)
             )
-        self.goal_resend_timeout = float(
-            configuration.get("goal_resend_timeout", 1.0)
+        self.obj_safe_dist = float(
+            configuration.get("obj_safe_dist", 0.3)
+            )
+        self.master_timeout = float(
+            configuration.get("master_timeout", 5.0)
+            )
+        self.approach_timeout = float(
+            configuration.get("approach_timeout", 30.0)
             )
         
         # Single inputs:
@@ -94,9 +103,15 @@ class Navigator(Operator):
         # Other attributes needed:
         self.pending = list()
         self.first_time = True
-        self.object_found = False
         self.buffer_core = tf2_ros.BufferCore(Duration(sec=1, nanosec=0))
         self.current_wps = [[PoseStamped(), time.time(), -1.0]] * self.robot_num
+        self.goal_manager = GoalManager(self.robot_namespaces)
+        self.last_obj_update_ts = None
+        self.master_sight_time = 0.0
+        self.obj_pose = PoseStamped()
+        self.mode = SEARCH_MODE
+
+        self.print_once = True
 
     def create_task_list(self):
         task_list = [] + self.pending
@@ -140,8 +155,11 @@ class Navigator(Operator):
         for d in done:
             (who, data_msg) = d.result()
 
+            #if not "TF" in who:
+            #    print(who)
+
             # Get the next waypoint:
-            if who == INPUT_NEXT_WP and not self.object_found:
+            if who == INPUT_NEXT_WP and self.mode == SEARCH_MODE:
                 msg = data_msg.get_data()
                 ns = msg.get_sender()
                 index = self.robot_namespaces.index(ns)
@@ -149,11 +167,11 @@ class Navigator(Operator):
 
                 self.current_wps[index] = [current_wp, time.time(), -1.0]
                 x, y = get_xy_from_pose(self.current_wps[index][0])
-                print(
-                    f"NAVIGATOR_OP\t| Sending {self.robot_namespaces[index]} "
-                    f"to the next waypoint: {round(x, 2)}, {round(y, 2)}"
-                    )
-                await self.outputs_wps[index].send(current_wp)
+                #print(
+                #    f"NAVIGATOR_OP\t| Sending {self.robot_namespaces[index]} "
+                #    f"to the next waypoint: {round(x, 2)}, {round(y, 2)}"
+                #    )
+                #await self.outputs_wps[index].send(current_wp)
 
             if who in INPUTS_TFS:
                 index = int(who[-1]) -1 # Who should be TF1, TF2, ...
@@ -173,19 +191,25 @@ class Navigator(Operator):
                                 )
                             new_tf.child_frame_id = 'world_robot_pos'
 
-                            # Send robot's TFs to obj_pos_infer operator:
+                            # Send robot's TFs to obj_pos_infer_op node:
                             robot_pose = PoseStamped()
-                            robot_pose.pose.position.x = new_tf.transform.translation.x
-                            robot_pose.pose.position.y = new_tf.transform.translation.y
-                            robot_pose.pose.orientation = new_tf.transform.rotation
-                            await self.outputs_robot_poses[index].send(robot_pose)
+                            robot_pose.pose.position.x = \
+                                new_tf.transform.translation.x
+                            robot_pose.pose.position.y = \
+                                new_tf.transform.translation.y
+                            robot_pose.pose.orientation = \
+                                new_tf.transform.rotation
+                            await self.outputs_robot_poses[index].send(
+                                robot_pose
+                                )
 
-                            x_dist = new_tf.transform.translation.x - self.current_wps[index][0].pose.position.x
-                            y_dist = new_tf.transform.translation.y - self.current_wps[index][0].pose.position.y
+                            x_dist = new_tf.transform.translation.x - \
+                                self.current_wps[index][0].pose.position.x
+                            y_dist = new_tf.transform.translation.y - \
+                                self.current_wps[index][0].pose.position.y
                             dist = math.hypot(x_dist, y_dist)
                             self.current_wps[index][2] = dist
-                            if (dist < self.goal_checker_min_dist
-                                and not self.object_found):
+                            if (dist < self.goal_checker_min_dist):
                                 ns = self.robot_namespaces[index]
                                 await self.output_wp_req.send(ns)
                             
@@ -195,23 +219,95 @@ class Navigator(Operator):
 
             # Get the object's 3D pose:
             if who == INPUT_WORLD_OBJ_POSE:
-                wp_msg = data_msg.get_data() # it's a WorldPosition type object.
-                # Set the master robot who will be the only one sending the
-                # object's pose:
+                self.mode = APPROACH_MODE
+                # A master is picked and it sends the position to the rest of
+                # robots that has not reached the goal yet to stop following
+                # the paths and start approaching to the object's pose:
+                wp_msg = data_msg.get_data() # It's a WorldPosition type object.
                 ns = wp_msg.get_sender()
-                #index = self.robot_namespaces.index(ns)
-                #if not self.object_found:
-                #    self.master_robot = ns
-                #    print(f"NAVIGATOR_OP\t| {ns} selected to be the master robot")
-                #    self.object_found = True
-
-                # Stop following the paths and send all the robots to the
-                # object's pose only if this robot is the master:
-                obj_pose = wp_msg.get_world_position()
+                self.obj_pose = wp_msg.get_world_position()
                 # Header needed for Nav2 planner server:
-                obj_pose.header.frame_id = "map"
-                #print(f"NAVIGATOR_OP\t| Sending all robots to object's position (found by {ns}) in: ({obj_pose.pose.position.x}, {obj_pose.pose.position.y})")
-    
+                self.obj_pose.header.frame_id = "map"
+                self.last_obj_update_ts = time.time()
+
+                # If the master doesn't exist this robot will be the master:
+                print(not self.goal_manager.master_exists(),
+                      not self.goal_manager.has_reached_goal(ns))
+                if not self.goal_manager.master_exists() and \
+                    not self.goal_manager.has_reached_goal(ns):
+                    print(
+                        f"NAVIGATOR_OP\t| New master selected: "
+                        f"\033[0;32m{ns}\033[0m"
+                        )
+                    self.goal_manager.set_master(ns)
+                
+                # If this robot is the master, it will send the goal to the
+                # other robots that haven't reached the goal yet:
+                if ns == self.goal_manager.get_master():
+                    print(
+                        f"NAVIGATOR_OP\t| Sending robots to the object position"
+                        )
+                    for robot_ns, output in zip(self.robot_namespaces,
+                                                self.outputs_wps):
+                        if not self.goal_manager.has_reached_goal(robot_ns):
+                            pass
+                            #await output.send(self.obj_pose)
+
+                # Set if the goal has been reached to stop receiving the object
+                # position (if this robot is the master let that role free for
+                # the next robot):
+                robot_dist = math.hypot(self.obj_pose.pose.position.x,
+                                        self.obj_pose.pose.position.z)
+                if robot_dist < self.obj_safe_dist:
+                    self.goal_manager.set_reached(ns)
+                    print(f"NAVIGATOR_OP\t| \033[0;32mObject reached!\033[0m")
+                    if ns == self.goal_manager.get_master():
+                        self.goal_manager.free_master()
+
+
+
+            # If 5s has passed without any position received from master the
+            # its role is assumed by another robot. If 30s has passed, the mode
+            # is switched to search the object again:
+            if self.mode == APPROACH_MODE:
+                # If the master robot haven't seen the object for more than 5s,
+                # let its role free for the next robot:
+                time_elapsed = time.time() - self.last_obj_update_ts
+                if time_elapsed > self.master_timeout \
+                    and self.goal_manager.master_exists():
+                    self.goal_manager.free_master()
+                    print(f"NAVIGATOR_OP\t| \033[0;31mmaster freed\033[0m")
+                # If more than 60s search the object again:
+                elif time_elapsed > self.approach_timeout:
+                    self.mode = SEARCH_MODE
+                    # Send all robots their last waypoiny (where they stoped
+                    # searching to start approaching the object):
+                    for i, output in enumerate(self.outputs_wps):
+                        #await output.send(self.current_wps[i][0])
+                        pass
+                    print(
+                        f"NAVIGATOR_OP\t| \033[0;31mObject's not at sight "
+                        f"anymore, returning to search mode again\033[0m"
+                        )
+            
+            # TESTING: robotX sees the object, becomes master and stops seeing
+            # the object, if robotX sees the object again it becomes master, but
+            # if RobotY sees the object instead, it doesn't become master
+            # (because it no longer enter in approach mdoe from other robot).
+            
+            # BUG: Once the master is selected, it no longer enters in approach
+            # mode from the other robots, and that's why they can no longer be
+            # the master.
+
+            # DEBUG: print info every 5 seconds:
+            t = time.time()
+            freq = 5
+            if int(t) % freq == 0 and self.print_once:
+                print("Mode: search" if self.mode == SEARCH_MODE else "Mode: approach")
+                self.print_once = False
+            if int(t) % freq == 1:
+                self.print_once = True
+
     def finalize(self) -> None:
         return None
 
