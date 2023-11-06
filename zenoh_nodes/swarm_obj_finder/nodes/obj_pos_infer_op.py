@@ -7,7 +7,6 @@ import time, asyncio
 from numpy import arcsin, cos, sin
 
 from geometry_msgs.msg import PoseStamped
-from sensor_msgs.msg import CameraInfo
 from visualization_msgs.msg import MarkerArray
 
 import sys, os, inspect
@@ -24,7 +23,6 @@ from message_utils import CentroidMessage, WorldPosition
 
 INPUT_OBJ_DETECTED = "ObjDetected"
 INPUTS_ROBOT_POSES = ["RobotPose1", "RobotPose2"]
-INPUTS_CAM_INFOS   = ["CamInfo1", "CamInfo2"]
 
 OUTPUT_WORLD_OBJ_POSE = "WorldObjPose"
 OUTPUT_DEBUG_MARKER   = "DebugMarkers"
@@ -73,28 +71,19 @@ class ObjPosInfer(Operator):
             )
         
         self.inputs_robot_poses = list()
-        self.inputs_cam_infos = list()
-        for in_rob_pose, in_cam_info in zip(INPUTS_ROBOT_POSES,
-                                            INPUTS_CAM_INFOS):
+        for in_rob_pose in INPUTS_ROBOT_POSES:
             # Listed inputs:
             self.inputs_robot_poses.append(inputs.take(
                 in_rob_pose,
                 PoseStamped,
                 get_ros2_deserializer(PoseStamped))
                 )
-            self.inputs_cam_infos.append(inputs.take(
-                in_cam_info,
-                CameraInfo,
-                get_ros2_deserializer(CameraInfo))
-                )
 
         # Other attributes needed:
         self.first_time = True
         self.first_obj_found = True
         self.pending = list()
-        self.cam_infos = [CameraInfo()] * self.robot_num
         self.robot_poses = [PoseStamped()] * self.robot_num
-        self.last_time = time.time()
 
     def robot2world(self, centroid: tuple, index: int) -> tuple:
         x, _, z = centroid
@@ -150,13 +139,6 @@ class ObjPosInfer(Operator):
         return task_list
 
     async def iteration(self) -> None:
-        # Get the cam info of each robot only once:
-        if self.first_time:
-            for i in range(self.robot_num):
-                cam_info_msg = await self.inputs_cam_infos[i].recv()
-                self.cam_infos[i] = cam_info_msg.get_data()
-            self.first_time = False
-
         (done, pending) = await asyncio.wait(
             self.create_task_list(),
             return_when=asyncio.FIRST_COMPLETED,

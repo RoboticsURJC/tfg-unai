@@ -117,20 +117,6 @@ links:
 
 
 - from:
-    node : cams_info_source
-    output : CamInfo1
-  to:
-    node : obj_pos_infer_op
-    input : CamInfo1
-- from:
-    node : cams_info_source
-    output : CamInfo2
-  to:
-    node : obj_pos_infer_op
-    input : CamInfo2
-
-
-- from:
     node : obj_pos_infer_op
     output : WorldObjPose
   to:
