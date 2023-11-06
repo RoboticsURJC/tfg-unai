@@ -171,12 +171,13 @@ class PathsPlanner(Operator):
         ns = data_msg.get_data() # We receive here names/namespaces as requests
 
         index = self.robot_namespaces.index(ns)
-        next_wp = self.paths[index].pop(0)
-        await self.output_next_wp.send(WorldPosition(next_wp, ns))
-        print(
-            f"PATHS_PLANNER_OP| Sending waypoint requested by {ns} to "
-            f"NAVIGATOR_OP"
-            )
+        if len(self.paths[index]) > 0:
+            next_wp = self.paths[index].pop(0)
+            await self.output_next_wp.send(WorldPosition(next_wp, ns))
+            print(
+                f"PATHS_PLANNER_OP| Sending waypoint requested by {ns} to "
+                f"navigator"
+                )
 
         return None
 
