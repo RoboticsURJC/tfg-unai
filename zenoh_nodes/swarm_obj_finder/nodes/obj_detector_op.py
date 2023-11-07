@@ -177,16 +177,6 @@ class ObjDetector(Operator):
         ### When object is detected:
         if len(points) > 0:
             points = np.array(points)
-            centroid = (int(np.mean(points[:, 0])), int(np.mean(points[:, 1])))
-
-            ### Create debug image:
-            # Put a different circle in the centroid.
-            cv2.circle(hsv_img, centroid, 9, (0, 255, 255), -1)
-            cv2.circle(hsv_img, centroid, 10, (50, 255, 255), 2)
-            cv2.putText(
-                hsv_img, "Centroid", (centroid[0] - 33, centroid[1] - 15),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA
-                )
 
             ### Get depth values:
             depth_vals = list()
@@ -210,12 +200,21 @@ class ObjDetector(Operator):
             z_vals = [i for i in depth_vals[:, 2] if i < self.max_depth_detection]
             # In case there's no z value within the detecting range centroid_msg
             # variable is still None:
+            centroid_color = (0, 255, 255) # Red
             if len(z_vals) > 0:
                 z_val = np.mean(z_vals)
                 centroid_msg = CentroidMessage(x_val, y_val, z_val)
-            # TODO: maybe we can put that the max depth in the message is 2.0
-            # (for exmaple) instead of not finding it at all if it's actually
-            # being detected but it's far enough to say its precise location.
+                centroid_color = (50, 255, 255) # Green
+
+            ### Create debug image:
+            centroid = (int(np.mean(points[:, 0])), int(np.mean(points[:, 1])))
+            # Put a different circle in the centroid.
+            cv2.circle(hsv_img, centroid, 9, centroid_color, -1)
+            cv2.circle(hsv_img, centroid, 10, (30, 255, 255), 2)
+            cv2.putText(
+                hsv_img, "Centroid", (centroid[0] - 33, centroid[1] - 15),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA
+                )
 
         rgb_img = cv2.cvtColor(hsv_img, cv2.COLOR_HSV2RGB)
         debug_img_msg = self.bridge.cv2_to_imgmsg(rgb_img, encoding='rgb8')
