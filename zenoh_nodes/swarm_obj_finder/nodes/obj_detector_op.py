@@ -213,6 +213,9 @@ class ObjDetector(Operator):
             if len(z_vals) > 0:
                 z_val = np.mean(z_vals)
                 centroid_msg = CentroidMessage(x_val, y_val, z_val)
+            # TODO: maybe we can put that the max depth in the message is 2.0
+            # (for exmaple) instead of not finding it at all if it's actually
+            # being detected but it's far enough to say its precise location.
 
         rgb_img = cv2.cvtColor(hsv_img, cv2.COLOR_HSV2RGB)
         debug_img_msg = self.bridge.cv2_to_imgmsg(rgb_img, encoding='rgb8')
@@ -263,11 +266,11 @@ class ObjDetector(Operator):
                     cent_x, _, cent_z = centroid_msg.get_centroid()
                     h = hypot(cent_x, cent_z)
                     if h < self.max_depth_detection:
-                        print(
-                            f"OBJ_DETECTOR_OP\t| Object detected in: "
-                            f"({round(cent_x, 2)}, {round(cent_z, 2)}) from "
-                            f"{centroid_msg.get_founder()}"
-                            )
+                        #print(
+                        #    f"OBJ_DETECTOR_OP\t| Object detected in: "
+                        #    f"({round(cent_x, 2)}, {round(cent_z, 2)}) from "
+                        #    f"{centroid_msg.get_founder()}"
+                        #    )
                         await self.output_obj_detected.send(centroid_msg)
         return None
 

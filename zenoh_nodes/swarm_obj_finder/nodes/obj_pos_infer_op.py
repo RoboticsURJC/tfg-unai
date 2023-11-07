@@ -80,8 +80,6 @@ class ObjPosInfer(Operator):
                 )
 
         # Other attributes needed:
-        self.first_time = True
-        self.first_obj_found = True
         self.pending = list()
         self.robot_poses = [PoseStamped()] * self.robot_num
 
@@ -157,30 +155,25 @@ class ObjPosInfer(Operator):
             if who == INPUT_OBJ_DETECTED:
                 centroid_msg = msg
                 ns = centroid_msg.get_founder()
-                if self.first_obj_found:
-                    self.first_robot = ns
-                    self.first_obj_found = False
                 
-                if ns == self.first_robot:
-                    index = self.robot_namespaces.index(ns)
-                    # Get the centroid coords from the msg:
-                    centroid = centroid_msg.get_centroid()
+                index = self.robot_namespaces.index(ns)
+                # Get the centroid coords from the msg:
+                centroid = centroid_msg.get_centroid()
 
-                    # Get the object's world pose and a marker message
-                    world_pose, debug_marker_msg = self.robot2world(centroid,
-                                                                    index)
-                    world_pose.set_sender(ns)
-                    # Send the 3D pose:
-                    await self.output_world_pos.send(world_pose)
-                    position = world_pose.get_world_position()
-                    print(
-                        f"OBJ_POS_INFER_OP| Object position from {ns} is ("
-                        f"{round(position.pose.position.x, 2)}, "
-                        f"{round(position.pose.position.z, 2)})"
-                        )
-                    
-                    await self.output_debug_marker.send(debug_marker_msg)
-                    self.last_time = time.time()
+                # Get the object's world pose and a marker message
+                world_pose, debug_marker_msg = self.robot2world(centroid,
+                                                                index)
+                world_pose.set_sender(ns)
+                # Send the 3D pose:
+                await self.output_world_pos.send(world_pose)
+                position = world_pose.get_world_position()
+                #print(
+                #    f"OBJ_POS_INFER_OP| Object position from {ns} is ("
+                #    f"{round(position.pose.position.x, 2)}, "
+                #    f"{round(position.pose.position.z, 2)})"
+                #    )
+                
+                await self.output_debug_marker.send(debug_marker_msg)
 
         return None
 

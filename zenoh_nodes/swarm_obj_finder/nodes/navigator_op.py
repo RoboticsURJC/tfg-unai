@@ -155,9 +155,6 @@ class Navigator(Operator):
         for d in done:
             (who, data_msg) = d.result()
 
-            #if not "TF" in who:
-            #    print(who)
-
             # Get the next waypoint:
             if who == INPUT_NEXT_WP and self.mode == SEARCH_MODE:
                 msg = data_msg.get_data()
@@ -174,6 +171,7 @@ class Navigator(Operator):
                 #await self.outputs_wps[index].send(current_wp)
 
             if who in INPUTS_TFS:
+                #TODO: solve for more than 9 robots (2 digits).
                 index = int(who[-1]) -1 # Who should be TF1, TF2, ...
                 ns = self.robot_namespaces[index]
                 self.tf_msg = data_msg.get_data()
@@ -228,11 +226,8 @@ class Navigator(Operator):
                 self.obj_pose = wp_msg.get_world_position()
                 # Header needed for Nav2 planner server:
                 self.obj_pose.header.frame_id = "map"
-                self.last_obj_update_ts = time.time()
 
                 # If the master doesn't exist this robot will be the master:
-                print(not self.goal_manager.master_exists(),
-                      not self.goal_manager.has_reached_goal(ns))
                 if not self.goal_manager.master_exists() and \
                     not self.goal_manager.has_reached_goal(ns):
                     print(
@@ -244,6 +239,7 @@ class Navigator(Operator):
                 # If this robot is the master, it will send the goal to the
                 # other robots that haven't reached the goal yet:
                 if ns == self.goal_manager.get_master():
+                    self.last_obj_update_ts = time.time()
                     print(
                         f"NAVIGATOR_OP\t| Sending robots to the object position"
                         )
@@ -289,15 +285,6 @@ class Navigator(Operator):
                         f"NAVIGATOR_OP\t| \033[0;31mObject's not at sight "
                         f"anymore, returning to search mode again\033[0m"
                         )
-            
-            # TESTING: robotX sees the object, becomes master and stops seeing
-            # the object, if robotX sees the object again it becomes master, but
-            # if RobotY sees the object instead, it doesn't become master
-            # (because it no longer enter in approach mdoe from other robot).
-            
-            # BUG: Once the master is selected, it no longer enters in approach
-            # mode from the other robots, and that's why they can no longer be
-            # the master.
 
             # DEBUG: print info every 5 seconds:
             t = time.time()
