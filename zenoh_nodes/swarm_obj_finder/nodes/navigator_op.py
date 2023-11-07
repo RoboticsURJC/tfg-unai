@@ -4,7 +4,6 @@ from zenoh_flow.types import Context
 from typing import Dict, Any
 
 import asyncio, time
-from math import sqrt
 
 from geometry_msgs.msg import PoseStamped
 from builtin_interfaces.msg import Duration
@@ -106,8 +105,6 @@ class Navigator(Operator):
         self.buffer_core = tf2_ros.BufferCore(Duration(sec=1, nanosec=0))
         self.current_wps = [[PoseStamped(), time.time(), -1.0]] * self.robot_num
         self.goal_manager = GoalManager(self.robot_namespaces)
-        self.last_obj_update_ts = None
-        self.master_sight_time = 0.0
         self.obj_pose = PoseStamped()
         self.mode = SEARCH_MODE
 
@@ -226,6 +223,7 @@ class Navigator(Operator):
                 self.obj_pose = wp_msg.get_world_position()
                 # Header needed for Nav2 planner server:
                 self.obj_pose.header.frame_id = "map"
+                self.goal_manager.update_ts(ns)
 
                 # If the master doesn't exist this robot will be the master:
                 if not self.goal_manager.master_exists() and \
@@ -239,7 +237,6 @@ class Navigator(Operator):
                 # If this robot is the master, it will send the goal to the
                 # other robots that haven't reached the goal yet:
                 if ns == self.goal_manager.get_master():
-                    self.last_obj_update_ts = time.time()
                     print(
                         f"NAVIGATOR_OP\t| Sending robots to the object position"
                         )
@@ -254,29 +251,37 @@ class Navigator(Operator):
                 # the next robot):
                 robot_dist = math.hypot(self.obj_pose.pose.position.x,
                                         self.obj_pose.pose.position.z)
-                if robot_dist < self.obj_safe_dist:
+                if not self.goal_manager.has_reached_goal(ns) and \
+                    robot_dist < self.obj_safe_dist:
                     self.goal_manager.set_reached(ns)
-                    print(f"NAVIGATOR_OP\t| \033[0;32mObject reached!\033[0m")
+                    print(
+                        f"NAVIGATOR_OP\t| \033[0;32mObject reached by {ns}!"
+                        f"\033[0m"
+                        )
                     if ns == self.goal_manager.get_master():
                         self.goal_manager.free_master()
 
 
-
-            # If 5s has passed without any position received from master the
-            # its role is assumed by another robot. If 30s has passed, the mode
-            # is switched to search the object again:
+            # If 5s has passed without any position received from master, its
+            # role is assumed by another robot. If 30s has passed, the mode is
+            # switched to search the object again:
             if self.mode == APPROACH_MODE:
-                # If the master robot haven't seen the object for more than 5s,
-                # let its role free for the next robot:
-                time_elapsed = time.time() - self.last_obj_update_ts
-                if time_elapsed > self.master_timeout \
-                    and self.goal_manager.master_exists():
-                    self.goal_manager.free_master()
-                    print(f"NAVIGATOR_OP\t| \033[0;31mmaster freed\033[0m")
-                # If more than 60s search the object again:
-                elif time_elapsed > self.approach_timeout:
+                if self.goal_manager.master_exists():
+                    master_ns = self.goal_manager.get_master()
+                    master_ts = self.goal_manager.get_ts(master_ns)
+                    if time.time() - master_ts > self.master_timeout:
+                        self.goal_manager.free_master()
+                        print(f"NAVIGATOR_OP\t| \033[0;31mmaster freed\033[0m")
+                
+                conditions = list()
+                for ns in self.robot_namespaces:
+                    ts = self.goal_manager.get_ts(ns)
+                    if ts != None:
+                        time_elapsed = time.time() - ts
+                        conditions.append(time_elapsed > self.approach_timeout)
+                if len(conditions) > 0 and all(conditions):
                     self.mode = SEARCH_MODE
-                    # Send all robots their last waypoiny (where they stoped
+                    # Send all robots their last waypoint (where they stoped
                     # searching to start approaching the object):
                     for i, output in enumerate(self.outputs_wps):
                         #await output.send(self.current_wps[i][0])
@@ -287,13 +292,13 @@ class Navigator(Operator):
                         )
 
             # DEBUG: print info every 5 seconds:
-            t = time.time()
-            freq = 5
-            if int(t) % freq == 0 and self.print_once:
-                print("Mode: search" if self.mode == SEARCH_MODE else "Mode: approach")
-                self.print_once = False
-            if int(t) % freq == 1:
-                self.print_once = True
+            #t = time.time()
+            #freq = 5
+            #if int(t) % freq == 0 and self.print_once:
+            #    print("Mode: search" if self.mode == SEARCH_MODE else "Mode: approach")
+            #    self.print_once = False
+            #if int(t) % freq == 1:
+            #    self.print_once = True
 
     def finalize(self) -> None:
         return None

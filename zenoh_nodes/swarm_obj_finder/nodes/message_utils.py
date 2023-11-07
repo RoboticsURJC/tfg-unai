@@ -1,5 +1,5 @@
 from geometry_msgs.msg import PoseStamped
-
+import time
 
 
 class CentroidMessage:
@@ -50,13 +50,16 @@ class WorldPosition:
 
 class GoalManager:
     def __init__(self, namespaces: list):
-        self.namespaces = namespaces
-        # A PoseStamped object and a bool that indicates if that namespace has
-        # reached the object for each namespace in a dictionary:
-        self.goals_reached = dict(
-            zip(self.namespaces, [False] * len(self.namespaces))
-            )
+        # For each namespace in the dictionary a bool and a timestamp are
+        # assigned that indicates if that namespace has reached the object and
+        # the last time it was seen respectively:
+        self.goals_info = dict()
+        for ns in namespaces:
+            self.goals_info.update({ns: [False, None]})
         self.master = None
+
+    def __str__(self) -> str:
+        return str(self.goals_info)
 
     def master_exists(self) -> bool:
         return self.master != None
@@ -71,8 +74,13 @@ class GoalManager:
         return self.master
 
     def has_reached_goal(self, name: str) -> bool:
-        return self.goals_reached.get(name, None)
+        return self.goals_info.get(name)[0]
 
     def set_reached(self, name: str) -> None:
-        self.goals_reached[name] = True
+        self.goals_info[name][0] = True
 
+    def update_ts(self, name: str) -> None:
+        self.goals_info[name][1] = time.time()
+
+    def get_ts(self, name: str) -> float:
+        return self.goals_info[name][1]
