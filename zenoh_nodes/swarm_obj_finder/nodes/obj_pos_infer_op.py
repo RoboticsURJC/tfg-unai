@@ -167,12 +167,11 @@ class ObjPosInfer(Operator):
                 # Send the 3D pose:
                 await self.output_world_pos.send(world_pose)
                 position = world_pose.get_world_position()
-                #print(
-                #    f"OBJ_POS_INFER_OP| Object position from {ns} is ("
-                #    f"{round(position.pose.position.x, 2)}, "
-                #    f"{round(position.pose.position.z, 2)})"
-                #    )
-                
+                print(
+                    f"OBJ_POS_INFER_OP| Object position from {ns} is ("
+                    f"{round(position.pose.position.x, 2)}, "
+                    f"{round(position.pose.position.z, 2)})"
+                    )
                 await self.output_debug_marker.send(debug_marker_msg)
 
         return None

@@ -174,10 +174,10 @@ class PathsPlanner(Operator):
         if len(self.paths[index]) > 0:
             next_wp = self.paths[index].pop(0)
             await self.output_next_wp.send(WorldPosition(next_wp, ns))
-            #print(
-            #    f"PATHS_PLANNER_OP| Sending waypoint requested by {ns} to "
-            #    f"navigator"
-            #    )
+            print(
+                f"PATHS_PLANNER_OP| Sending waypoint requested by {ns} to "
+                f"navigator"
+                )
 
         return None
 

@@ -161,11 +161,11 @@ class Navigator(Operator):
 
                 self.current_wps[index] = [current_wp, time.time(), -1.0]
                 x, y = get_xy_from_pose(self.current_wps[index][0])
-                #print(
-                #    f"NAVIGATOR_OP\t| Sending {self.robot_namespaces[index]} "
-                #    f"to the next waypoint: {round(x, 2)}, {round(y, 2)}"
-                #    )
-                #await self.outputs_wps[index].send(current_wp)
+                print(
+                    f"NAVIGATOR_OP\t| Sending {self.robot_namespaces[index]} "
+                    f"to the next waypoint: {round(x, 2)}, {round(y, 2)}"
+                    )
+                await self.outputs_wps[index].send(current_wp)
 
             if who in INPUTS_TFS:
                 #TODO: solve for more than 9 robots (2 digits).
@@ -243,8 +243,7 @@ class Navigator(Operator):
                     for robot_ns, output in zip(self.robot_namespaces,
                                                 self.outputs_wps):
                         if not self.goal_manager.has_reached_goal(robot_ns):
-                            pass
-                            #await output.send(self.obj_pose)
+                            await output.send(self.obj_pose)
 
                 # Set if the goal has been reached to stop receiving the object
                 # position (if this robot is the master let that role free for
@@ -284,21 +283,11 @@ class Navigator(Operator):
                     # Send all robots their last waypoint (where they stoped
                     # searching to start approaching the object):
                     for i, output in enumerate(self.outputs_wps):
-                        #await output.send(self.current_wps[i][0])
-                        pass
+                        await output.send(self.current_wps[i][0])
                     print(
                         f"NAVIGATOR_OP\t| \033[0;31mObject's not at sight "
                         f"anymore, returning to search mode again\033[0m"
                         )
-
-            # DEBUG: print info every 5 seconds:
-            #t = time.time()
-            #freq = 5
-            #if int(t) % freq == 0 and self.print_once:
-            #    print("Mode: search" if self.mode == SEARCH_MODE else "Mode: approach")
-            #    self.print_once = False
-            #if int(t) % freq == 1:
-            #    self.print_once = True
 
     def finalize(self) -> None:
         return None
