@@ -7,7 +7,7 @@ uri: file://{{ BASE_DIR }}/nodes/navigator_op.py
 
 configuration:
   goal_checker_min_dist: 0.3  #[m]
-  obj_safe_dist:         0.3  #[m]
+  obj_safe_dist:         0.5  #[m]
   master_timeout:        10.0 #[s]
   approach_timeout:      30.0 #[s]
 
