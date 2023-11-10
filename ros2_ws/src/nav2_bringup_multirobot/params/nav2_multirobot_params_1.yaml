@@ -183,6 +183,9 @@ local_costmap:
       height: 3
       resolution: 0.05
       robot_radius: 0.28
+      # This value is slightly higher than the actual robot radius because the
+      # robot can only detect the laser part of other robots but the entire body
+      # of the robot. This value is increased to try to avoid the other robots:
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
