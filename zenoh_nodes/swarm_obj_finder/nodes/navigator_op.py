@@ -168,8 +168,8 @@ class Navigator(Operator):
                 await self.outputs_wps[index].send(current_wp)
 
             if who in INPUTS_TFS:
-                #TODO: solve for more than 9 robots (2 digits).
-                index = int(who[-1]) -1 # Who should be TF1, TF2, ...
+                # Who will be TF1 or TF2, so index will be 0 or 1.
+                index = get_ns_index(who) - 1
                 ns = self.robot_namespaces[index]
                 self.tf_msg = data_msg.get_data()
                 for tf in self.tf_msg.transforms:

@@ -148,7 +148,8 @@ class ObjPosInfer(Operator):
             msg = data_msg.get_data()
             # Get the robot poses:
             if who in INPUTS_ROBOT_POSES:
-                index = int(who[-1]) -1 # Who should be RobotPose1, RobotPose2, ...
+                # Who will be RobotPose1 or RobotPose2, so index will be 0 or 1.
+                index = get_ns_index(who) - 1
                 self.robot_poses[index] = msg
 
             # Object detected by the obj_detector_op node:
