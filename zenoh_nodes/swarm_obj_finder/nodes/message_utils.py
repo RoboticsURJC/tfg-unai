@@ -84,3 +84,11 @@ class GoalManager:
 
     def get_ts(self, name: str) -> float:
         return self.goals_info[name][1]
+
+
+def get_ns_index(name):
+    word = list(name)
+    word.reverse()
+    for i, char in enumerate(word):
+        if not char.isdigit():
+            return int(name[-i:])

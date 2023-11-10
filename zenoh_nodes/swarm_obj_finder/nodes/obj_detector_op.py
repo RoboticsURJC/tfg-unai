@@ -251,7 +251,8 @@ class ObjDetector(Operator):
             (who, data_msg) = d.result()
 
             if who in INPUTS_DEPTHS:
-                index = int(who[-1]) -1
+                # Who will be Depth1 or Depth2, so index will be 0 or 1.
+                index = get_ns_index(who) - 1
                 point_cloud_msg = data_msg.get_data()
                 self.depths[index] = point_cloud_msg
                 shape = (self.cam_infos[index].height,
