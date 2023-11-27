@@ -35,10 +35,10 @@ sinks:
         in: zf/getting-started/greeting
     descriptor: "builtin://zenoh"
 
-  - id : goal_pose_sink
+  - id : str_sink
     configuration:
       key-expressions:
-        waypoint: rt/robot1/goal_pose
+        str: rt/chatter
     descriptor : "builtin://zenoh"
 
 
@@ -59,10 +59,10 @@ links:
 
   - from:
       node: greetings-maker
-      output: goal_pose_wp
+      output: str
     to:
-      node: goal_pose_sink
-      input: waypoint
+      node: str_sink
+      input: str
 
   - from:
       node: greetings-maker

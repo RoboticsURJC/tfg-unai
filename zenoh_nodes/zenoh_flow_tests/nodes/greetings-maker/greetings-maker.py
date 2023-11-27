@@ -20,9 +20,10 @@ from typing import Dict, Any
 from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
 from rclpy.type_support import check_for_type_support
 
-from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
 
+import time
 
 
 def ser_ros2_msg(ros2_msg) -> bytes:
@@ -49,34 +50,35 @@ class GreetingsMaker(Operator):
         print(f"Context: {context}")
         print(f"Configuration: {configuration}")
         self.output = outputs.take("greeting", str, lambda s: bytes(s, "utf-8"))
-        self.output_wp = outputs.take("goal_pose_wp", PoseStamped, serializer=ser_ros2_msg)
+        self.output_str = outputs.take("str", String, serializer=ser_ros2_msg)
 
-        #self.in_stream = inputs.take("name", str, lambda buf: buf.decode("utf-8"))
         self.in_stream = inputs.take("name", LaserScan, deserializer=deser_laserscan_msg)
 
         if self.in_stream is None:
             raise ValueError("No input 'name' found")
         if self.output is None:
             raise ValueError("No output 'greeting' found")
+        
+        self.n = 0
 
     def finalize(self) -> None:
         return None
 
     async def iteration(self) -> None:
-        message = await self.in_stream.recv()
-        name = message.get_data()
-        if name is not None:
-            greetings = self.generate_greetings("Gabriele")
-            await self.output.send(greetings)
-            #name=LaserScan()
-            print(name)
-        wp = PoseStamped()
-        wp.pose.position.x = 0.7
-        wp.pose.position.y = 0.7
-        wp.pose.position.z = 0.0
-        await self.output_wp.send(wp)
-        print("WP SENT")
-        
+        #message = await self.in_stream.recv()
+        #name = message.get_data()
+        #if name is not None:
+        #    greetings = self.generate_greetings("Gabriele")
+        #    await self.output.send(greetings)
+        #    #name=LaserScan()
+        #    print(name)
+
+        self.n += 1
+        s = String()
+        s.data = "test " + str(self.n)
+        await self.output_str.send(s)
+        print("Sending:", s)
+        time.sleep(1)
 
         return None
 
