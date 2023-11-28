@@ -8,17 +8,17 @@
     "plugins_search_dirs":["/usr/lib/"],
     "plugins":{
         "storage_manager":{
-        "required":true,
-        "storages":{
-            "zfrpc":{
-                "key_expr":"zf/runtime/**",
-                "volume": "memory"
-                },
-            "zf":{
-                "key_expr":"zenoh-flow/**",
-                "volume": "memory"
+            "required":true,
+            "storages":{
+                "zfrpc":{
+                    "key_expr":"zf/runtime/**",
+                    "volume": "memory"
+                    },
+                "zf":{
+                    "key_expr":"zenoh-flow/**",
+                    "volume": "memory"
+                    }
                 }
-            }
         },
         "zenoh_flow":{
             "required":true,
