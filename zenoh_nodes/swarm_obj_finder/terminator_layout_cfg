@@ -70,7 +70,7 @@
       profile = default
       title = Zenoh Bridge DDS
       uuid = 490c5be0-6720-44bb-b445-5dd9bb58835c
-      command = echo -e "\033[1;36mROS_LOCALHOST_ONLY=1 zenoh-bridge-dds/zenoh-bridge-dds\033[0m"; bash
+      command = echo -e "\033[1;36mROS_LOCALHOST_ONLY=1 zenoh-bridge-dds/zenoh-bridge-dds-0.7.2-rc\033[0m"; bash
     [[[child7]]]
       type = HPaned
       parent = child1
