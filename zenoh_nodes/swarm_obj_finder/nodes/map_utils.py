@@ -10,7 +10,6 @@ from geom_utils import *
 
 
 
-
 def factorize(n: int) -> list:
     prime_numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41,
                         43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
@@ -30,7 +29,8 @@ def get_squarest_distribution(factors: list) -> list:
     distribution = [1, 1]
     for f in reversed(factors): # Starts from the highest to the lowest.
         if distribution[0] < distribution[1]:
-            distribution[0] *= f # The factor is multiplied by the lowest member of the distribution.
+            # The factor is multiplied by the lowest member of the distribution:
+            distribution[0] *= f
         else:
             distribution[1] *= f
     return distribution
@@ -147,12 +147,12 @@ def divide_map(itpr_map_img: np.ndarray, map_img: np.ndarray,
 
     return bboxes
 
-def map2world(map_pose: PoseStamped, origin: list, resolution: int) -> PoseStamped:
+def map2world(map_pose: PoseStamped, origin: list, res: int) -> PoseStamped:
     world_pose = PoseStamped()
     world_pose.header.frame_id = "map" # Header needed for Nav2 planner server.
     world_pose.header.stamp = Clock().now().to_msg()
-    world_pose.pose.position.x = (map_pose.pose.position.x + origin[0]) * resolution
-    world_pose.pose.position.y = (map_pose.pose.position.y + origin[1]) * resolution
+    world_pose.pose.position.x = (map_pose.pose.position.x + origin[0]) * res
+    world_pose.pose.position.y = (map_pose.pose.position.y + origin[1]) * res
     world_pose.pose.orientation = map_pose.pose.orientation
     return world_pose
 
@@ -163,7 +163,8 @@ def img2map(img_pix: tuple, img_shape: tuple) -> tuple:
                 float(-(img_y - (img_height/2))))
     return map_pos
 
-def is_near_wall(point: tuple, itpr_map_img: np.ndarray, margin: int, occupied_thresh: int) -> bool:
+def is_near_wall(point: tuple, itpr_map_img: np.ndarray,
+                 margin: int, occupied_thresh: int) -> bool:
     x, y = point
     width, height = itpr_map_img.shape
     for i in range(max(x - margin, 0), min(x + margin, width)):
@@ -173,8 +174,8 @@ def is_near_wall(point: tuple, itpr_map_img: np.ndarray, margin: int, occupied_t
     return False
 
 def get_path_from_area(area: list, itpr_map_img: np.ndarray, thresholds: tuple,
-                       wp_world_separation: float, origin: list,
-                       resolution: int, inverted=False) -> list:
+                       wp_world_separation: float, wp_safe_space: int,
+                       origin: list, resolution: int, inverted=False) -> list:
     p1, p2 = area
     vertical_range = list(range(int(p1[1]),
                                 int(p2[1]),
@@ -198,7 +199,8 @@ def get_path_from_area(area: list, itpr_map_img: np.ndarray, thresholds: tuple,
             
             #cv2.circle(new_img, (x, y), 2, 0, -1) ### DEBUG
             if (itpr_map_img[y, x] < thresholds[0] and
-                not is_near_wall((x, y), itpr_map_img, 3, thresholds[1])):
+                not is_near_wall((x, y), itpr_map_img,
+                                 wp_safe_space, thresholds[1])):
                 path.append(map2world(wp, origin, resolution))
         vertical_range.reverse()
         ori_index += 1

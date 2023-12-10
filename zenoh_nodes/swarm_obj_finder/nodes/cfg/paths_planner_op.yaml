@@ -6,8 +6,12 @@ vars:
 uri: file://{{ BASE_DIR }}/nodes/paths_planner_op.py
 
 configuration:
-  map_yaml_file: "/home/usanz/ros2_humble_ws/src/navigation2/nav2_bringup/maps/turtlebot3_world.yaml"
+  # Inside this folder there should be a .pgm and a .yaml files:
+  map_yaml_file: "/home/usanz/Desktop/Uni/22-23/tfg-unai/ros2_ws/src/nav2_bringup_multirobot/maps/turtlebot3_world.yaml"
+  # Separation in between the waypoints:
   waypoint_separation: 0.5 #[m]
+  # Space far from any object needed for a waypoint to be created:
+  waypoint_safe_space: 5 #[px]
 
 inputs: [WPRequest]
 outputs: [DebugMapDiv, DebugMarkers, NextWP]

@@ -1,4 +1,4 @@
-image: /home/usanz/ros2_humble_ws/src/navigation2/nav2_bringup/maps/turtlebot3_world.pgm
+image: /home/usanz/Desktop/Uni/22-23/tfg-unai/ros2_ws/src/nav2_bringup_multirobot/maps/turtlebot3_world.pgm
 resolution: 0.050000
 origin: [-10.000000, -10.000000, 0.000000]
 negate: 0

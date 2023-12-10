@@ -53,6 +53,7 @@ class PathsPlanner(Operator):
                                                        ["robot1", "robot2"]))
         self.ns_bytes_length = int(configuration.get("ns_bytes_length", 64))
         self.wp_separation = float(configuration.get("waypoint_separation", 1.0))
+        self.wp_safe_space = int(configuration.get("waypoint_safe_space", 5))
         map_yaml_path = str(configuration.get(
                                 "map_yaml_file",
                                 "maps/turtlebot3_world/turtlebot3_world.yaml")
@@ -102,6 +103,7 @@ class PathsPlanner(Operator):
                 self.img_interpr,
                 (self.map_free_thresh, self.map_occupied_thresh),
                 self.wp_world_separation,
+                self.wp_safe_space,
                 self.map_origin,
                 self.map_resolution,
                 invert
