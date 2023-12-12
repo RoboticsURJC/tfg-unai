@@ -9,7 +9,8 @@ configuration:
   goal_checker_min_dist: 0.3  #[m]
   obj_safe_dist:         0.5  #[m]
   master_timeout:        10.0 #[s]
-  approach_timeout:      30.0 #[s]
+  obj_approach_timeout:  30.0 #[s]
+  wp_approach_timeout:   30.0 #[s]
 
 inputs: [TF1, TF2, NextWP, WorldObjPose]
 outputs: [Waypoint1, Waypoint2, WPRequest, RobotPose1, RobotPose2]

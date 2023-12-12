@@ -59,8 +59,11 @@ class Navigator(Operator):
         self.master_timeout = float(
             configuration.get("master_timeout", 5.0)
             )
-        self.approach_timeout = float(
-            configuration.get("approach_timeout", 30.0)
+        self.obj_approach_timeout = float(
+            configuration.get("obj_approach_timeout", 30.0)
+            )
+        self.wp_approach_timeout = float(
+            configuration.get("wp_approach_timeout", 30.0)
             )
         
         # Single inputs:
@@ -152,7 +155,14 @@ class Navigator(Operator):
         for d in done:
             (who, data_msg) = d.result()
 
-            # Get the next waypoint:
+            # If the robot got stuck for 30s request the next pose:
+            if self.mode == SEARCH_MODE:
+                for ns, wp_info in zip(self.robot_namespaces, self.current_wps):
+                    last_ts = wp_info[1]
+                    if time.time() - last_ts > self.wp_approach_timeout:
+                        await self.output_wp_req.send(ns)
+
+            # Get the next waypoint and send it:
             if who == INPUT_NEXT_WP and self.mode == SEARCH_MODE:
                 msg = data_msg.get_data()
                 ns = msg.get_sender()
@@ -277,7 +287,7 @@ class Navigator(Operator):
                     ts = self.goal_manager.get_ts(ns)
                     if ts != None:
                         time_elapsed = time.time() - ts
-                        conditions.append(time_elapsed > self.approach_timeout)
+                        conditions.append(time_elapsed > self.obj_approach_timeout)
                 if len(conditions) > 0 and all(conditions):
                     self.mode = SEARCH_MODE
                     # Send all robots their last waypoint (where they stoped
