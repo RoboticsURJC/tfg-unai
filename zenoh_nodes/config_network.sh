@@ -5,8 +5,10 @@
 
 # Stop the daemon in case it's running and change the RMW implementation to work
 # with cyclone DDS, needed for zenoh-flow:
+
 ros2 daemon stop
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+ros2 daemon start
 
 # Allow loopback interface to communicate using multicast, because some nav2
 # nodes need it. to work properly:
