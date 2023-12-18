@@ -1,0 +1,8 @@
+{
+    "listen":{
+        "endpoints":["tcp/0.0.0.0:7447"]
+    },
+    "connect":{
+        "endpoints":["tcp/192.168.1.111:7447"]
+    }
+}
