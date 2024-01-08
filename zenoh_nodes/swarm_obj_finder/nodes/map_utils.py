@@ -166,9 +166,10 @@ def img2map(img_pix: tuple, img_shape: tuple) -> tuple:
 def is_near_wall(point: tuple, itpr_map_img: np.ndarray,
                  margin: int, occupied_thresh: int) -> bool:
     x, y = point
-    width, height = itpr_map_img.shape
-    for i in range(max(x - margin, 0), min(x + margin, width)):
-        for j in range(max(y - margin, 0), min(y + margin, height)):
+    height, width = itpr_map_img.shape
+    for i in range(max(x - margin, 0), min(x + margin, width-1)):
+        for j in range(max(y - margin, 0), min(y + margin, height-1)):
+            print(i, j)
             if itpr_map_img[j, i] > occupied_thresh:
                 return True
     return False
