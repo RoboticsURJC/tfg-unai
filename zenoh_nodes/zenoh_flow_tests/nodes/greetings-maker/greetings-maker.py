@@ -22,6 +22,7 @@ from rclpy.type_support import check_for_type_support
 
 from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import PoseStamped
 
 import time
 
@@ -51,6 +52,8 @@ class GreetingsMaker(Operator):
         print(f"Configuration: {configuration}")
         self.output = outputs.take("greeting", str, lambda s: bytes(s, "utf-8"))
         self.output_str = outputs.take("str", String, serializer=ser_ros2_msg)
+        self.output_goal1 = outputs.take("goal1", PoseStamped, serializer=ser_ros2_msg)
+        self.output_goal2 = outputs.take("goal2", PoseStamped, serializer=ser_ros2_msg)
 
         self.in_stream = inputs.take("name", LaserScan, deserializer=deser_laserscan_msg)
 
@@ -72,6 +75,18 @@ class GreetingsMaker(Operator):
         #    await self.output.send(greetings)
         #    #name=LaserScan()
         #    print(name)
+
+        if self.n == 0:
+            g1 = PoseStamped()
+            g1.pose.position.x = 5.0
+            g1.pose.position.y = 6.6
+            g2 = PoseStamped()
+            g2.pose.position.x = 2.0
+            g2.pose.position.y = 0.0
+            await self.output_goal1.send(g1)
+            print("goal 1 sent")
+            await self.output_goal2.send(g2)
+            print("goal 2 sent")
 
         self.n += 1
         s = String()

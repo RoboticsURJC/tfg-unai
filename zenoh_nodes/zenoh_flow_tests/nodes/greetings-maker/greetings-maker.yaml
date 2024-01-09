@@ -6,4 +6,4 @@ vars:
 uri: "file://{{ BASE_DIR }}/nodes/greetings-maker/greetings-maker.py"
 
 inputs: [name]
-outputs: [greeting, str]
+outputs: [greeting, str, goal1, goal2]

@@ -34,11 +34,12 @@ class FileWriter(Sink):
         self.out_file.close()
 
     async def iteration(self) -> None:
-        message = await self.input.recv()
-        greeting = message.get_data()
-        if greeting is not None:
-            self.out_file.write(greeting)
-            self.out_file.flush()
+        pass
+        #message = await self.input.recv()
+        #greeting = message.get_data()
+        #if greeting is not None:
+        #    self.out_file.write(greeting)
+        #    self.out_file.flush()
 
 
 def register():
