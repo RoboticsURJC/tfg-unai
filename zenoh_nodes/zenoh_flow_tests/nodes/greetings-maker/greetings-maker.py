@@ -19,6 +19,7 @@ from typing import Dict, Any
 
 from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
 from rclpy.type_support import check_for_type_support
+from rclpy.clock import Clock
 
 from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
@@ -78,9 +79,13 @@ class GreetingsMaker(Operator):
 
         if self.n == 0:
             g1 = PoseStamped()
+            g1.header.stamp = Clock().now().to_msg()
+            g1.header.frame_id="map"
             g1.pose.position.x = 5.0
             g1.pose.position.y = 6.6
             g2 = PoseStamped()
+            g2.header.stamp = Clock().now().to_msg()
+            g2.header.frame_id="map"
             g2.pose.position.x = 2.0
             g2.pose.position.y = 0.0
             await self.output_goal1.send(g1)
