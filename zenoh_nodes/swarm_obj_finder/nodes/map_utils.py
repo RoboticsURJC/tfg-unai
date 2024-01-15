@@ -113,6 +113,9 @@ def divide_map(itpr_map_img: np.ndarray, map_img: np.ndarray,
                             round(left_top_point[1] + y_shift * j)),
                             (round(left_top_point[0] + x_shift * (i+1)),
                             round(left_top_point[1] + y_shift * (j+1)))])
+    # An offset is generated when reducing the height and width, and its x and y
+    # values are the same as the first point of the first bbox:
+    offset = bboxes[0][0]
 
     ### DEBUG:
     if debug:
@@ -142,17 +145,17 @@ def divide_map(itpr_map_img: np.ndarray, map_img: np.ndarray,
                             2, 0, 2, -1)
         cv_bridge = CvBridge()
         debug_img_msg = cv_bridge.cv2_to_imgmsg(debug_div_img)
-        return (bboxes, debug_img_msg)
+        return (bboxes, offset, debug_img_msg)
     ###
 
-    return bboxes
+    return (bboxes, offset)
 
 def map2world(map_pose: PoseStamped, origin: list, res: int) -> PoseStamped:
     world_pose = PoseStamped()
     world_pose.header.frame_id = "map" # Header needed for Nav2 planner server.
     world_pose.header.stamp = Clock().now().to_msg()
-    world_pose.pose.position.x = (map_pose.pose.position.x + origin[0]) * res
-    world_pose.pose.position.y = (map_pose.pose.position.y + origin[1]) * res
+    world_pose.pose.position.x = (map_pose.pose.position.x * res) - origin[0]
+    world_pose.pose.position.y = (map_pose.pose.position.y * res) - origin[1]
     world_pose.pose.orientation = map_pose.pose.orientation
     return world_pose
 
@@ -169,14 +172,14 @@ def is_near_wall(point: tuple, itpr_map_img: np.ndarray,
     height, width = itpr_map_img.shape
     for i in range(max(x - margin, 0), min(x + margin, width-1)):
         for j in range(max(y - margin, 0), min(y + margin, height-1)):
-            print(i, j)
             if itpr_map_img[j, i] > occupied_thresh:
                 return True
     return False
 
-def get_path_from_area(area: list, itpr_map_img: np.ndarray, thresholds: tuple,
-                       wp_world_separation: float, wp_safe_space: int,
-                       origin: list, resolution: int, inverted=False) -> list:
+def get_path_from_area(area: list, offset: tuple, itpr_map_img: np.ndarray,
+                       thresholds: tuple, wp_world_separation: float,
+                       wp_safe_space: int, origin: list, resolution: int,
+                       inverted=False) -> list:
     p1, p2 = area
     vertical_range = list(range(int(p1[1]),
                                 int(p2[1]),
@@ -192,7 +195,8 @@ def get_path_from_area(area: list, itpr_map_img: np.ndarray, thresholds: tuple,
         for y in vertical_range:
             wp = PoseStamped()
             wp.header.frame_id = "map"
-            wp.pose.position.x, wp.pose.position.y = img2map((x, y),
+            wp.pose.position.x, wp.pose.position.y = img2map((x - offset[0],
+                                                              y - offset[1]),
                                                              itpr_map_img.shape)
             wp.pose.orientation = euler2quat(
                 orientations[ori_index % len(orientations)]

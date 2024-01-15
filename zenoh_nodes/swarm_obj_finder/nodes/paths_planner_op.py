@@ -85,7 +85,7 @@ class PathsPlanner(Operator):
         self.load_map(map_yaml_path)
 
         # Get the bounding box and divide the map (get the bounding corners):
-        divs, self.debug_div_img_msg = divide_map(
+        divs, offset, self.debug_div_img_msg = divide_map(
             self.img_interpr,
             self.map_img,
             self.robot_num,
@@ -100,6 +100,7 @@ class PathsPlanner(Operator):
         for div, ns in zip(divs, self.robot_namespaces):
             path = get_path_from_area(
                 div,
+                offset,
                 self.img_interpr,
                 (self.map_free_thresh, self.map_occupied_thresh),
                 self.wp_world_separation,
@@ -167,6 +168,7 @@ class PathsPlanner(Operator):
             await self.output_debug_img.send(self.debug_div_img_msg)
             await self.output_markers.send(self.marker_array_msg)
             self.debug_img_sent = True
+            print(f"PATHS_PLANNER_OP| Sending map division image and markers")
 
         # Process waypoint requests:
         data_msg = await self.input_wp_req.recv()
