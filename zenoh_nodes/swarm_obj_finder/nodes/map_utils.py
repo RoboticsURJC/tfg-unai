@@ -176,6 +176,17 @@ def is_near_wall(point: tuple, itpr_map_img: np.ndarray,
                 return True
     return False
 
+def is_near_unknown(point: tuple, itpr_map_img: np.ndarray, margin: int,
+                    free_thresh: int, occupied_thresh: int) -> bool:
+    x, y = point
+    height, width = itpr_map_img.shape
+    for i in range(max(x - margin, 0), min(x + margin, width-1)):
+        for j in range(max(y - margin, 0), min(y + margin, height-1)):
+            if (itpr_map_img[j, i] > free_thresh
+                and itpr_map_img[j, i] < occupied_thresh):
+                return True
+    return False
+
 def get_path_from_area(area: list, offset: tuple, itpr_map_img: np.ndarray,
                        thresholds: tuple, wp_world_separation: float,
                        wp_safe_space: int, origin: list, resolution: int,
@@ -203,9 +214,12 @@ def get_path_from_area(area: list, offset: tuple, itpr_map_img: np.ndarray,
                 )
             
             #cv2.circle(new_img, (x, y), 2, 0, -1) ### DEBUG
-            if (itpr_map_img[y, x] < thresholds[0] and
-                not is_near_wall((x, y), itpr_map_img,
-                                 wp_safe_space, thresholds[1])):
+            if (itpr_map_img[y, x] < thresholds[0]
+                and not is_near_wall((x, y), itpr_map_img,
+                                     wp_safe_space, thresholds[1])
+                and not is_near_unknown((x, y), itpr_map_img, wp_safe_space,
+                                        thresholds[0], thresholds[1])
+                ):
                 path.append(map2world(wp, origin, resolution))
         vertical_range.reverse()
         ori_index += 1

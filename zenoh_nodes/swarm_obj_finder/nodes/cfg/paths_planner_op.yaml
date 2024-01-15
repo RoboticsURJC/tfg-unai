@@ -10,9 +10,9 @@ configuration:
   #map_yaml_file: "/home/usanz/Desktop/Uni/22-23/tfg-unai/ros2_ws/src/nav2_bringup_multirobot/maps/turtlebot3_world.yaml"
   map_yaml_file: "/home/usanz/Desktop/Uni/22-23/tfg-unai/ros2_ws/src/nav2_bringup_multirobot/maps/dmarce_map.yaml"
   # Separation in between the waypoints:
-  waypoint_separation: 0.5 #[m]
-  # Space far from any object needed for a waypoint to be created:
-  waypoint_safe_space: 5 #[px]
+  waypoint_separation: 1.0 #[m]
+  # Space far from any occupied or unknown cell needed for a waypoint to be created:
+  waypoint_safe_space: 7 #[px]
 
 inputs: [WPRequest]
 outputs: [DebugMapDiv, DebugMarkers, NextWP]
