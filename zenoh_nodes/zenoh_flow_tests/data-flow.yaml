@@ -41,16 +41,13 @@ sinks:
         str: rt/chatter
     descriptor : "builtin://zenoh"
 
-  - id : t2_goal_sink
+  - id : goals_sink
     configuration:
       key-expressions:
-        goal1: rt/goal_pose
-    descriptor : "builtin://zenoh"
-
-  - id : t4_goal_sink
-    configuration:
-      key-expressions:
-        goal2: rt/robot2/goal_pose
+        goal_tb2: rt/goal_pose
+        goal_tb4_1: rt/robot1/goal_pose
+        goal_tb4_2: rt/robot2/goal_pose
+        goal_tb4_3: rt/robot3/goal_pose
     descriptor : "builtin://zenoh"
 
 
@@ -78,17 +75,29 @@ links:
 
   - from:
       node: greetings-maker
-      output: goal1
+      output: goal_tb2
     to:
-      node: t2_goal_sink
-      input: goal1
-
+      node: goals_sink
+      input: goal_tb2
   - from:
       node: greetings-maker
-      output: goal2
+      output: goal_tb4_1
     to:
-      node: t4_goal_sink
-      input: goal2
+      node: goals_sink
+      input: goal_tb4_1
+  - from:
+      node: greetings-maker
+      output: goal_tb4_2
+    to:
+      node: goals_sink
+      input: goal_tb4_2
+  - from:
+      node: greetings-maker
+      output: goal_tb4_3
+    to:
+      node: goals_sink
+      input: goal_tb4_3
+
 
   - from:
       node: greetings-maker
