@@ -27,10 +27,46 @@ siendo asequibles para instituciones como colegios o institutos.\\
 
 %Escribe aquí un párrafo explicando brevemente lo que vas a contar en este capítulo. En este primer capítulo, el de introducción, se trata de dar un contexto amplio y atractivo del trabajo. Comienza hablando de un contexto general y acaba hablando del contexto más específico en el que se enmarca el proyecto. Es el capítulo idóneo para incluir todas las referencias bibliográficas que hayan tratado este tema; suponen un fuerte respaldo al trabajo.\\
 
-\section{La primera sección}
+\section{Problemas de ROS en relación con el aprendizaje}
 \label{sec:miseccion} % etiqueta para luego referenciar esta sección
 
-En los textos puedes poner palabras en \textit{cursiva}, para aquellas expresiones en sentido \textit{figurado}, palabras como \textit{robota}, que está fuera del diccionario castellano, o bien para resaltar palabras de una colección: \textit{(a)} es la primera letra del abecedario, \textit{(b)} es la segunda, etc.\\
+ROS es el estándar en robótica para la programación de robots, pero tiene un
+problema y es el gran escalón de aprendizaje que existe cuando se pasa de una
+placa simple como arduino, a robots más complejos con máquinas integradas como
+las placas Raspberry Pi o un portátil directamente. Esto conlleva a una gran
+diferencia entre la robótica que se enseña en los colegios e institutos a la que
+se ebnseña en universidades, y es debido precisamente a la complejidad de código
+y enseñanza de ROS, para los cuales, se requiere incluso de varias asignaturas.
+Por eso en este trabajo se pretende incorporar un paso intermedio en este gran
+escalón.
+
+La propia naturaleza de este \textit{middleware} robótico nos obliga a programar
+nodos que se ejecutan iterativamente en bucle, sin necesidad de generar una
+topología de red concreta para saber de donde vienen o a donde van los datos, lo
+que puede ser un poco complicado de entender a primera vista para los niños.
+
+Además de este problema, existe otro relacionado con la congestión de red: los
+nodos de ROS2 se comunican a través de DDS, un protocolo de comunicaciones que
+genera una gran cantidad de mensajes de \textit{Discovery}, lo que conlleva
+consecuentemente a la generación de congestión de la red, y dificulta de esta
+manera la programacion de aplicaciones multiroboticas, que son un posible
+siguiente paso en la enseñanza de la robotica, para entender las comunicaciones
+entre los distintos robots.
+
+Este trabajo prentende solucionar tanto el problema del escalón de aprendizaje,
+suponiendo un paso intermedio en la enseñanza de la robótica, y el problema de
+la congestión de red generala por DDS, suponiendo una posible solución a la
+misma.
+
+El problema de la congestión se soluciona usando otro protocolo llamado Zenoh,
+con mejores prestaciones que DDS, y la simplicidad del código de ROS2, se ha
+conseguido gracias al uso de un \textit{framework} llamado Zenoh-Flow, que
+funciona sobre el protocolo mencionado y el cual le da nombre. Este
+\textit{framework} está pensado para la programación de flujos de datos,
+%En los textos puedes poner palabras en \textit{cursiva}, para aquellas expresiones
+%en sentido \textit{figurado}, palabras como \textit{robota}, que está fuera del
+%diccionario castellano, o bien para resaltar palabras de una colección:
+%\textit{(a)} es la primera letra del abecedario, \textit{(b)} es la segunda, etc.\\
 
 Al poner las dos líneas del anterior párrafo, este aparecerá separado del anterior. Si no las pongo, los párrafos aparecerán pegados. Sigue el criterio que consideres más oportuno.
 
