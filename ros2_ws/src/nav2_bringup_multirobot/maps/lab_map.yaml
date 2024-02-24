@@ -1,0 +1,7 @@
+image: /home/usanz/Desktop/Uni/22-23/tfg-unai/ros2_ws/src/nav2_bringup_multirobot/maps/lab_map.pgm
+mode: trinary
+resolution: 0.05
+origin: [-6.12, -8.21, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

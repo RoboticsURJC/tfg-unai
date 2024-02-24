@@ -85,9 +85,9 @@ class PathsPlanner(Operator):
         self.load_map(map_yaml_path)
 
         # Get the bounding box and divide the map (get the bounding corners):
-        divs, offset, self.debug_div_img_msg = divide_map(
-            self.img_interpr,
+        divs, self.debug_div_img_msg = divide_map(
             self.map_img,
+            self.img_interpr,
             self.robot_num,
             (self.map_free_thresh, self.map_occupied_thresh),
             True
@@ -100,7 +100,6 @@ class PathsPlanner(Operator):
         for div, ns in zip(divs, self.robot_namespaces):
             path = get_path_from_area(
                 div,
-                offset,
                 self.img_interpr,
                 (self.map_free_thresh, self.map_occupied_thresh),
                 self.wp_world_separation,
