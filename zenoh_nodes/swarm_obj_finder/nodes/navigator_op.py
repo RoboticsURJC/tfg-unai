@@ -49,6 +49,7 @@ class Navigator(Operator):
         self.robot_num = int(configuration.get("swarm_size", 2))
         self.robot_namespaces = list(configuration.get("robot_namespaces",
                                                        ["robot1", "robot2"]))
+        self.robot_base_frames = list(configuration.get("robot_base_frames"))
         self.ns_bytes_length = int(configuration.get("ns_bytes_length", 64))
 
         self.goal_checker_min_dist = float(
@@ -111,6 +112,10 @@ class Navigator(Operator):
         self.goal_manager = GoalManager(self.robot_namespaces)
         self.obj_pose = PoseStamped()
         self.mode = SEARCH_MODE
+        # After every request a timer is needed to avoid more request while
+        # receiving the response:
+        self.wp_req_timeout = 1.0 # [s].
+        self.last_wp_req_ts = [time.time()] * self.robot_num
 
         self.print_once = True
 
@@ -185,16 +190,18 @@ class Navigator(Operator):
                 ns = self.robot_namespaces[index]
                 self.tf_msg = data_msg.get_data()
                 for tf in self.tf_msg.transforms:
-
+                    rbf = self.robot_base_frames[index]
                     tf_names = ["map->odom",
-                                "odom->base_footprint"]
+                                f"odom->{rbf}"]
                     key = tf.header.frame_id + "->" + tf.child_frame_id
                     if key in tf_names:
                         self.buffer_core.set_transform(tf, "default_authority")
                     
                         try:
+                            # The robot base frame usually is "base_footprint"
+                            # or "base_link" depending on the model being used:
                             new_tf = self.buffer_core.lookup_transform_core(
-                                'map', 'base_footprint', rclpy.time.Time()
+                                'map', rbf, rclpy.time.Time()
                                 )
                             new_tf.child_frame_id = 'world_robot_pos'
 
@@ -218,9 +225,13 @@ class Navigator(Operator):
                             trace("NAVIGATOR_OP\t",
                                   f"distance to the wp: {dist}")
                             self.current_wps[index][2] = dist
-                            if (dist < self.goal_checker_min_dist):
+                            now_ts = time.time()
+                            if (dist < self.goal_checker_min_dist and
+                                (now_ts - self.last_wp_req_ts[index]) >
+                                self.wp_req_timeout):
                                 ns = self.robot_namespaces[index]
                                 await self.output_wp_req.send(ns)
+                                self.last_wp_req_ts[index] = now_ts
                             
                         except Exception as e:
                             pass

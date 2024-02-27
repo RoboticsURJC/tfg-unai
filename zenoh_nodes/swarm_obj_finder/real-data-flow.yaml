@@ -8,6 +8,7 @@ vars:
 configuration:
   swarm_size: 2 #Number of robots
   robot_namespaces: ["robot1", "robot2"]
+  robot_base_frames: ["base_link", "base_link"]
   ns_bytes_length: 64
   float_bytes_length: 8
 
