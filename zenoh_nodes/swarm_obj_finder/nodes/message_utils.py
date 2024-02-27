@@ -92,3 +92,6 @@ def get_ns_index(name):
     for i, char in enumerate(word):
         if not char.isdigit():
             return int(name[-i:])
+
+def trace(node_name: str, text: str):
+    print(f"{round(time.time(), 3)}\t| {node_name}\t| {text}")

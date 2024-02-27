@@ -17,7 +17,7 @@ from geom_utils import *
 from comms_utils import *
 from marker_utils import *
 from map_utils import *
-from message_utils import WorldPosition
+from message_utils import WorldPosition, trace
 
 
 INPUT_WP_REQUEST = "WPRequest"
@@ -167,7 +167,8 @@ class PathsPlanner(Operator):
             await self.output_debug_img.send(self.debug_div_img_msg)
             await self.output_markers.send(self.marker_array_msg)
             self.debug_img_sent = True
-            print(f"PATHS_PLANNER_OP| Sending map division image and markers")
+            trace("PATHS_PLANNER_OP",
+                  f"Sending map division image and markers")
 
         # Process waypoint requests:
         data_msg = await self.input_wp_req.recv()
@@ -177,10 +178,8 @@ class PathsPlanner(Operator):
         if len(self.paths[index]) > 0:
             next_wp = self.paths[index].pop(0)
             await self.output_next_wp.send(WorldPosition(next_wp, ns))
-            print(
-                f"PATHS_PLANNER_OP| Sending waypoint requested by {ns} to "
-                f"navigator"
-                )
+            trace("PATHS_PLANNER_OP",
+                  f"Sending waypoint requested by {ns} to navigator")
 
         return None
 

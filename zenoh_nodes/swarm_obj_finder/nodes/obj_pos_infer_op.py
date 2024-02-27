@@ -17,7 +17,7 @@ sys.path.insert(0, currentdir)
 from comms_utils import *
 from geom_utils import *
 from marker_utils import *
-from message_utils import CentroidMessage, WorldPosition
+from message_utils import CentroidMessage, WorldPosition, trace
 
 
 
@@ -168,11 +168,10 @@ class ObjPosInfer(Operator):
                 # Send the 3D pose:
                 await self.output_world_pos.send(world_pose)
                 position = world_pose.get_world_position()
-                print(
-                    f"OBJ_POS_INFER_OP| Object position from {ns} is ("
-                    f"{round(position.pose.position.x, 2)}, "
-                    f"{round(position.pose.position.z, 2)})"
-                    )
+                trace("OBJ_POS_INFER_OP",
+                      (f"Object position from {ns} is ("
+                       f"{round(position.pose.position.x, 2)}, "
+                       f"{round(position.pose.position.z, 2)})"))
                 await self.output_debug_marker.send(debug_marker_msg)
 
         return None

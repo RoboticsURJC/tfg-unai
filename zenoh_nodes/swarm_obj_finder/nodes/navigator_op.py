@@ -18,6 +18,7 @@ currentdir = os.path.dirname(
 sys.path.insert(0, currentdir)
 from comms_utils import *
 from geom_utils import *
+from message_utils import trace
 
 
 
@@ -161,6 +162,8 @@ class Navigator(Operator):
                     last_ts = wp_info[1]
                     if time.time() - last_ts > self.wp_approach_timeout:
                         await self.output_wp_req.send(ns)
+                        trace("NAVIGATOR_OP\t",
+                              f"{ns} stuck, requesting next wp")
 
             # Get the next waypoint and send it:
             if who == INPUT_NEXT_WP and self.mode == SEARCH_MODE:
@@ -171,10 +174,9 @@ class Navigator(Operator):
 
                 self.current_wps[index] = [current_wp, time.time(), -1.0]
                 x, y = get_xy_from_pose(self.current_wps[index][0])
-                print(
-                    f"NAVIGATOR_OP\t| Sending {self.robot_namespaces[index]} "
-                    f"to the next waypoint: {round(x, 2)}, {round(y, 2)}"
-                    )
+                trace("NAVIGATOR_OP\t",
+                      (f"Sending {self.robot_namespaces[index]} "
+                      f"to the next waypoint: ({round(x, 2)}, {round(y, 2)})"))
                 await self.outputs_wps[index].send(current_wp)
 
             if who in INPUTS_TFS:
@@ -213,6 +215,8 @@ class Navigator(Operator):
                             y_dist = new_tf.transform.translation.y - \
                                 self.current_wps[index][0].pose.position.y
                             dist = math.hypot(x_dist, y_dist)
+                            trace("NAVIGATOR_OP\t",
+                                  f"distance to the wp: {dist}")
                             self.current_wps[index][2] = dist
                             if (dist < self.goal_checker_min_dist):
                                 ns = self.robot_namespaces[index]
@@ -238,22 +242,15 @@ class Navigator(Operator):
                 # If the master doesn't exist this robot will be the master:
                 if not self.goal_manager.master_exists() and \
                     not self.goal_manager.has_reached_goal(ns):
-                    print(
-                        f"NAVIGATOR_OP\t| New master selected: "
-                        f"\033[0;32m{ns}\033[0m"
-                        )
+                    trace("NAVIGATOR_OP\t",
+                          f"New master selected: \033[0;32m{ns}\033[0m")
                     self.goal_manager.set_master(ns)
                 
                 # If this robot is the master, it will send the goal to the
                 # other robots that haven't reached the goal yet:
                 if ns == self.goal_manager.get_master():
-                    print(
-                        f"NAVIGATOR_OP\t| Sending robots to the object position"
-                        )
-                    for robot_ns, output in zip(self.robot_namespaces,
-                                                self.outputs_wps):
-                        if not self.goal_manager.has_reached_goal(robot_ns):
-                            await output.send(self.obj_pose)
+                    trace("NAVIGATOR_OP\t",
+                          f"Sending robots to the object position")
 
                 # Set if the goal has been reached to stop receiving the object
                 # position (if this robot is the master let that role free for
@@ -263,12 +260,8 @@ class Navigator(Operator):
                 if not self.goal_manager.has_reached_goal(ns) and \
                     robot_dist < self.obj_safe_dist:
                     self.goal_manager.set_reached(ns)
-                    print(
-                        f"NAVIGATOR_OP\t| \033[0;32mObject reached by {ns}!"
-                        f"\033[0m"
-                        )
-                    if ns == self.goal_manager.get_master():
-                        self.goal_manager.free_master()
+                    trace("NAVIGATOR_OP\t",
+                          f"\033[0;32mObject reached by {ns}!\033[0m")
 
 
             # If 5s has passed without any position received from master, its
@@ -280,7 +273,8 @@ class Navigator(Operator):
                     master_ts = self.goal_manager.get_ts(master_ns)
                     if time.time() - master_ts > self.master_timeout:
                         self.goal_manager.free_master()
-                        print(f"NAVIGATOR_OP\t| \033[0;31mmaster freed\033[0m")
+                        trace("NAVIGATOR_OP\t",
+                              f"\033[0;31mmaster freed\033[0m")
                 
                 conditions = list()
                 for ns in self.robot_namespaces:
@@ -294,10 +288,9 @@ class Navigator(Operator):
                     # searching to start approaching the object):
                     for i, output in enumerate(self.outputs_wps):
                         await output.send(self.current_wps[i][0])
-                    print(
-                        f"NAVIGATOR_OP\t| \033[0;31mObject's not at sight "
-                        f"anymore, returning to search mode again\033[0m"
-                        )
+                    trace("NAVIGATOR_OP\t",
+                          (f"\033[0;31mObject's not at sight anymore, "
+                          f"returning to search mode again\033[0m"))
 
     def finalize(self) -> None:
         return None
