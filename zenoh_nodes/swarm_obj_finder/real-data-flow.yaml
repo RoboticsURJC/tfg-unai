@@ -18,7 +18,7 @@ sources:
     configuration:
         key-expressions:
           TF1: rt/robot1/tf
-          TF2: rt/robot2/tf
+          TF2: rt/tf
     descriptor : "builtin://zenoh"
 
   - id : depths_source
@@ -62,8 +62,8 @@ sinks:
   - id : goal_pose_sink
     configuration:
         key-expressions:
-          Waypoint1: rt/goal_pose
-          Waypoint2: rt/robot2/goal_pose
+          Waypoint1: rt/robot1/goal_pose
+          Waypoint2: rt/goal_pose
     descriptor : "builtin://zenoh"
 
 
