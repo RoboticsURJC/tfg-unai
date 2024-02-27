@@ -20,3 +20,5 @@ tests/pibot-vision
 
 ros2_ws/src/ir_robots/
 ros2_ws/src/ThirdParty/
+ros2_ws/src/RpisLabCmds.txt
+t4_tests.txt
