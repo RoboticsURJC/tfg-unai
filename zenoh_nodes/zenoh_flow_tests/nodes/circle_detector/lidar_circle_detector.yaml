@@ -1,0 +1,8 @@
+id: lidar-circle-detector
+
+vars:
+  BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests"
+
+uri: "file://{{ BASE_DIR }}/nodes/circle_detector/lidar_circle_detector.py"
+inputs: [lidar_in]
+outputs: [img_out]
