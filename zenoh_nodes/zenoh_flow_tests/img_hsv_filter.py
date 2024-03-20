@@ -19,7 +19,7 @@ def process_frame(frame, lower_range, upper_range):
 def update_trackbar(value):
     pass
 
-def main(camera_source=0):
+def main(camera_source):
     # Open camera
     cap = cv2.VideoCapture(camera_source)
 
@@ -32,16 +32,25 @@ def main(camera_source=0):
     cv2.namedWindow('Processed Frame')
 
     # Define default HSV color range for yellow
-    lower_range_default = np.array([20, 100, 100])
-    upper_range_default = np.array([40, 255, 255])
+    #lower_range_default = np.array([20, 100, 100])
+    #upper_range_default = np.array([40, 255, 255])
+    # Define default HSV color range for pink
+    lower_range_default = np.array([140, 125, 200])
+    upper_range_default = np.array([180, 255, 255])
 
     # Create trackbars for adjusting HSV color range
-    cv2.createTrackbar('Hue Lower', 'Processed Frame', lower_range_default[0], 180, update_trackbar)
-    cv2.createTrackbar('Saturation Lower', 'Processed Frame', lower_range_default[1], 255, update_trackbar)
-    cv2.createTrackbar('Value Lower', 'Processed Frame', lower_range_default[2], 255, update_trackbar)
-    cv2.createTrackbar('Hue Upper', 'Processed Frame', upper_range_default[0], 180, update_trackbar)
-    cv2.createTrackbar('Saturation Upper', 'Processed Frame', upper_range_default[1], 255, update_trackbar)
-    cv2.createTrackbar('Value Upper', 'Processed Frame', upper_range_default[2], 255, update_trackbar)
+    cv2.createTrackbar('Hue Lower', 'Processed Frame',
+                       lower_range_default[0], 180, update_trackbar)
+    cv2.createTrackbar('Saturation Lower', 'Processed Frame',
+                       lower_range_default[1], 255, update_trackbar)
+    cv2.createTrackbar('Value Lower', 'Processed Frame',
+                       lower_range_default[2], 255, update_trackbar)
+    cv2.createTrackbar('Hue Upper', 'Processed Frame',
+                       upper_range_default[0], 180, update_trackbar)
+    cv2.createTrackbar('Saturation Upper', 'Processed Frame',
+                       upper_range_default[1], 255, update_trackbar)
+    cv2.createTrackbar('Value Upper', 'Processed Frame',
+                       upper_range_default[2], 255, update_trackbar)
 
     while True:
         # Capture frame-by-frame
