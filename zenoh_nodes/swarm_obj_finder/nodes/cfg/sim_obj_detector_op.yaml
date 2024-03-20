@@ -1,0 +1,20 @@
+id: obj_detector_op
+
+vars:
+  BASE_DIR: "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/swarm_obj_finder"
+
+uri: file://{{ BASE_DIR }}/nodes/sim_obj_detector_op.py
+
+configuration:
+  # Fire hydrant model color filter:
+  lower_color_filter_threshold: [0, 200, 0]   #Min values are: [0, 0, 0]
+  upper_color_filter_threshold: [20, 255, 255] #Max values are: [179, 255, 255]
+  # Mop cart 3 model (red bucket) color filter:
+  #lower_color_filter_threshold: [0, 130, 65]   #Min values are: [0, 0, 0]
+  #upper_color_filter_threshold: [20, 255, 210] #Max values are: [179, 255, 255]
+  pix_step: 20 #Number of pixels ignored to make the algorithm faster.
+  max_depth_detection: 1.75 #[m]
+
+inputs: [CamInfo1, CamInfo2, Depth1, Depth2]
+outputs: [ObjDetected, DebugImgFiltered1, DebugImgFiltered2]
+tags: []

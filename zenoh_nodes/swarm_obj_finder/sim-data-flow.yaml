@@ -38,7 +38,7 @@ sources:
 
 operators:
   - id : obj_detector_op
-    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/obj_detector_op.yaml"
+    descriptor : "file://{{ BASE_DIR }}/nodes/cfg/sim_obj_detector_op.yaml"
 
   - id : obj_pos_infer_op
     descriptor : "file://{{ BASE_DIR }}/nodes/cfg/obj_pos_infer_op.yaml"
