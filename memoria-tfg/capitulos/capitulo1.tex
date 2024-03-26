@@ -16,7 +16,7 @@ Robert Collier\\
 
 
 %[Sección sobre la robótica y la importancia de la exploración espacial]
-\section{La evolución y estado de la robótica}
+\section{La evolución y el estado de la robótica}
 \label{sec:robotica} % etiqueta para luego referenciar esta sección
 
 %[Párrafo sobre la definicion de robótica y de robot]
@@ -40,12 +40,10 @@ evolución, desempeñando un papel cada vez más importante en nuestra sociedad
 moderna, gracias en gran medida a los incesantes avances en tecnologías como la
 inteligencia artificial, los sensores, los procesadores y los actuadores.
 
-%[TODO] ¿Añadir imagen de robótica en general en esta sección 1?
-
 
 
 %[Sección sobre la importancia de la robótica en los avances científicos]
-\section{La importancia de la robótica en los avances científicos}
+\section{La importancia de la robótica en la ciencia}
 \label{sec:exploracion_espacial} % etiqueta para luego referenciar esta sección
 
 %[Párrafo sobre la importancia de la propia exploración espacial]
@@ -99,7 +97,7 @@ autonoma, que inevitablemente ya forman parte de nuestra sociedad.
 
 
 %[Sección sobre la robótica móvil y su relación con la educación]
-\section{La robótica móvil y su relación con la educación}
+\section{La robótica móvil en relación con la educación}
 \label{sec:robotica_movil} % etiqueta para luego referenciar esta sección
 
 %[Párrafo sobre la robótica móvil]
@@ -122,7 +120,7 @@ complejas de manera autónoma.
 Un ejemplo representativo de este tipo de robots se puede ver en la Figura
 \ref{fig:boston_dynamics}, donde se pueden observar dos de los robots más
 desarrollados en el ámbito móvil, que han demostrado una gran versatilidad en
-una variedad de entornos para ejecuatr una amplia variedad de tareas, desde
+una variedad de entornos para ejecutar una amplia variedad de tareas, desde
 abrir puertas, pasando por transportar cargas de peso o realizar trabajos
 manuales, hasta incluso seguir rutinas de deportivas variadas, que en muchos
 casos iguala o incluso supera la de los humanos.
@@ -195,12 +193,13 @@ incesablemente.
 %[Párrafo sobre la educación en robótica en España]
 En el caso de España, desde la década de los 90, se han implementado programas
 piloto y competiciones robóticas, como el programa
-Robolot\footnote{https://www.robolot.online/} (1992), desarrollado por la UPC,
-las Olimpiadas de Informática \footnote{https://olimpiada-informatica.org/}
-(1993), que incorporaron desafíos relacionados con la programación de robots,
-así como la RoboCupJunior\footnote{https://junior.robocup.org/} (2000),
-ofreciendo a los estudiantes la oportunidad de diseñar, construir y programar
-robots para competir en diferentes categorías.
+Robolot\footnote{\url{https://www.robolot.online/}} (1992), desarrollado por la
+UPC, las Olimpiadas de
+Informática\footnote{\url{https://olimpiada-informatica.org/}} (1993), que
+incorporaron desafíos relacionados con la programación de robots, así como la
+RoboCupJunior\footnote{\url{https://junior.robocup.org/}} (2000), ofreciendo a
+los estudiantes la oportunidad de diseñar, construir y programar robots para
+competir en diferentes categorías.
 Desde alrededor de 2014, dependiendo de la comunidad autónoma de España, se han
 introducido programas y asignaturas que incluyen la robótica como parte esencial
 del plan de estudios.
@@ -210,9 +209,9 @@ Al ser necesario un contexto simple y barato para la introducción a la robótic
 en la educación se buscan herramientas como las placas Arduino (Figura
 \ref{fig:arduino}), que presentan una amplia compatibilidad con distintos
 sensores y actuadores y brinda un entorno sencillo para aquellos que se están
-introduciendo en este campo y plataformas como \textit{Scratch}
-\footnote{https://scratch.mit.edu/} para simplificar
-la programación gracias a su interfaz de bloques y la asociación de ideas a
+introduciendo en este campo y plataformas como
+\textit{Scratch}\footnote{\url{https://scratch.mit.edu/}} para simplificar la
+programación gracias a su interfaz de bloques y la asociación de ideas a
 colores, como se muestra en la Figura \ref{fig:scratch}.
 
 \begin{figure}[h!]
@@ -386,7 +385,10 @@ se han realizado múltiples trabajos acerca de este tema.
 En estos términos, los equipos de robots pueden operar eficientemente
 asignando roles y responsabilidades como expone el artículo de \cite{Alami1998},
 en el que se desarrolla un sistema de control con la menor centralización
-posible para estudiar la cooperación multirobot en el proyecto MARTHA.
+posible para estudiar la cooperación multirobot en el proyecto
+MARTHA\footnote{MARTHA: European ESPRIT III Project No 6668 \textquotedblleft
+Multiple Autonomous Robots for Transport and Handling
+Applications\textquotedblright}.
 
 %[Párrafo sobre la descentralización en la multirobótica]
 A pesar de intentar crear sistemas con la mayor descentralización posible, el
@@ -465,16 +467,16 @@ mensajes generados, intentando minimizarlos para optimizar el rendimiento del
 sistema y evitando de esta manera el problema conocido como \textquotedblleft
 cuello de botella\textquotedblright.
 
-%[Párrafo sobre las ZettaScale]
+%[Párrafo sobre ZettaScale]
 Una de las empresas más importantes en este ámbito es ZettaScale Technology, que
 ha tomado mucha relevancia en los últimos años, ya que es responsable de una de
 las implementaciones de \textit{middleware} de telecomunicaciones de DDS
 utilizado en ROS2, llamado \textit{CycloneDDS} y son los desarrolladores de un
-nuevo protocolo de comunicaciones llamado \textit{Zenoh}, que ya cuenta con
+reciente protocolo de comunicaciones llamado \textit{Zenoh}, que ya cuenta con
 importantes clientes como la NASA, debido a las prestaciones que este ofrece,
 superando en la mayoria de casos a los protocolos convecionales y que ya ha sido
-oficialmente seleccionado como el próximo RMW de ROS2
-\footnote{https://discourse.ros.org/t/ros-2-alternative-middleware-report/33771}.
+oficialmente seleccionado como el próximo RMW de
+ROS2\footnote{\url{https://discourse.ros.org/t/ros-2-alternative-middleware-report/33771}}.
 Además de esto poseen un potente middleware para la programación de flujos de
 datos aún en desarrollo, llamado \textit{Zenoh-Flow}, así como un puente llamado
 \textit{zenoh-bridge-dds} que hace las veces de traductor entre los protocolos
@@ -484,21 +486,25 @@ de flujos de datos, utilizando nodos de ROS2 existentes, y fusionando de esta
 manera ambos campos.
 
 %[Párrafo sobre flujos de datos y comportamiento reactivo mas simple para educación]
+Un flujo de datos consiste en un grafo dirigido de los datos que fluyen entre
+operaciones.
 Mantener un flujo de datos correcto es fundamental para solventar los problemas
 de telecomunicaciones mencionados en el desarrollo de sistemas de multirobótica.
 Además, simplifica el desarrollo del software al proporcionar una clara visión
 de la dirección, el origen y el destino de los datos en cada momento.
 Esto permite dividir el programa en partes claramente diferenciadas, normalmente
 llamadas nodos, modularizándolo y dando lugar a la división del problema último
-en varios problemas más simples y fáciles de atajar.
+en varios problemas más simples y fáciles de atajar, creando un paradijma que
+modela el programa como un flujo de datos.
 Como resultado, el desarrollo se vuelve un proceso más sostenible y escalable, y
 por tanto, más fácil de llevar a cabo por los estudiantes.
 
-Podemos ver ejemplificado este proceso en la Figura \ref{fig:data_flow}, donde
-se ilustra el flujo de datos de manera simplificada, de un robot para detectar y
-seguir códigos QR\footnote{https://github.com/USanz/follow_beacon}, en la que se
-puede observar cómo lo los datos siguen un esquema de nodos dirigido, y en este
-caso unidireccional, pasando de su orígen en el robot a su procesamiento en otra
+Este proceso se puede ver representado en la Figura
+\ref{fig:data_flow_qr_example}, donde se ilustra el flujo de datos de manera
+simplificada, de un robot para detectar y seguir códigos
+QR\footnote{\url{https://github.com/USanz/follow_beacon}}, en la que se puede
+observar cómo los datos siguen un esquema de nodos dirigido, y en este caso
+unidireccional, pasando de su orígen en el robot a su procesamiento en otra
 máquina y acabando en su posterior vuelta al robot en forma de ordenes de
 movimiento, pudiendo saber en todo momento en qué proceso se encuentran dichos
 datos.
@@ -508,16 +514,41 @@ datos.
     \includegraphics[width=15cm]{figs/QR_code_data_flow}
   \end{center}
   \caption{Flujo de datos de un robot para la detección y seguimiento de códigos QR.}
-  \label{fig:data_flow}
+  \label{fig:data_flow_qr_example}
 \end{figure}\
 
-%[TODO] ¿citar mi propio trabajo follow_beacon? No.
-%[TODO] Que lo entienda mi madre.
+Este proceso es equiparable a la forma de programacióm de un robot reactivo, ya
+que, como se observa en la figura \ref{fig:data_flow_vs_robotics}, en los flujos
+de datos existen tres tipos esenciales de nodos: unos en los que se originan los
+datos, otros donde se comutan y otros donde los datos llegan a su final; y que
+encuentran correspondencia en los nodos encargados de la percepción de un robot,
+del computo de estos datos obtenidos y de los nodos encargados de la actuación
+del robot, respectivamente.
+Todo ello se ve mejor explicado en una charla en la conferencia ROSCON Madrid de
+2023\footnote{\url{https://www.youtube.com/watch?v=ZgFHCvEFU0I}}
+
+\begin{figure} [h!]
+  \begin{center}
+    \includegraphics[width=9cm]{figs/data-flow_vs_robotics_scheme}
+  \end{center}
+  \caption{Comparación de un flujo de datos con los componentes de un robot.}
+  \label{fig:data_flow_vs_robotics}
+\end{figure}\
+
+Además, este tipo de programación de los robots de manera reactiva es el más
+simple y el primero que se suele aprender, por lo que genera una sinergia con la
+educación en este ámbito.
+
+
+
 %[TODO] Eliminar comentarios sobrantes al final (moverlos a su sección).
 %[TODO] Capitulo II Estado del arte (no necesario si cito bien todo en la introduccion).
 %[TODO] Hacer collage de las imagenes del video para explicar en varios pasos lo mismo que el video.
 %[TODO] Poner las URLs como notas al pie. Ej: Robocup\footnote{\url{http://www.robocup.org}}.
 %[TODO] Poner las URLs de videos en las notas al pie de página??
+
+%[TODO] Capitulo II: objetivos y metodologia
+%[TODO] buscar objetivos que se deben cumplir en los tfgs de la universidad y añadir los que se han cumplido
 
 
 
