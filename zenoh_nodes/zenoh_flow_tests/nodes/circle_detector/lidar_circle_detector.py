@@ -41,11 +41,13 @@ def deser_laserscan_msg(ser_ros2_msg: bytes):
 
 
 
-#DEBUG_IMG_MARGIN  = -70 #[%] # Negative number to zoom in
-#DEBUG_IMG_SCALE   = 200 #[px]
-DEBUG_IMG_MARGIN  = 5   #[%] # Negative number to zoom in
-DEBUG_IMG_SCALE   = 50 #[px] # before 100 (sim)
 WHITE_COLOR_PIXEL = 255
+GREY_COLOR_PIXEL = 128
+M2PX_SCALE = 125        # 1[m] = 100[px]
+DEBUG_IMG_MARGIN = 25   # [px]
+LINE_JOINING_WIDTH = 2
+
+
 
 class PolarCoord():
     def __init__(self, radius: float, theta: float) -> None:
@@ -99,50 +101,77 @@ class LidarCircleDetector(Operator):
         cartesian_points = list()
         for i, range in enumerate(laser_msg.ranges):
             # Calculate the angle and ensure it's within the range [0, 2*pi)
-            if not np.isinf(range):
+            if (not np.isinf(range) and\
+                laser_msg.range_min < range < laser_msg.range_max):
                 angle = laser_msg.angle_min + i * laser_msg.angle_increment
                 angle = np.mod(angle, 2 * np.pi)
                 polar_point = PolarCoord(range, angle)
-                if laser_msg.range_min < range < laser_msg.range_max:
-                    cartesian_points.append(polar_point.to_cartesian())
+                cartesian_points.append(polar_point.to_cartesian())
         return cartesian_points
 
     def draw_points(self, bg_img: np.ndarray, cart_points: list) -> np.ndarray:
         pixel_centre = int(bg_img.shape[0] / 2)
-        drew_img = cv2.circle(
+        drawn_img = cv2.circle(
             bg_img,
             (pixel_centre, pixel_centre),
             1,
             WHITE_COLOR_PIXEL,
             2
             )
-        for cart_point in cart_points:
-            pixel_x = pixel_centre + int(DEBUG_IMG_SCALE * cart_point.x)
-            pixel_y = pixel_centre + int(DEBUG_IMG_SCALE * cart_point.y)
-            drew_img[pixel_y, pixel_x] = WHITE_COLOR_PIXEL
-        return drew_img
+        for i, cart_point in enumerate(cart_points):
+            pixel_x = pixel_centre + self.meter2pixel(cart_point.x)
+            pixel_y = pixel_centre + self.meter2pixel(cart_point.y)
+            next_cart_point = cart_points[i-1]
+            next_pixel_x = pixel_centre + self.meter2pixel(next_cart_point.x)
+            next_pixel_y = pixel_centre + self.meter2pixel(next_cart_point.y)
+
+            # Calculate the distance between the points
+            point1 = np.array([pixel_x, pixel_y])
+            point2 = np.array([next_pixel_x, next_pixel_y])
+            dist = np.linalg.norm(point2 - point1)
+            #if dist < 30:
+            cv2.line(
+                drawn_img, (pixel_x,pixel_y), (next_pixel_x, next_pixel_y),
+                WHITE_COLOR_PIXEL, thickness=LINE_JOINING_WIDTH,
+                lineType=cv2.LINE_4
+                )
+                # [TODO] Test in the lab with lineType=cv2.LINE_4
+                #        and lineType=cv2.LINE_AA with different thicknesses
+            #else:
+            #    drawn_img[pixel_y, pixel_x] = WHITE_COLOR_PIXEL
+
+            #drawn_img = cv2.circle(
+            #    drawn_img,
+            #    (pixel_y, pixel_x),
+            #    2,
+            #    WHITE_COLOR_PIXEL,
+            #    -1
+            #)
+        return drawn_img
 
     def detect_circles(self, image: np.ndarray) -> list:
         #blurred_img = image
         blurred_img = cv2.GaussianBlur(image, (5, 5), 0) # before (sim) :image, (5, 5), 2
         circles = cv2.HoughCircles(
             blurred_img,
-            cv2.HOUGH_GRADIENT_ALT,
+            cv2.HOUGH_GRADIENT,
             dp=1,
-            minDist=10,
-            param1=1,
-            param2=1,
-            minRadius=1,
-            maxRadius=100)
-            #before (sim): 1, 10, 1, 10, 1, 50
-        print(circles)
+            minDist=20,
+            param1=90,
+            param2=33,
+            minRadius=0,
+            maxRadius=200
+            )
+            # Other sim tests:
+            # 1, 10, 1, 10, 1, 50
+            # 1, 10, 1, 1, 1, 100
         # If circles are found, draw them
         if circles is None:
             return blurred_img
         circles = np.round(circles[0, :]).astype("int")
         for (x, y, r) in circles:
-            cv2.circle(image, (x, y), r, WHITE_COLOR_PIXEL, 2)  # Draw the circle outline
-            cv2.circle(image, (x, y), 2, WHITE_COLOR_PIXEL, 3)  # Draw the center of the circle
+            cv2.circle(image, (x, y), r, GREY_COLOR_PIXEL, 2)  # Draw the circle outline
+            cv2.circle(image, (x, y), 2, GREY_COLOR_PIXEL, 3)  # Draw the center of the circle
         return image
 
     def arr2img(self, img_arr: np.ndarray) -> Image:
@@ -168,6 +197,9 @@ class LidarCircleDetector(Operator):
         
         return img_msg
 
+    def meter2pixel(self, m: float) -> int:
+        return int(m * M2PX_SCALE)
+    
     async def iteration(self) -> None:
         ser_msg = await self.input.recv()
         laser_msg = ser_msg.get_data()
@@ -175,14 +207,21 @@ class LidarCircleDetector(Operator):
             laser_msg.ranges.reverse()
 
         non_inf_ranges = [r for r in laser_msg.ranges if not np.isinf(r)]
-        max_laser_range = max(non_inf_ranges)
-        #bg_img = self.get_bg_img(2 * int(laser_msg.range_max * DEBUG_IMG_SCALE * (1 + DEBUG_IMG_MARGIN / 100)))
-        bg_img = self.get_bg_img(2 * int(max_laser_range * DEBUG_IMG_SCALE * (1 + DEBUG_IMG_MARGIN / 100))) # Better results
-        cart_points = self.get_cart_points(laser_msg)
-        laser_img = self.draw_points(bg_img, cart_points)
-        debug_img = self.detect_circles(laser_img)
+        max_measured_range = max(non_inf_ranges)
+        img_width = self.meter2pixel(max_measured_range * 2) + DEBUG_IMG_MARGIN
+        bg_img = self.get_bg_img(img_width)
 
+        cart_points = self.get_cart_points(laser_msg) # in [m]
+        laser_img = self.draw_points(bg_img, cart_points)
+        
+        print("debug img saved")
+        cv2.imwrite(
+            "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests/debug_img_7.png",
+            laser_img
+            )
+        debug_img = self.detect_circles(laser_img)
         debug_img_msg = self.arr2img(debug_img)
+        
         await self.output.send(debug_img_msg)
 
         return None

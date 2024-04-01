@@ -12,6 +12,13 @@ thickness = 2  # Negative thickness fills the circle
 cv2.circle(image, center, radius, color, thickness)
 cv2.rectangle(image, (0, 0), (500, 300), (0, 0, 0), -1)
 
+print("opening image...")
+image = cv2.imread(
+    "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests/debug_img_6.png",
+    cv2.IMREAD_GRAYSCALE
+    )
+
+
 # Apply Gaussian blur to the image to reduce noise
 image_blurred = cv2.GaussianBlur(image, (9, 9), 2)
 
