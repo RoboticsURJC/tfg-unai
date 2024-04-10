@@ -23,11 +23,18 @@ del proyecto, la metodología empleada y el plan de trabajo detallado.
 
 Este proyecto surge como respuesta a la escasa investigación sobre los flujos de
 datos en conjunto con ROS2, ofreciendo a su vez un entorno propicio para la
-creación sencilla de aplicaciones, eludiendo la complejidad inherente de este
-\textit{middleware} robótico.
+creación sencilla de distintas aplicaciones robóticas basadas en dichos flujos
+de datos, que pueden replicar de manera versátil y sencilla, los comportamientos
+reativos de los robots, eludiendo la complejidad inherente de este
+\textit{middleware} robótico y dando lugar, por tanto, a un nuevo entorno de
+programación más simple.
 
 Además, tiene como objetivo secundario cerrar la brecha educativa entre la
-enseñanza secundaria y universitaria, expuesta en el capítulo anterior.
+enseñanza secundaria y universitaria, expuesta en la Sección
+\ref{sec:educacion_robotica}, en la que queda explicado el salto que existe en
+la educación en robótica entre la educación secundaria y la universitaria,
+debido a la complejidad del código y de las plataformas de desarrollo
+utilizadas.
 
 %Cuenta aquí el objetivo u objetivos generales y, a continuación, concrétalos mediante objetivos específicos.
 
@@ -64,22 +71,32 @@ asignatura consisten en:
         trabajo o vocación de una forma profesional y posean las competencias
         que suelen demostrarse por medio de la elaboración y defensa de
         argumentos y la resolución de problemas dentro de su área de estudio.}
+        Esta competencia ha sido cumplida con la realización de la parte del
+        software de este trabajo, en la que se han aplicado distintos
+        conocimientos adquiridos durante el grado.
     \item{\textit{CB4.} Que los estudiantes puedan transmitir información,
         ideas, problemas y soluciones a un público tanto especializado como no
         especializado.}
+        Esta competencia queda resuelta al detallar todo el complejo proceso
+        consecuente a este trabajo de manera clara y comprensible en la memoria
+        que esta siendo leída.
     \item{\textit{CB5.} Que los estudiantes hayan desarrollado aquellas
         habilidades de aprendizaje necesarias para emprender estudios
         posteriores con un alto grado de autonomía.}
+        Esta competencia queda cumplida al haber adquirido los conocimientos
+        suficientes para el desarrollo de este trabajo de manera completamente
+        autónoma, a base de distintas pruebas y consultas en Internet.
 \end{enumerate}
 
-La competencia específica \textit{CE28} de la asignatura especifica lo
+La competencia específica \textit{CE28} de la asignatura detalla lo
 siguiente:
 Desarrollo de las capacidades adecuadas para realizar un ejercicio original
 individual (o excepcionalmente colectivo), presentarlo y defenderlo ante un
 tribunal universitario, consistente en un proyecto en el ámbito de las
 tecnologías específicas del campo de la Robótica de naturaleza profesional en el
 que se sinteticen e integren las competencias adquiridas en las enseñanzas.
-
+Esta última queda cumplida con la creación del presente trabajo, de la
+consecuente memoria y documentación y de su posterior defensa ante un tribunal.
 
 %Describe los requisitos que ha de cumplir tu trabajo.
 
@@ -93,11 +110,27 @@ disponible, así como realizando pruebas pertinentes sobre su correcto
 funcionamiento en los distintos entornos, incluyendo la simulación y el
 laboratorio.
 
-A la hora de desarrollar \textit{software} demostrativo se siguió una
-metodología de prueba y error debidamente justificada.
-Este proceso implicó pruebas periódicas en simulación con el fin de identificar
-errores y perfeccionar los valores de los parámetros.
-Posteriormente, se evaluó su funcionamiento en un entorno real, como el del
+En relación con el desarrollo del \textit{software} demostrativo se sigió un
+ciclo de desarrollo \textit{software} iterativo, que consiste en la
+planificación del \textit{software}, el desarrollo del mismo, su consecuente
+revisión mediante pruebas y su corrección, todo ello de manera periódica,
+generando en cada una de las iteraciones un resultado ejecutable mejor que el
+anterior, hasta conseguir al final una versión completamente funcional, como se
+ve reflejado en el esquema de la Figura \ref{fig:desarrollo_iterativo}.
+Este proceso de desarrollo puede verse alineado con los principios de mejora
+continua del ciclo de desarrollo PDCA.
+
+\begin{figure} [h!]
+    \begin{center}
+      \includegraphics[width=12cm]{figs/desarrollo_iterativo}
+    \end{center}
+    \caption{Esquema del desarrollo software iterativo.}
+    \label{fig:desarrollo_iterativo}
+  \end{figure}\
+
+Este desarrollo implicó pruebas periódicas en simulación con el fin de
+identificar errores y perfeccionar los valores de los parámetros, para
+posteriormente evaluar su funcionamiento en un entorno real, como el del
 laboratorio.
 
 %Qué paradigma de desarrollo software has seguido para alcanzar tus objetivos.
@@ -112,30 +145,31 @@ distintos entornos y el desarrollo del \textit{software} demostrativo o de
 ejemplo, comprendiendo un periodo de tiempo superior a un año, comenzando en
 Febrero de 2023 y finalizando en Mayo de 2024.
 
-%[TODO] modificar la fecha final.
+% [TODO] modificar la fecha final.
 
 \begin{enumerate}
-    \item{\textit{Investigación del software a utilizar.} Periodo de Febrero a
-        Mayo de 2023 durante mis prácticas de empresa, en las que estuve
+    \item{\textit{Investigación del software a utilizar.} Periodo de febrero a
+        mayo de 2023 durante las prácticas de empresa, en las que estuve
         aprendiendo el funcionamiento de \textit{softwares} como Zenoh,
         Zenoh-Flow, Zenoh-bridge-DDS, CycloneDDS, y acerca de las
         telecomunicaciones entre robots, 35 horas semanales durante 4 meses.}
-    \item{\textit{Investigación del estado del arte.} Periodo de Junio a Agosto
+    \item{\textit{Investigación del estado del arte.} Periodo de junio a agosto
         de 2023, en el que se investigó acerca de los trabajos previos
         relacionados, y sobre la viabilidad y compatibilidad del proyecto.}
     \item{\textit{Implementación de una arquitectura software funcional en
-        simulación.} Periodo de Junio a Agosto de 2023, en el que se consiguió
-        hacer funcionar el \textit{software} en simulación.}
-    \item{\textit{Desarrollo de software demostrativo.} Periodo de Agosto a
-        Noviembre de 2023 en el que se migró el \textit{software} desarrollado
+        simulación.} Periodo de junio a agosto de 2023, en el que se consiguió
+        un corecto funcionamiento del \textit{software} en simulación.}
+    \item{\textit{Desarrollo de software demostrativo.} Periodo de agosto a
+        noviembre de 2023 en el que se migró el \textit{software} desarrollado
         durante las prácticas a versiones posteriores.}
     \item{\textit{Implementación de una arquitectura software funcional en un
-        entorno real.} Periodo de Noviembre de 2023 a Enero de 2024 en el que se
-        consiguió hacer funcionar el \textit{software} en el laboratorio.}
+        entorno real.} Periodo de noviembre de 2023 a enero de 2024 en el que se
+        consiguió un corecto funcionamiento del \textit{software} en el
+        laboratorio.}
     \item{\textit{Pruebas del software desarrollado en el laboratorio.} Periodo
-        de Noviembre de 2023 a Abril de 2024 en el que se realizaron las pruebas
-        y cambios necesarios para hacer funcionar el \textit{software}
-        demostrativo en el entorno real del labratorio.}
+        de noviembre de 2023 a abril de 2024 en el que se realizaron las pruebas
+        y cambios necesarios para un corecto funcionamiento del
+        \textit{software} demostrativo en el entorno real del labratorio.}
 \end{enumerate}
 
 Durante los periodos de desarrollo de este proyecto fuera de las prácticas de
