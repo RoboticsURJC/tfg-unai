@@ -22,3 +22,6 @@ ros2_ws/src/ir_robots/
 ros2_ws/src/ThirdParty/
 ros2_ws/src/RpisLabCmds.txt
 t4_tests.txt
+cameras_tests_info.yaml
+
+memoria-tfg/correcciones/*
