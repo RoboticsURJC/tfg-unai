@@ -21,101 +21,82 @@ del proyecto, la metodología empleada y el plan de trabajo detallado.
 \section{Descripción del problema}
 \label{sec:descripcion}
 
-Este proyecto surge como respuesta a la escasa investigación sobre los flujos de
-datos empleados en conjunto con ROS2, ofreciendo a su vez un entorno propicio
-para la creación sencilla de distintas aplicaciones robóticas basadas en dichos
-flujos de datos, que pueden replicar de manera versátil y sencilla los
+Este proyecto surge como respuesta a la escasa investigación sobre los
+flujos de datos empleados en conjunto con ROS2, ofreciendo a su vez un entorno
+propicio para la creación sencilla de distintas aplicaciones robóticas basadas
+en dichos flujos de datos, que pueden replicar de manera versátil y sencilla los
 comportamientos reactivos de los robots, eludiendo la complejidad inherente de
 este \textit{middleware} robótico y dando lugar, por tanto, a un nuevo entorno
-de programación más simple.
-
-Además, tiene como objetivo secundario cerrar la brecha educativa entre la
-enseñanza secundaria y universitaria, expuesta en la Sección
-\ref{sec:robotica_educativa}, en la que queda reflejado el salto que existe en
-la educación en robótica entre la etapa secundaria y la universitaria, debido a
-la complejidad del código y de las plataformas de desarrollo utilizadas.
-
-%[TODO] hacer correccion de julio y pasar aspell.
-%[TODO] añadir esto:
-% Partes del capítulo 1 que detallan demasiado para ser movidas a este capítulo:
-
-%%% [Párrafo sobre la complejidad de la arquitectura de ROS]
-%La complejidad mencionada en la Sección \ref{sec:robotica_educativa} puede verse
-%ilustrada en la Figura \ref{fig:ros}, en la que se muestra un esquema
-%simplificado de la arquitectura de ambas versiones de este \textit{middleware}
-%que puede resultar abrumadora para aquellos que se están iniciando en este
-%ámbito, ya que se muestra la creciente complejidad adquirida al pasar de ROS,
-%que ya era suficientemente complejo, a ROS2, en el que ahora existen distintas
-%implementaciones de \textit{middleware} de comunicaciones, y otras capas como al
-%de transporte, el sistema operativo y el \textit{hardware}.
+de programación más simple, a la vez que solucionando varios problemas expuestos
+a continuación.
 
 
-%%% [Párrafo de la primerísima y antigua versión de la introducción, que fue
-%   comentado para moverla a este capítulo debido a su explicación tan detallada]
+\subsection{El problema de la congestión de red}
+\label{sec:problema_congestion}
 
-%La educación en robótica se basa en la robótica de bajo coste, normalmente en
-%placas como Arduino o similares, las cuales son ideales para este uso, y a su
-%vez limitan la capacidad del robot en cuestión y el hardware que se puede usar y
-%consecuentemente limitan la creatividad y el aprendizaje de los niños. Una vez
-%se llega a un cierto nivel de conocimientos, el siguiente paso suele ser la
-%programación de robots con ROS2, donde existe un gran escalon de aprendizaje.
-%Este trabajo busca simplificar el desarrollo del software en ROS2 y así reducir
-%dicho escalón, para hacer más fácil este desarrollo, dando la posibilidad de
-%crear aplicaciones robóticas más complejas para robots más completos y que
-%permanecen dentro de la categoría de robots de bajo coste y por tanto siguen
-%siendo asequibles para instituciones como colegios o institutos.\\
+Con el uso de ROS2, que por defecto funciona sobre el protocolo DDS, existe un
+problema de congestión de red: los nodos de ROS2 generan una gran cantidad de
+mensajes de manera iterativa, que a su vez van a través de DDS, que es un
+protocolo de comunicaciones que genera una gran cantidad de mensajes de
+\textit{Discovery}, lo que en conjunto conlleva a la generación de congestión de
+la red, y dificulta de esta manera la programación de aplicaciones multirobot.
 
-
+Una solución muy sencilla a este problema, consiste en cambiar el protocolo que
+lo genera por otro con mejores prestaciones.
+En nuestro caso se utilizará un protocolo llamado Zenoh, como ya se expondrá más
+adelante.
 
 
-%\section{Problemas de ROS en relación con el aprendizaje}
-%\label{sec:miseccion} % etiqueta para luego referenciar esta sección
+\subsection{El problema del escalón de aprendizaje en robótica}
+\label{sec:problema_escalon}
 
-%ROS es el estándar en robótica para la programación de robots, pero tiene un
-%problema y es el gran escalón de aprendizaje que existe cuando se pasa de una
-%placa simple como arduino, a robots más complejos con máquinas integradas como
-%las placas Raspberry Pi o un ordenador portátil directamente. Esto conlleva a una gran
-%diferencia entre la robótica que se enseña en los colegios e institutos a la que
-%se enseña en universidades, y es debido, precisamente a la complejidad de código
-%y enseñanza de ROS, para los cuales, se requiere incluso de varias asignaturas.
-%Por eso en este trabajo se pretende incorporar un paso intermedio en este gran
-%escalón.
-%
-%La propia naturaleza de este \textit{middleware} robótico obliga a programar
-%nodos que se ejecutan iterativamente en bucle, sin necesidad de generar una
-%topología de red concreta para saber de donde vienen o a donde van los datos, lo
-%que puede ser un poco complicado de entender a primera vista para los niños.\\
-%
-%Además de este problema, existe otro relacionado con la congestión de red: los
-%nodos de ROS2 se comunican a través de DDS, un protocolo de comunicaciones que
-%genera una gran cantidad de mensajes de \textit{Discovery}, lo que conlleva
-%consecuentemente a la generación de congestión de la red, y dificulta de esta
-%manera la programacion de aplicaciones multirobóticas, que son un posible
-%siguiente paso en la enseñanza de la robotica, para entender las comunicaciones
-%entre los distintos robots.\\
-%
-%Este trabajo prentende solucionar tanto el problema del escalón de aprendizaje,
-%suponiendo un paso intermedio en la enseñanza de la robótica, y el problema de
-%la congestión de red generala por DDS, suponiendo una posible solución a la
-%misma.\\
-%
-%El problema de la congestión se soluciona usando otro protocolo llamado Zenoh,
-%con mejores prestaciones que DDS, y la simplicidad del código de ROS2, se ha
-%conseguido gracias al uso de un \textit{framework} llamado Zenoh-Flow, que
-%funciona sobre el protocolo mencionado y el cual le da nombre. Este
-%\textit{framework} está pensado para la programación de flujos de datos,, por lo
-%que hay que definir primero un flujo de datos que luego seguiran los nodos,
-%activando su iteración al momento de recibir un dato, generando de esta manera
-%un flujo de datos que pasa de nodo a nodo, a diferencia de ROS.\\
-%
-%La implementación conjunta con ROS es posible gracias a que Zenoh-flow permite
-%serializar los datos que se quieren enviar, y existe un bridge que los traduce
-%de Zenoh a DDS para que los nodos de ROS2 entiendan dicha información. Es por
-%este motivo, que si se serializan los mensajes de la misma manera que se hace
-%internamente en ROS2, se pueden seguir utilizando nodos ya implementado en ROS2,
-%como puede ser la navegación.\\
+La educación en robótica se basa en robots de bajo coste, como queda expuesto en
+la Sección \ref{sec:robotica_educativa}, lo que suele limitar la capacidad del
+robot en cuestión y merma la cantidad de \textit{hardware} externo compatible,
+así como su calidad, y consecuentemente limita la creatividad y el aprendizaje
+de los estudiantes.
+Además, siendo ROS el estándar en robótica para la programación de robots,
+se genera un escalón de aprendizaje, previamente expuesto en la sección
+referenciada, debido al gran cambio desde la programación de placas como
+Arduino, a la utilización tanto de \textit{hardware}, como de \textit{software}
+mucho más complejos.
+
+Esto conlleva a una gran diferencia entre la robótica que se enseña en las
+etapas de la educación primaria y secundaria respecto a la etapa universitaria,
+y es debido precisamente, a la complejidad de código y enseñanza de ROS, para
+los cuales, se requiere incluso de varias asignaturas en esta última etapa.
+Es por este motivo, que este trabajo pretende incorporar un paso intermedio en
+la enseñanza, simplificando el desarrollo del software en ROS2, y dando la
+posibilidad de crear aplicaciones robóticas más complejas de una manera más
+simple para robots más completos, y que a su vez permanecen dentro de la
+categoría de robots de bajo coste, siendo asequibles para instituciones como
+colegios o institutos.
 
 
+\subsection{Planteamiento de solución.}
+\label{sec:planteamiento_solucion}
+
+La simplicidad del código de ROS2, se ha conseguido gracias al uso de un
+\textit{framework} llamado Zenoh-Flow, que funciona sobre el protocolo
+mencionado en la Subsección \ref{sec:problema_congestion}, y el cual le da
+nombre.
+Este \textit{framework} está pensado para la programación de flujos de datos,
+por lo que se requiere la previa definición de un flujo de datos a seguir por
+parte de los nodos, activando su iteración al momento de recibir un dato, y
+generando de esta manera un flujo de datos que pasa de nodo a nodo únicamente
+cuando es necesario, lo que reduce en gran cantidad los mensajes generados.
+
+La implementación conjunta con ROS2 es posible gracias a que Zenoh-Flow permite
+serializar los datos que se quieren enviar, y existe un \textit{bridge} que los
+traduce de Zenoh a DDS para que los nodos de ROS2 entiendan dicha información.
+Es por este motivo, que si se serializan los mensajes de la misma manera que se
+hace internamente en ROS2, se pueden seguir utilizando nodos ya implementados en
+ROS2, como pueden ser los relativos a la navegación.
+
+Este trabajo prentende, por tanto, solucionar tanto el problema del escalón de
+aprendizaje, suponiendo un paso intermedio en la enseñanza de la robótica, como
+el problema de la congestión de red generada por DDS, suponiendo una posible
+solución a la misma.
 
 %Cuenta aquí el objetivo u objetivos generales y, a continuación, concrétalos mediante objetivos específicos.
 
@@ -238,7 +219,7 @@ febrero de 2023 y finalizando en junio de 2024.
     \item{\textit{Investigación del software a utilizar.} Periodo de febrero a
         mayo de 2023 durante las prácticas de empresa, en las que estuve
         aprendiendo el funcionamiento de \textit{softwares} como Zenoh,
-        Zenoh-Flow, Zenoh-bridge-DDS, CycloneDDS, y acerca de las
+        Zenoh-Flow, Zenoh-Bridge-DDS, CycloneDDS, y acerca de las
         telecomunicaciones entre robots, 35 horas semanales durante 4 meses.}
     \item{\textit{Investigación del estado del arte.} Periodo de junio a agosto
         de 2023, en el que se investigó acerca de los trabajos previos
