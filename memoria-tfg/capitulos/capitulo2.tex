@@ -37,21 +37,21 @@ a continuación.
 Con el uso de ROS2, que por defecto funciona sobre el protocolo DDS, existe un
 problema de congestión de red: los nodos de ROS2 generan una gran cantidad de
 mensajes de manera iterativa, que a su vez van a través de DDS, que es un
-protocolo de comunicaciones que genera una gran cantidad de mensajes de
-\textit{Discovery}, lo que en conjunto conlleva a la generación de congestión de
-la red, y dificulta de esta manera la programación de aplicaciones multirobot.
+protocolo de comunicaciones que también origina muchos de mensajes de
+\textit{Discovery}, lo que en conjunto conlleva a la congestión de la red, y
+dificulta de esta manera la programación de aplicaciones multirobot.
 
-Una solución muy sencilla a este problema, consiste en cambiar el protocolo que
-lo genera por otro con mejores prestaciones.
+Una solución muy sencilla a este problema, consistirá en cambiar el protocolo
+que lo provoca por otro con mejores prestaciones.
 En nuestro caso se utilizará un protocolo llamado Zenoh, como ya se expondrá más
-adelante.
+adelante, en el Capítulo \ref{cap:capitulo3}.
 
 
 \subsection{El problema del escalón de aprendizaje en robótica}
 \label{sec:problema_escalon}
 
-La educación en robótica se basa en robots de bajo coste, como queda expuesto en
-la Sección \ref{sec:robotica_educativa}, lo que suele limitar la capacidad del
+La educación en robótica se basa en robots de bajo coste, como se expuso en la
+Sección \ref{sec:robotica_educativa}, lo que suele limitar la capacidad del
 robot en cuestión y merma la cantidad de \textit{hardware} externo compatible,
 así como su calidad, y consecuentemente limita la creatividad y el aprendizaje
 de los estudiantes.
@@ -73,27 +73,30 @@ categoría de robots de bajo coste, siendo asequibles para instituciones como
 colegios o institutos.
 
 
-\subsection{Planteamiento de solución.}
+\subsection{Planteamiento de solución}
 \label{sec:planteamiento_solucion}
 
-La simplicidad del código de ROS2, se ha conseguido gracias al uso de un
+La simplicidad del código de ROS2, se conseguirá gracias al uso de un
 \textit{framework} llamado Zenoh-Flow, que funciona sobre el protocolo
-mencionado en la Subsección \ref{sec:problema_congestion}, y el cual le da
+mencionado en la Sección \ref{sec:problema_congestion}, y el cuál le da
 nombre.
 Este \textit{framework} está pensado para la programación de flujos de datos,
-por lo que se requiere la previa definición de un flujo de datos a seguir por
-parte de los nodos, activando su iteración al momento de recibir un dato, y
-generando de esta manera un flujo de datos que pasa de nodo a nodo únicamente
-cuando es necesario, lo que reduce en gran cantidad los mensajes generados.
+por lo que se requerirá la previa definición de un flujo de datos a seguir por
+parte de los nodos, los cuales activarán su iteración al momento de recibir un
+dato, y generarán en su conjunto, un flujo de datos transmitiendo los datos de
+nodo a nodo únicamente cuando es necesario, cualidad que reducirá en gran
+cantidad los mensajes generados.
 
-La implementación conjunta con ROS2 es posible gracias a que Zenoh-Flow permite
-serializar los datos que se quieren enviar, y existe un \textit{bridge} que los
-traduce de Zenoh a DDS para que los nodos de ROS2 entiendan dicha información.
-Es por este motivo, que si se serializan los mensajes de la misma manera que se
-hace internamente en ROS2, se pueden seguir utilizando nodos ya implementados en
-ROS2, como pueden ser los relativos a la navegación.
+La implementación conjunta con ROS2 será posible gracias a que Zenoh-Flow
+permite serializar los datos que se quieren enviar, y existe un \textit{bridge}
+que los traduce de Zenoh a DDS para que los nodos de ROS2 puedan entender dicha
+información.
+Es por este motivo, que se serializarán los mensajes de la misma manera que se
+hace internamente en ROS2, y así se podrá seguir utilizando nodos de ROS2
+existentes, como pueden ser los relativos a la navegación, lo que evitará la
+complejidad de su programación.
 
-Este trabajo prentende, por tanto, solucionar tanto el problema del escalón de
+Este trabajo pretende, por tanto, solucionar tanto el problema del escalón de
 aprendizaje, suponiendo un paso intermedio en la enseñanza de la robótica, como
 el problema de la congestión de red generada por DDS, suponiendo una posible
 solución a la misma.
