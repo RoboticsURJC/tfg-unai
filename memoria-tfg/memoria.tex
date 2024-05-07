@@ -1,4 +1,4 @@
-\input{estilo.tex} % archivo de configuración de estilo
+\input{estilo.tex} % archivo de configuraciï¿½n de estilo
 
 \makeindex
 
@@ -7,9 +7,9 @@
 
 \frontmatter
 
-\input{portada/indice.tex} % aquí se cargan todas las "primeras páginas"
+\input{portada/indice.tex} % aquÃ­ se cargan todas las "primeras pÃ¡ginas"
 
-% Bibliografía
+% BibliografÃ­a
 \let\OLDthebibliography=\thebibliography
 \def\thebibliography#1{\OLDthebibliography{#1}
   \addcontentsline{toc}{chapter}{\bibname}}
@@ -23,15 +23,17 @@
 
 \input{capitulos/capitulo3}
 
-\input{capitulos/capitulo4}
+%\input{capitulos/capitulo4}
 
-\input{capitulos/capitulo5}
+%\input{capitulos/capitulo5}
+
+%\input{capitulos/capitulo6}
 
 \clearpage
 \thispagestyle{empty}
 
 \printindex \nocite{*}
 \appendix
-\bibliographystyle{apalike} \bibliography{bibliografia}
+\bibliographystyle{apacite} \bibliography{bibliografia}
 
 \end{document}

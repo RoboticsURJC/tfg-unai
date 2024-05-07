@@ -20,8 +20,10 @@
 \usepackage{listings} % para poder hacer uso de "listings" propios (p.ej. códigos)
 \usepackage{eurosym} % para poder usar el símbolo del euro con \euro {xx}
 \usepackage{hyperref} % TODO: añade la opción hidelinks para imprimirlo (los enlaces no aparecerán resaltados)
-\usepackage{natbib} % para usar \citep{},  \citet{},  \citeauthor{},  \citeyear{}...
+%\usepackage{natbib} % para usar \citep{},  \citet{},  \citeauthor{},  \citeyear{}...
 %\usepackage[backend=biber, style=apa, language=spanish]{biblatex} % Añadido para soporte de bibliografía con biblatex
+\usepackage[natbibapa]{apacite} %en sustitución al paquete natbib porque era muy antiguo y daba problemas.
+
 
 % Para que no parta las palabras
 %\pretolerance=10000
@@ -96,6 +98,38 @@
   breakatwhitespace=true,
   tabsize=3
 }
+
+%\lstset{
+%  frame=tb,
+%  language=yaml,
+%  aboveskip=3mm,
+%  belowskip=3mm,
+%  showstringspaces=false,
+%  columns=flexible,
+%  numbers=none,
+%  numberstyle=\tiny\color{code_gray},
+%  breaklines=true,
+%  breakatwhitespace=true,
+%  tabsize=3
+%  keywords={true,false,null,y,n},
+%  keywordstyle=\color{darkgray}\bfseries,
+%  basicstyle=\ttfamily,
+%  sensitive=false,
+%  comment=[l]{\#},
+%  morecomment=[s]{/*}{*/},
+%  commentstyle=\color{purple}\ttfamily,
+%  stringstyle=\color{red}\ttfamily,
+%  morestring=[b]',
+%  morestring=[b]",
+%  literate =
+%    % symbols
+%    {---}{{\textcolor{black}{}---}}{4}
+%    {>}{{\textcolor{red}{>}}}{1}
+%    {|}{{\textcolor{red}{|}}}{1}
+%    % indentation
+%    {: }{{\textcolor{red}{: }}}{2}
+%    {  }{{\textcolor{red}{ }}}{2},
+%}
 
 % Definición de mis propios tipos: Códigos, Ecuaciones y Tablas
 \DeclareCaptionType{code}[Código][Listado de códigos]
