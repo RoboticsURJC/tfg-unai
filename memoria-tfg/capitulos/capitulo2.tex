@@ -40,9 +40,10 @@ mensajes de manera iterativa, que a su vez van a través de DDS, que es un
 protocolo de comunicaciones que también origina muchos de mensajes de
 \textit{Discovery}, lo que en conjunto conlleva a la congestión de la red, y
 dificulta de esta manera la programación de aplicaciones multirobot.
+\\
 
-Una solución muy sencilla a este problema, consistirá en cambiar el protocolo
-que lo provoca por otro con mejores prestaciones.
+Una solución muy sencilla a este problema consistirá en cambiar el protocolo que
+lo provoca por otro con mejores prestaciones.
 En nuestro caso se utilizará un protocolo llamado Zenoh, como ya se expondrá más
 adelante, en el Capítulo \ref{cap:capitulo3}.
 
@@ -50,16 +51,17 @@ adelante, en el Capítulo \ref{cap:capitulo3}.
 \subsection{El problema del escalón de aprendizaje en robótica}
 \label{sec:problema_escalon}
 
-La educación en robótica se basa en robots de bajo coste, como se expuso en la
-Sección \ref{sec:robotica_educativa}, lo que suele limitar la capacidad del
-robot en cuestión y merma la cantidad de \textit{hardware} externo compatible,
-así como su calidad, y consecuentemente limita la creatividad y el aprendizaje
-de los estudiantes.
+La educación en robótica se basa principalmente en robots de bajo coste, como se
+expuso en la Sección \ref{sec:robotica_educativa}, lo que suele limitar la
+capacidad del robot en cuestión y merma la cantidad de \textit{hardware} externo
+compatible, así como su calidad, y consecuentemente limita la creatividad y el
+aprendizaje de los estudiantes.
 Además, siendo ROS el estándar en robótica para la programación de robots,
 se genera un escalón de aprendizaje, previamente expuesto en la sección
 referenciada, debido al gran cambio desde la programación de placas como
 Arduino, a la utilización tanto de \textit{hardware}, como de \textit{software}
 mucho más complejos.
+\\
 
 Esto conlleva a una gran diferencia entre la robótica que se enseña en las
 etapas de la educación primaria y secundaria respecto a la etapa universitaria,
@@ -73,28 +75,30 @@ categoría de robots de bajo coste, siendo asequibles para instituciones como
 colegios o institutos.
 
 
-\subsection{Planteamiento de solución}
+\subsection{Planteamiento de la solución}
 \label{sec:planteamiento_solucion}
 
-La simplicidad del código de ROS2, se conseguirá gracias al uso de un
+La simplicidad del código de ROS2 se conseguirá gracias al uso de un
 \textit{framework} llamado Zenoh-Flow, que funciona sobre el protocolo
 mencionado en la Sección \ref{sec:problema_congestion}, y el cuál le da
 nombre.
 Este \textit{framework} está pensado para la programación de flujos de datos,
 por lo que se requerirá la previa definición de un flujo de datos a seguir por
 parte de los nodos, los cuales activarán su iteración al momento de recibir un
-dato, y generarán en su conjunto, un flujo de datos transmitiendo los datos de
-nodo a nodo únicamente cuando es necesario, cualidad que reducirá en gran
+dato, y generarán ---en su conjunto--- un flujo de datos transmitiendo los datos
+de nodo a nodo únicamente cuando es necesario, cualidad que reducirá en gran
 cantidad los mensajes generados.
+\\
 
 La implementación conjunta con ROS2 será posible gracias a que Zenoh-Flow
 permite serializar los datos que se quieren enviar, y existe un \textit{bridge}
 que los traduce de Zenoh a DDS para que los nodos de ROS2 puedan entender dicha
 información.
-Es por este motivo, que se serializarán los mensajes de la misma manera que se
+Es por este motivo que se serializarán los mensajes de la misma manera que se
 hace internamente en ROS2, y así se podrá seguir utilizando nodos de ROS2
 existentes, como pueden ser los relativos a la navegación, lo que evitará la
 complejidad de su programación.
+\\
 
 Este trabajo pretende, por tanto, solucionar tanto el problema del escalón de
 aprendizaje, suponiendo un paso intermedio en la enseñanza de la robótica, como
@@ -118,15 +122,16 @@ siguientes requisitos:
     \item{El entorno de programación debe brindar la posibilidad de funcionar en
         conjunto con nodos de ROS2, permitiendo la comunicación con los mismos
         mediante \textit{topics}.}
-    \item{Los \textit{softwares} utilizados deben ser compatibles para funcionar
-        correctamente en conjunto.}
+    \item{Las herramientas \textit{softwares} utilizadas deben ser compatibles
+        para funcionar correctamente en conjunto.}
     \item{Las aplicaciones demostrativas que se desarrollen deben ser fácilmente
         reproducibles y desplegables tanto en un entorno simulado como en un
         ambiente educativo real o de laboratorio.}
     \item{El desarrollo del \textit{software} debe ser lo suficientemente
         sencillo para poder ser llevado a cabo por alumnos preuniversitarios.}
     \item{El \textit{hardware} utilizado debe ser suficientemente económico para
-        ser adquirido por organismos educativos.}
+        ser adquirido por cualquier institución educativa, independientemente
+        del presupuesto del que dispongan.}
 \end{enumerate}
 
 
@@ -135,7 +140,7 @@ siguientes requisitos:
 \label{sec:requisitos}
 
 Las competencias generales que se cumplen con la realización de este trabajo de
-fin de grado, según la guía docente de la asignatura son las siguientes:
+fin de grado, según la guía docente de la asignatura, son las siguientes:
 
 \begin{enumerate}
     \item{\textit{CB2.} Que los estudiantes sepan aplicar sus conocimientos a su
@@ -167,8 +172,9 @@ individual (o excepcionalmente colectivo), presentarlo y defenderlo ante un
 tribunal universitario, consistente en un proyecto en el ámbito de las
 tecnologías específicas del campo de la Robótica de naturaleza profesional en el
 que se sinteticen e integren las competencias adquiridas en las enseñanzas.
-Esta última competencia se cumple con la creación de este proyecto, memoria y
-documentación, y su defensa ante un tribunal.
+Esta última competencia se cumple con el desarrollo de este proyecto, la
+investigación  del estado del arte en el que se enmarca, la confección de su
+memoria, y su defensa ante un tribunal.
 
 %Describe los requisitos que ha de cumplir tu trabajo.
 
@@ -181,6 +187,7 @@ siempre evaluando de antemano la compatibilidad con el \textit{hardware}
 disponible, así como realizando pruebas pertinentes sobre su correcto
 funcionamiento en los distintos entornos, incluyendo la simulación y el
 laboratorio.
+\\
 
 En relación con el desarrollo del \textit{software} demostrativo se siguió un
 ciclo de desarrollo \textit{software} iterativo, que consiste en la
@@ -192,12 +199,13 @@ ve reflejado en la Figura \ref{fig:desarrollo_iterativo}.
 Este proceso de desarrollo puede verse alineado con los principios de mejora
 continua del ciclo de desarrollo PDCA (\textit{Plan}, \textit{Do},
 \textit{Check}, \textit{Act}).
+\\
 
 \begin{figure} [h!]
   \begin{center}
     \includegraphics[width=10cm]{figs/desarrollo_iterativo}
   \end{center}
-  \caption{Esquema del desarrollo software iterativo (fuente propia)}
+  \caption{Esquema del desarrollo software iterativo.}
   \label{fig:desarrollo_iterativo}
 \end{figure}\
 
@@ -241,15 +249,16 @@ febrero de 2023 y finalizando en junio de 2024.
         de noviembre de 2023 a abril de 2024 en el que se realizaron las pruebas
         y cambios necesarios para un correcto funcionamiento del
         \textit{software} demostrativo en el entorno real del laboratorio.}
-    \item{\textit{Escritura de la memoria.} Periodo de mayo a junio de 2024 en el
-        que se elaboró el presente documento, así como la presentación para su
-        defensa.}
+    \item{\textit{Escritura de la memoria.} Periodo de marzo a junio de 2024 en
+        el que se elaboró el presente documento, así como la presentación para
+        su defensa.}
 \end{enumerate}
 
 Durante los periodos de desarrollo de este proyecto fuera de las prácticas de
 empresa, se dedicaban aproximadamente de 30 a 40 horas semanales, manteniendo
 reuniones con el tutor, que generalmente se llevaban a cabo semanalmente, y
 ocasionalmente cada dos semanas.
+\\
 
 Todo el proceso de trabajo se ha ido alojando en un repositorio público de
 GitHub\footnote{\url{https://github.com/RoboticsURJC/tfg-unai}}.
