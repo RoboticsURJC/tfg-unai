@@ -223,14 +223,6 @@ lo que harán será recibir y información de la \textit{key-expression}
 puede observarse resumidamente en la Figura \ref{fig:zf_example}.
 \\
 
-\begin{figure} [h!]
-  \begin{center}
-    \includegraphics[width=6cm]{figs/zenoh_flow_example}
-  \end{center}
-  \caption{Flujo de datos de ejemplo en Zenoh-Flow.}
-  \label{fig:zf_example}
-\end{figure}\
-
 %Párrafo sobre los descriptores no integrados.
 El resto de nodos deben ser programados, para lo que existe un fichero
 descriptor, que indicará el nombre del nodo, las variables de configuración, la
@@ -245,18 +237,23 @@ encontrará en la ruta declarada en su etiqueta \verb|descriptor|.
 \begin{code}[H]
   \begin{lstlisting}[style=yaml]
     id: greetings-maker
-
     vars:
       BASE_DIR: "/path/to/zenoh-flow-examples/getting-started"
-    
     uri: "file://{{ BASE_DIR }}/nodes/python/greetings-maker/greetings-maker.py"
-    
     inputs: [name]
     outputs: [greeting]
   \end{lstlisting}
 \caption[Fichero de descriptor de un nodo de Zenoh-Flow]{Fichero de descriptor de un nodo de Zenoh-Flow}
 \label{cod:node_descriptor}
 \end{code}
+
+\begin{figure} [h!]
+  \begin{center}
+    \includegraphics[width=5cm]{figs/zenoh_flow_example}
+  \end{center}
+  \caption{Flujo de datos de ejemplo en Zenoh-Flow.}
+  \label{fig:zf_example}
+\end{figure}\
 
 %Párrafo sobre las partes del código del nodo operator de ejemplo.
 Las distintas partes del código de este nodo se muestran en el Código
@@ -265,6 +262,17 @@ clase que hereda de la clase del nodo en cuestión, en este caso de la clase
 \verb|Operator|. Además debe existir una función externa \verb|register()| que
 debe devolver la clase creada para este nodo, en nuestro caso llamada
 \verb|GreetingsMaker|.
+\\
+
+La programación de los nodos de Zenoh-Flow, realizada en \texttt{Python}, es muy
+parecida entre los distintos nodos, ya que su funcionamiento es muy similar: los
+nodos \textit{source} solo comprenden salidas de datos, los nodos \textit{sink},
+solo comprenden entradas, y los nodos \textit{operator} comprenden ambas, ya que
+pueden recibir información de otros nodos \textit{source} u \textit{operator} y
+pueden enviar datos a otros nodos \textit{operator} o \textit{sink}, como
+podemos ver en el flujo de datos representado en la anterior Figura
+\ref{fig:zf_example} o en la Figura \ref{fig:data_flow_qr_example} de la Sección
+\ref{sec:flujos_datos}.
 \\
 
 \begin{code}[H]
@@ -315,16 +323,7 @@ debe devolver la clase creada para este nodo, en nuestro caso llamada
 \label{cod:operator_node}
 \end{code}
 
-La programación de los nodos de Zenoh-Flow, realizada en \texttt{Python}, es muy
-parecida entre los distintos nodos, ya que su funcionamiento es muy similar: los
-nodos \textit{source} solo comprenden salidas de datos, los nodos \textit{sink},
-solo comprenden entradas, y los nodos \textit{operator} comprenden ambas, ya que
-pueden recibir información de otros nodos \textit{source} u \textit{operator} y
-pueden enviar datos a otros nodos \textit{operator} o \textit{sink}, como
-podemos ver en el flujo de datos representado en la anterior Figura
-\ref{fig:zf_example} o en la Figura \ref{fig:data_flow_qr_example} de la Sección
-\ref{sec:flujos_datos}.
-\\
+
 
 %Párrafos sobre la función constructor (__init__()) de la clase del nodo.
 La línea \verb|outputs.take("greeting", str, lambda s: bytes(s, "utf-8"))|, en
@@ -467,10 +466,14 @@ deseados (o partes de los mismos), separados por el carácter ``\texttt{|}'', o
 bien utilizando \texttt{--deny/-d} de la misma manera, lo que traducirá todos
 los topics excepto los que contengan los \textit{strings} especificados.
 Un ejemplo del comando de ejecución con este argumento es el siguiente:
-\verb+./zenoh-bridge-dds -e tcp/<ip>:7447 --allow "goal_pose|zf/getting-started/"+,
-siendo el argumento \texttt{-e}, la configuración de conexión del
-\textit{bridge}, sustituyendo \verb|<ip>| por la dirección IP a la que se quiera
-conectar, como se verá más adelante en el Capítulo \ref{cap:capitulo5}.
+\begin{lstlisting}[language=bash]
+  ./zenoh-bridge-dds -e tcp/<ip>:7447 --allow "goal_pose|zf/getting-started/"
+\end{lstlisting}
+%\verb+./zenoh-bridge-dds -e tcp/<ip>:7447 --allow "goal_pose|zf/getting-started/"+,
+siendo el argumento \texttt{-e} y el siguiente, la configuración de conexión del
+\textit{bridge}, debiéndose sustituir \verb|<ip>| por la dirección IP a la que
+se quiera conectar, como se verá más adelante en el Capítulo
+\ref{cap:capitulo5}.
 Un esquema explicativo de toda esta sección puede verse en la Figura
 \ref{fig:zenoh_dds_topology}.
 \\
