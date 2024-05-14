@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg90202"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="zenoh_dds_topology.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview90204"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="295.07124"
+     inkscape:cy="161.58663"
+     inkscape:window-width="1866"
+     inkscape:window-height="1016"
+     inkscape:window-x="1974"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g159835" />
+  <defs
+     id="defs90199">
+    <rect
+       x="124.78992"
+       y="97.020334"
+       width="58.302321"
+       height="39.315598"
+       id="rect128229" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="117.03668"
+       height="40.423378"
+       id="rect82960" />
+    <marker
+       style="overflow:visible"
+       id="marker52867-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path52865-6" />
+    </marker>
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28306"
+       height="35.551042"
+       id="rect82960-6" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28306"
+       height="35.551042"
+       id="rect110703" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28307"
+       height="35.551041"
+       id="rect110703-4" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28307"
+       height="75.337602"
+       id="rect110703-0" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28307"
+       height="35.551041"
+       id="rect136417" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28307"
+       height="75.731352"
+       id="rect136419" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="181.1465"
+       height="106.94827"
+       id="rect82960-6-7" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="184.28307"
+       height="35.551041"
+       id="rect152340" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="194.45809"
+       height="76.828887"
+       id="rect82960-6-4" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="194.45809"
+       height="76.828887"
+       id="rect163577" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="194.45809"
+       height="76.828887"
+       id="rect163583" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="170.85939"
+       height="117.7079"
+       id="rect178675" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="138.54646"
+       height="114.68443"
+       id="rect181637" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="185.82781"
+       height="74.75074"
+       id="rect190656" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="156.38872"
+       height="115.17334"
+       id="rect190658" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="138.54646"
+       height="114.68443"
+       id="rect190660" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="181.1465"
+       height="106.94827"
+       id="rect214155" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="170.85939"
+       height="117.7079"
+       id="rect214157" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="138.54646"
+       height="114.68443"
+       id="rect214159" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ff8699;fill-opacity:1;stroke:#160000;stroke-width:0.365001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0365001, 0.0365001;stroke-dashoffset:0;stroke-opacity:0.996967"
+       id="rect172461"
+       width="10.251719"
+       height="7.7486458"
+       x="17.574402"
+       y="16.974903"
+       ry="0.68611485"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g55629"
+       transform="translate(-35.452787,-42.052049)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54977"
+         width="0.070316322"
+         height="5.6388316"
+         x="16.64724"
+         y="47.033092"
+         ry="0.035158161" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54561"
+         width="2.5629299"
+         height="4.7505622"
+         x="20.148048"
+         y="73.12838"
+         ry="1.2814649" />
+      <rect
+         style="fill:#e0e0e0;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect53803"
+         width="14.806811"
+         height="23.957924"
+         x="11.911149"
+         y="50.877293"
+         ry="5.3993521" />
+      <circle
+         style="fill:#cccccc;stroke:#160000;stroke-width:0.831292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54097"
+         cx="-26.238029"
+         cy="52.303463"
+         r="6.231905"
+         transform="scale(-1,1)" />
+      <rect
+         style="fill:#ccff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54225"
+         width="5.8540812"
+         height="1.51871"
+         x="26.717957"
+         y="49.358585"
+         ry="0.75935501" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54351"
+         width="4.4103675"
+         height="13.231101"
+         x="13.985375"
+         y="58.545574"
+         ry="2.2051837" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54479"
+         width="2.5629299"
+         height="4.7505622"
+         x="16.443863"
+         y="74.186699"
+         ry="1.2814649" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54849"
+         cx="25.792976"
+         cy="62.358456"
+         r="0.64416426" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54851"
+         cx="25.792976"
+         cy="64.47509"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54853"
+         cx="25.792976"
+         cy="68.179207"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54953"
+         cx="16.692169"
+         cy="47.259586"
+         r="0.64416426" />
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,-7.3258339,-29.60509)"
+       id="text82958-0"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect82960-6)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="348.6211"
+         y="263.32243"
+         id="tspan220875">deserializer</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,-79.162044,9.1363854)"
+       id="text82958-0-7"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect82960-6-4)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="397.54752"
+         y="263.32243"
+         id="tspan220877">Robot
+</tspan><tspan
+         x="351.509"
+         y="299.98906"
+         id="tspan220879">(ROS nodes)</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,-56.975795,-18.103067)"
+       id="text82958-0-0"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect82960-6-7)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="380.08196"
+         y="263.32243"
+         id="tspan220881">rt/scan
+</tspan><tspan
+         x="400.02856"
+         y="299.98906"
+         id="tspan220883">(DDS
+</tspan><tspan
+         x="393.14993"
+         y="336.65568"
+         id="tspan220885">topic)</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="fill:#1dd4ff;fill-opacity:1;stroke:#160000;stroke-width:6.67087;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.66772, 1.66772;stroke-dashoffset:8.67213;stroke-opacity:0.996967"
+       id="path4950"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="266.58881"
+       sodipodi:cy="131.49149"
+       sodipodi:r1="185.10742"
+       sodipodi:r2="92.553711"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:rounded="0.02"
+       inkscape:randomized="0"
+       transform="matrix(0,-0.05035539,0.05035539,0,51.340368,34.297878)"
+       inkscape:transform-center-x="-2.3302903"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       d="m 426.89654,38.937774 c 3.20615,5.553223 -153.89542,277.661136 -160.30773,277.661136 -6.41231,0 -163.51389,-272.107912 -160.30773,-277.661135 3.20615,-5.553222 317.4093,-5.553224 320.61546,-1e-6 z"
+       inkscape:transform-center-y="-1.0642232e-06" />
+    <rect
+       style="fill:#b5ebc2;fill-opacity:1;stroke:#160000;stroke-width:0.314143;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0785358, 0.0785358;stroke-dashoffset:0.408386;stroke-opacity:0.996967"
+       id="rect18190"
+       width="15.230224"
+       height="13.444456"
+       x="73.938148"
+       y="14.064042"
+       ry="0.77388567"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffebb5;fill-opacity:1;stroke:#160000;stroke-width:6.67087;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.66772, 1.66772;stroke-dashoffset:8.67213;stroke-opacity:0.996967"
+       id="path95192"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="266.58881"
+       sodipodi:cy="131.49149"
+       sodipodi:r1="185.10742"
+       sodipodi:r2="92.553711"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:rounded="0.02"
+       inkscape:randomized="0"
+       transform="matrix(0,-0.05035539,-0.05035539,0,111.36716,34.297878)"
+       inkscape:transform-center-x="2.3302914"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       d="m 426.89654,38.937774 c 3.20615,5.553223 -153.89542,277.661136 -160.30773,277.661136 -6.41231,0 -163.51389,-272.107912 -160.30773,-277.661135 3.20615,-5.553222 317.4093,-5.553224 320.61546,-1e-6 z"
+       inkscape:transform-center-y="-1.0642232e-06" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="m 67.129088,20.872916 h 7.239756"
+       id="path20647-0-5"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="M 89.216614,20.872916 H 96.45637"
+       id="path103633"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#00c0c8;fill-opacity:1;stroke:#160000;stroke-width:0.420503;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0420502, 0.0420502;stroke-dashoffset:0;stroke-opacity:0.996967"
+       id="rect103809"
+       width="3.0984354"
+       height="28.01222"
+       x="53.970192"
+       y="9.3445835"
+       ry="0.91084599"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,44.250759,-29.60509)"
+       id="text110699"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect110703)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="367.9957"
+         y="263.32243"
+         id="tspan220887">serializer</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.10521414,0,0,0.10521414,72.208465,9.2943018)"
+       id="text110699-1"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect110703-4)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="363.02386"
+         y="263.32243"
+         id="tspan220889">1010101110...</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.09734255,0,0,0.09734255,53.596107,11.059275)"
+       id="text110699-4"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect110703-0)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="361.33703"
+         y="263.32243"
+         id="tspan220891">Twist msg.
+</tspan><tspan
+         x="397.85693"
+         y="299.98906"
+         id="tspan220893">(ROS)</tspan></text>
+    <rect
+       style="fill:#f7ebd0;fill-opacity:1;stroke:#160000;stroke-width:0.420503;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0420502, 0.0420502;stroke-dashoffset:0;stroke-opacity:0.996967"
+       id="rect110701"
+       width="3.0984354"
+       height="28.01222"
+       x="105.53517"
+       y="9.3445835"
+       ry="0.91084599"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,2.9698981,0)"
+       id="text128227"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect128229)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.406145;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="m 104.15865,35.693008 h 5.81137"
+       id="path103737"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.10521414,0,0,0.10521414,-0.80674359,9.3264335)"
+       id="text136409"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect136417)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="363.02386"
+         y="263.32243"
+         id="tspan220895">1010101110...</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.09734255,0,0,0.09734255,24.501751,11.091406)"
+       id="text136413"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect136419)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="355.61705"
+         y="263.32243"
+         id="tspan220897">Laser msg.
+</tspan><tspan
+         x="397.85693"
+         y="299.98906"
+         id="tspan220899">(ROS)</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.406145;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="m 52.310108,35.72514 h 5.811364"
+       id="path136415"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g148915"
+       transform="translate(166.68894,-42.052049)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect148893"
+         width="0.070316322"
+         height="5.6388316"
+         x="16.64724"
+         y="47.033092"
+         ry="0.035158161" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect148895"
+         width="2.5629299"
+         height="4.7505622"
+         x="20.148048"
+         y="73.12838"
+         ry="1.2814649" />
+      <rect
+         style="fill:#e0e0e0;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect148897"
+         width="14.806811"
+         height="23.957924"
+         x="11.911149"
+         y="50.877293"
+         ry="5.3993521" />
+      <circle
+         style="fill:#cccccc;stroke:#160000;stroke-width:0.831292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle148899"
+         cx="-26.238029"
+         cy="52.303463"
+         r="6.231905"
+         transform="scale(-1,1)" />
+      <rect
+         style="fill:#ccff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect148901"
+         width="5.8540812"
+         height="1.51871"
+         x="26.717957"
+         y="49.358585"
+         ry="0.75935501" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect148903"
+         width="4.4103675"
+         height="13.231101"
+         x="13.985375"
+         y="58.545574"
+         ry="2.2051837" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect148905"
+         width="2.5629299"
+         height="4.7505622"
+         x="16.443863"
+         y="74.186699"
+         ry="1.2814649" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle148907"
+         cx="25.792976"
+         cy="62.358456"
+         r="0.64416426" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle148909"
+         cx="25.792976"
+         cy="64.47509"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle148911"
+         cx="25.792976"
+         cy="68.179207"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle148913"
+         cx="16.692169"
+         cy="47.259586"
+         r="0.64416426" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="M -6.4250963,20.872916 H 17.747988"
+       id="path148917"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g158372"
+       transform="translate(4.2807786,-0.37686633)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 49.585836,38.361338 c 0,0 -0.813963,4.162764 2.826249,4.162764 3.640217,0 19.065645,-0.225359 21.497115,-0.225359 2.431468,0 2.982161,2.36828 2.982161,2.36828"
+         id="path158115"
+         sodipodi:nodetypes="cssc"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 104.19688,38.361338 c 0,0 0.81397,4.162764 -2.82625,4.162764 -3.64021,0 -19.065638,-0.225359 -21.497108,-0.225359 -2.431468,0 -2.982161,2.36828 -2.982161,2.36828"
+         id="path158368"
+         sodipodi:nodetypes="cssc"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <g
+         id="g159829"
+         transform="translate(-45.946503,-8.809637)"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 20.051549,47.7159 c 0,0 -0.361061,2.451259 2.425412,2.385601 0.39418,-0.0093 -0.863674,0.0059 1.567796,0.0059 2.431468,0 2.079688,1.415917 2.079688,1.415917"
+           id="path158115-6"
+           sodipodi:nodetypes="cssc" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 32.197342,47.7159 c 0,0 0.361061,2.451259 -2.425411,2.385601 -0.39418,-0.0093 0.863674,0.0059 -1.567796,0.0059 -2.431468,0 -2.07969,1.415917 -2.07969,1.415917"
+           id="path159825"
+           sodipodi:nodetypes="cssc" />
+      </g>
+      <g
+         id="g159835"
+         transform="translate(85.286895,-8.809637)">
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 90.95988,47.7159 c 0,0 -0.36106,2.451259 2.425406,2.385601 0.394183,-0.0093 -0.863673,0.0059 1.567796,0.0059 2.431473,0 2.07969,1.415917 2.07969,1.415917"
+           id="path159831"
+           sodipodi:nodetypes="cssc"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 103.10564,47.7159 c 0,0 0.36106,2.451259 -2.42541,2.385601 -0.39418,-0.0093 0.86367,0.0059 -1.567784,0.0059 -2.431454,0 -2.079674,1.415917 -2.079674,1.415917"
+           id="path159833"
+           sodipodi:nodetypes="cssc"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,17.675477,9.6655521)"
+       id="text163575"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect163577)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="366.48364"
+         y="263.32243"
+         id="tspan220901">Data-Flow
+</tspan><tspan
+         x="347.75441"
+         y="299.98906"
+         id="tspan220903">(Zenoh-Flow)</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,122.97959,9.1363854)"
+       id="text163581"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect163583)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="397.54752"
+         y="263.32243"
+         id="tspan220905">Robot
+</tspan><tspan
+         x="351.509"
+         y="299.98906"
+         id="tspan220907">(ROS nodes)</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,-21.521635,-18.103067)"
+       id="text178671"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect178675)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="374.93841"
+         y="263.32243"
+         id="tspan220909">rt/scan
+</tspan><tspan
+         x="378.91309"
+         y="299.98906"
+         id="tspan220911">(Zenoh
+</tspan><tspan
+         x="361.15189"
+         y="336.65568"
+         id="tspan220913">key-expr.)</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="M 27.970737,20.872916 H 53.780012"
+       id="path178673"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,-36.959158,-33.309254)"
+       id="text181635"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect181637)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="366.51149"
+         y="263.32243"
+         id="tspan220915">Zenoh
+</tspan><tspan
+         x="364.32613"
+         y="299.98906"
+         id="tspan220917">Bridge
+</tspan><tspan
+         x="382.48339"
+         y="336.65568"
+         id="tspan220919">DDS</tspan></text>
+    <rect
+       style="fill:#ff8699;fill-opacity:1;stroke:#160000;stroke-width:0.365001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0365001, 0.0365001;stroke-dashoffset:0;stroke-opacity:0.996967"
+       id="rect214137"
+       width="10.251719"
+       height="7.7486458"
+       x="137.16602"
+       y="16.974903"
+       ry="0.68611485"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,59.970044,-18.103067)"
+       id="text214141"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect214155)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="355.83802"
+         y="263.32243"
+         id="tspan220921">rt/cmd_vel
+</tspan><tspan
+         x="400.02856"
+         y="299.98906"
+         id="tspan220923">(DDS
+</tspan><tspan
+         x="393.14993"
+         y="336.65568"
+         id="tspan220925">topic)</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="M 109.46243,20.872916 H 137.3397"
+       id="path214143"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,99.128372,-18.103067)"
+       id="text214147"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect214157)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="350.69446"
+         y="263.32243"
+         id="tspan220927">rt/cmd_vel
+</tspan><tspan
+         x="378.91309"
+         y="299.98906"
+         id="tspan220929">(Zenoh
+</tspan><tspan
+         x="361.15189"
+         y="336.65568"
+         id="tspan220931">key-expr.)</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="m 147.56247,20.872916 h 28.98426"
+       id="path214149"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.14344744,0,0,0.14344744,82.632514,-33.309254)"
+       id="text214153"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect214159)"
+       x="65.574455"
+       y="0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="366.51149"
+         y="263.32243"
+         id="tspan220933">Zenoh
+</tspan><tspan
+         x="364.32613"
+         y="299.98906"
+         id="tspan220935">Bridge
+</tspan><tspan
+         x="382.48339"
+         y="336.65568"
+         id="tspan220937">DDS</tspan></text>
+  </g>
+</svg>

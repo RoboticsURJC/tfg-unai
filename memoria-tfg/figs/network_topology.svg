@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg53105"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="network_topology.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview53107"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="2"
+     inkscape:cx="366.75"
+     inkscape:cy="181.5"
+     inkscape:window-width="1866"
+     inkscape:window-height="1043"
+     inkscape:window-x="54"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g55923" />
+  <defs
+     id="defs53102">
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="153.71588"
+       height="73.879359"
+       id="rect74464" />
+    <rect
+       x="609.63977"
+       y="250.34265"
+       width="58.130981"
+       height="37.457977"
+       id="rect69428" />
+    <rect
+       x="398.94446"
+       y="249.36136"
+       width="61.271484"
+       height="33.984894"
+       id="rect60094" />
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Send"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.2) rotate(180) translate(6,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20664" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Sstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Sstart"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.3) translate(-2.3,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="stroke:context-stroke;fill-rule:evenodd;fill:context-stroke;stroke-width:0.62500000;stroke-linejoin:round"
+         id="path20679" />
+    </marker>
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="153.71588"
+       height="73.879359"
+       id="rect82122" />
+    <rect
+       x="345.5061"
+       y="236.47842"
+       width="117.03668"
+       height="40.423379"
+       id="rect82960" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g55629"
+       transform="translate(7.0559741,-31.578361)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54977"
+         width="0.070316322"
+         height="5.6388316"
+         x="16.64724"
+         y="47.033092"
+         ry="0.035158161" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54561"
+         width="2.5629299"
+         height="4.7505622"
+         x="20.148048"
+         y="73.12838"
+         ry="1.2814649" />
+      <rect
+         style="fill:#e0e0e0;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect53803"
+         width="14.806811"
+         height="23.957924"
+         x="11.911149"
+         y="50.877293"
+         ry="5.3993521" />
+      <circle
+         style="fill:#cccccc;stroke:#160000;stroke-width:0.831292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54097"
+         cx="-26.238029"
+         cy="52.303463"
+         r="6.231905"
+         transform="scale(-1,1)" />
+      <rect
+         style="fill:#ccff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54225"
+         width="5.8540812"
+         height="1.51871"
+         x="26.717957"
+         y="49.358585"
+         ry="0.75935501" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54351"
+         width="4.4103675"
+         height="13.231101"
+         x="13.985375"
+         y="58.545574"
+         ry="2.2051837" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect54479"
+         width="2.5629299"
+         height="4.7505622"
+         x="16.443863"
+         y="74.186699"
+         ry="1.2814649" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54849"
+         cx="25.792976"
+         cy="62.358456"
+         r="0.64416426" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54851"
+         cx="25.792976"
+         cy="64.47509"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54853"
+         cx="25.792976"
+         cy="68.179207"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle54953"
+         cx="16.692169"
+         cy="47.259586"
+         r="0.64416426" />
+    </g>
+    <g
+       id="g55884"
+       transform="translate(5.62618,3.3341158)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <g
+         id="g55899"
+         transform="translate(33.902924,-4.6632399)">
+        <rect
+           style="fill:#999999;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="rect55094"
+           width="18.011106"
+           height="8.8195839"
+           x="57.85181"
+           y="23.65221"
+           ry="1.7455189"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <circle
+           style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="circle55501"
+           cx="62.992977"
+           cy="27.684872"
+           r="0.64416426"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <circle
+           style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="circle55585"
+           cx="60.76482"
+           cy="27.702267"
+           r="0.64416426"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <rect
+           style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="rect55378"
+           width="0.070316322"
+           height="5.6388316"
+           x="52.353115"
+           y="29.38854"
+           ry="0.035158161"
+           transform="rotate(-11.730272)"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <circle
+           style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="circle55380"
+           cx="52.398045"
+           cy="29.615042"
+           r="0.64416426"
+           transform="rotate(-11.730272)"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <rect
+           style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="rect55382"
+           width="0.070316322"
+           height="5.6388316"
+           x="-78.639359"
+           y="2.2037151"
+           ry="0.035158161"
+           transform="matrix(-0.97911553,-0.20330464,-0.20330464,0.97911553,0,0)"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <circle
+           style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="circle55384"
+           cx="-78.594437"
+           cy="2.4302166"
+           r="0.64416426"
+           transform="matrix(-0.97911553,-0.20330464,-0.20330464,0.97911553,0,0)"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <circle
+           style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="circle55633"
+           cx="67.755478"
+           cy="27.684872"
+           r="0.64416426"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <circle
+           style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="circle55635"
+           cx="65.527321"
+           cy="27.702267"
+           r="0.64416426"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <path
+           style="fill:none;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="path55659"
+           sodipodi:type="arc"
+           sodipodi:cx="67.06105"
+           sodipodi:cy="25.591192"
+           sodipodi:rx="13.808627"
+           sodipodi:ry="13.808627"
+           sodipodi:start="4.0491605"
+           sodipodi:end="5.3453799"
+           sodipodi:arc-type="arc"
+           d="m 58.559574,14.709874 a 13.808627,13.808627 0 0 1 16.670092,-0.25205"
+           sodipodi:open="true"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <path
+           style="fill:none;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="path55865"
+           sodipodi:type="arc"
+           sodipodi:cx="67.038681"
+           sodipodi:cy="25.139828"
+           sodipodi:rx="10.909836"
+           sodipodi:ry="10.909836"
+           sodipodi:start="4.0491605"
+           sodipodi:end="5.3453799"
+           sodipodi:arc-type="arc"
+           d="M 60.321886,16.542782 A 10.909836,10.909836 0 0 1 73.492491,16.343644"
+           sodipodi:open="true"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <path
+           style="fill:none;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="path55867"
+           sodipodi:type="arc"
+           sodipodi:cx="67.002968"
+           sodipodi:cy="24.154295"
+           sodipodi:rx="7.2262325"
+           sodipodi:ry="7.2262325"
+           sodipodi:start="4.0491605"
+           sodipodi:end="5.3453799"
+           sodipodi:arc-type="arc"
+           d="M 62.554036,18.459961 A 7.2262325,7.2262325 0 0 1 71.27771,18.32806"
+           sodipodi:open="true"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <path
+           style="fill:none;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+           id="path55869"
+           sodipodi:type="arc"
+           sodipodi:cx="67.022446"
+           sodipodi:cy="23.830017"
+           sodipodi:rx="4.2874346"
+           sodipodi:ry="4.2874346"
+           sodipodi:start="4.0491605"
+           sodipodi:end="5.3453799"
+           sodipodi:arc-type="arc"
+           d="m 64.382826,20.451481 a 4.2874346,4.2874346 0 0 1 5.17589,-0.07826"
+           sodipodi:open="true"
+           inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+      </g>
+    </g>
+    <g
+       id="g55923"
+       transform="translate(115.64195,7.9287958)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55901"
+         width="0.070316322"
+         height="5.6388316"
+         x="16.64724"
+         y="47.033092"
+         ry="0.035158161"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55903"
+         width="2.5629299"
+         height="4.7505622"
+         x="20.148048"
+         y="73.12838"
+         ry="1.2814649"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:#f3c84a;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55905"
+         width="14.806811"
+         height="23.957924"
+         x="11.911149"
+         y="50.877293"
+         ry="5.3993521"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#cccccc;stroke:#160000;stroke-width:0.831292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55907"
+         cx="-26.238029"
+         cy="52.303463"
+         r="6.231905"
+         transform="scale(-1,1)"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:#ccff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55909"
+         width="5.8540812"
+         height="1.51871"
+         x="26.717957"
+         y="49.358585"
+         ry="0.75935501"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55911"
+         width="4.4103675"
+         height="13.231101"
+         x="13.985375"
+         y="58.545574"
+         ry="2.2051837"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55913"
+         width="2.5629299"
+         height="4.7505622"
+         x="16.443863"
+         y="74.186699"
+         ry="1.2814649"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55915"
+         cx="25.792976"
+         cy="62.358456"
+         r="0.64416426"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55917"
+         cx="25.792976"
+         cy="64.47509"
+         r="0.64416426"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55919"
+         cx="25.792976"
+         cy="68.179207"
+         r="0.64416426"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55921"
+         cx="16.692169"
+         cy="47.259586"
+         r="0.64416426"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-115.64195,-7.9287958)"
+         id="text60092"
+         style="font-family:Comfortaa;font-size:29.33329964px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'Comfortaa, Normal';white-space:pre;shape-inside:url(#rect60094)" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-115.64195,-7.9287958)"
+         id="text69426"
+         style="font-family:Comfortaa;font-size:29.33329964px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:'Comfortaa, Normal';white-space:pre;shape-inside:url(#rect69428)" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.2013336,0,0,0.2013336,-88.691647,7.1449772)"
+         id="text74462"
+         style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect74464)"
+         x="65.574455"
+         y="0"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"><tspan
+           x="355.08848"
+           y="263.32243"
+           id="tspan220762">Principal
+</tspan><tspan
+           x="377.17643"
+           y="299.98906"
+           id="tspan220764">Robot</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.2013336,0,0,0.2013336,-90.76888,-52.881446)"
+         id="text82958"
+         style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect82960)"
+         x="65.574455"
+         y="0"
+         inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"><tspan
+           x="353.48329"
+           y="263.32243"
+           id="tspan220766">Router</tspan></text>
+    </g>
+    <g
+       id="g55947"
+       transform="matrix(-1,0,0,1,173.46932,-38.789451)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55925"
+         width="0.070316322"
+         height="5.6388316"
+         x="16.64724"
+         y="47.033092"
+         ry="0.035158161" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55927"
+         width="2.5629299"
+         height="4.7505622"
+         x="20.148048"
+         y="73.12838"
+         ry="1.2814649" />
+      <rect
+         style="fill:#e0e0e0;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55929"
+         width="14.806811"
+         height="23.957924"
+         x="11.911149"
+         y="50.877293"
+         ry="5.3993521" />
+      <circle
+         style="fill:#cccccc;stroke:#160000;stroke-width:0.831292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55931"
+         cx="-26.238029"
+         cy="52.303463"
+         r="6.231905"
+         transform="scale(-1,1)" />
+      <rect
+         style="fill:#ccff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55933"
+         width="5.8540812"
+         height="1.51871"
+         x="26.717957"
+         y="49.358585"
+         ry="0.75935501" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55935"
+         width="4.4103675"
+         height="13.231101"
+         x="13.985375"
+         y="58.545574"
+         ry="2.2051837" />
+      <rect
+         style="fill:#f7f6f5;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="rect55937"
+         width="2.5629299"
+         height="4.7505622"
+         x="16.443863"
+         y="74.186699"
+         ry="1.2814649" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55939"
+         cx="25.792976"
+         cy="62.358456"
+         r="0.64416426" />
+      <circle
+         style="fill:#99ff00;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55941"
+         cx="25.792976"
+         cy="64.47509"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55943"
+         cx="25.792976"
+         cy="68.179207"
+         r="0.64416426" />
+      <circle
+         style="fill:#ff0000;stroke:#160000;stroke-width:0.766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+         id="circle55945"
+         cx="16.692169"
+         cy="47.259586"
+         r="0.64416426" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.59000001,4.59000001;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow2Sstart);marker-end:url(#Arrow1Send)"
+       d="m 41.194768,33.841873 50.30616,-6.91893"
+       id="path55982"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.59000001,4.59000001;stroke-dashoffset:0.153;stroke-opacity:1;marker-start:url(#Arrow2Sstart);marker-end:url(#Arrow1Send)"
+       d="M 124.42579,56.669448 114.52777,35.077383"
+       id="path56203"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.765;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:4.59000001,4.59000001;stroke-dashoffset:1.1475;stroke-opacity:1;marker-start:url(#Arrow2Sstart);marker-end:url(#Arrow1Send)"
+       d="M 141.84651,24.273847 119.87364,25.91122"
+       id="path56342"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/network_topology.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

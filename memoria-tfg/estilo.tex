@@ -9,6 +9,7 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{xcolor} %more colors for yaml to work
 \usepackage{caption}
 \usepackage{acronym}
 \usepackage{hyphenat}
@@ -130,6 +131,18 @@
 %    {: }{{\textcolor{red}{: }}}{2}
 %    {  }{{\textcolor{red}{ }}}{2},
 %}
+
+\lstdefinestyle{yaml}{
+  basicstyle={\small\ttfamily},
+  rulecolor=\color{black},
+  keywordstyle=\color{blue},
+  stringstyle=\color{code_green},
+  commentstyle=\color{code_gray},
+  morecomment=[l]{\#},
+  literate={:}{{\textcolor{red}{:}}}1 % Set the hyphen "-" to red
+}
+
+
 
 % Definición de mis propios tipos: Códigos, Ecuaciones y Tablas
 \DeclareCaptionType{code}[Código][Listado de códigos]

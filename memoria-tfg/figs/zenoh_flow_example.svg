@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="zenoh_flow_example.svg"
+   inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_flow_example.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-global="true"
+     inkscape:snap-nodes="true"
+     inkscape:snap-object-midpoints="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-midpoints="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="28.102023"
+     inkscape:cy="480.85683"
+     inkscape:window-width="1866"
+     inkscape:window-height="1043"
+     inkscape:window-x="54"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible;"
+       id="marker52867"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.6) rotate(180) translate(0,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="stroke:context-stroke;fill-rule:evenodd;fill:context-stroke;stroke-width:0.62500000;stroke-linejoin:round;"
+         id="path52865" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutM"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path20794" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow2Mend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.6) rotate(180) translate(0,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="stroke:context-stroke;fill-rule:evenodd;fill:context-stroke;stroke-width:0.62500000;stroke-linejoin:round;"
+         id="path20676" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20652" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Mend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20658" />
+    </marker>
+    <marker
+       style="overflow:visible;"
+       id="Arrow2Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(1.1) rotate(180) translate(1,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="stroke:context-stroke;fill-rule:evenodd;fill:context-stroke;stroke-width:0.62500000;stroke-linejoin:round;"
+         id="path20670" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DotL"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="DotL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8) translate(7.4, 1)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         id="path20710" />
+    </marker>
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect10344" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect12854" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect16978" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect10344-3" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="358.94405"
+       height="47.434788"
+       id="rect10344-35" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect10344-9" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect10344-3-2" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect10344-9-0" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect40891" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="292.53259"
+       height="52.793537"
+       id="rect40897" />
+    <rect
+       x="134.36394"
+       y="-13.855763"
+       width="410.30449"
+       height="48.609994"
+       id="rect48348" />
+    <marker
+       style="overflow:visible"
+       id="DotL-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotL"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path20710-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker52768"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="DotL"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,5.92,0.8)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="m -2.5,-1 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"
+         id="path52766" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker52867-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path52865-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker52867-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path52865-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker52867-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path52865-7" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="star"
+       style="fill:#1dd4ff;fill-opacity:1;stroke:#160000;stroke-width:6.67087;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.66772, 1.66772;stroke-dashoffset:8.67213;stroke-opacity:0.996967"
+       id="path4950"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="266.58881"
+       sodipodi:cy="131.49149"
+       sodipodi:r1="185.10742"
+       sodipodi:r2="92.553711"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:rounded="0.02"
+       inkscape:randomized="0"
+       d="m 426.89654,38.937774 c 3.20615,5.553223 -153.89542,277.661136 -160.30773,277.661136 -6.41231,0 -163.51389,-272.107912 -160.30773,-277.661135 3.20615,-5.553222 317.4093,-5.553224 320.61546,-1e-6 z"
+       transform="matrix(0.16707926,0,0,0.16707926,49.344744,31.214358)"
+       inkscape:transform-center-y="7.7319019"
+       inkscape:transform-center-x="1.392375e-06"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,37.0395,42.265403)"
+       id="text10342"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect10344)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103568">zenoh-sub</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.917;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:;marker-end:url(#marker52867)"
+       d="M 93.905813,7.9631845 V 37.587856"
+       id="path20647-0"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.917;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-6)"
+       d="m 127.39311,252.51237 v 29.62468"
+       id="path20647-0-6"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#f38577;fill-opacity:1;stroke:#160000;stroke-width:0.917001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+       id="rect32153"
+       width="96.402893"
+       height="14.465597"
+       x="45.684757"
+       y="15.72197"
+       ry="3.0546145"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,12.277971,21.465906)"
+       id="text10342-62"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect10344-35)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103570">zf/geting-started/hello</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,38.159756,81.84612)"
+       id="text10342-1"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect10344-9)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103572">out</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,10.76411,203.65511)"
+       id="text10342-1-9"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect10344-9-0)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103574">in</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="fill:#ffebb5;fill-opacity:1;stroke:#160000;stroke-width:6.67087;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.66772, 1.66772;stroke-dashoffset:8.67213;stroke-opacity:0.996967"
+       id="path12848"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="266.58881"
+       sodipodi:cy="131.49149"
+       sodipodi:r1="185.10742"
+       sodipodi:r2="92.553711"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:rounded="0.02"
+       inkscape:randomized="0"
+       d="m 426.89654,38.937774 c 3.20615,5.553223 -153.89542,277.661136 -160.30773,277.661136 -6.41231,0 -163.51389,-272.107912 -160.30773,-277.661135 3.20615,-5.553222 317.4093,-5.553224 320.61546,-1e-6 z"
+       transform="matrix(0.16707926,0,0,-0.16707926,15.656055,257.76491)"
+       inkscape:transform-center-y="-7.7319015"
+       inkscape:transform-center-x="1.392375e-06"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,3.3481584,246.68762)"
+       id="text12852"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect12854)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103576">file-writer</tspan></text>
+    <path
+       sodipodi:type="star"
+       style="fill:#ffebb5;fill-opacity:1;stroke:#160000;stroke-width:6.67087;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.66772, 1.66772;stroke-dashoffset:8.67213;stroke-opacity:0.996967"
+       id="path16972"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="266.58881"
+       sodipodi:cy="131.49149"
+       sodipodi:r1="185.10742"
+       sodipodi:r2="92.553711"
+       sodipodi:arg1="-0.52359878"
+       sodipodi:arg2="0.52359878"
+       inkscape:rounded="0.02"
+       inkscape:randomized="0"
+       d="m 426.89654,38.937774 c 3.20615,5.553223 -153.89542,277.661136 -160.30773,277.661136 -6.41231,0 -163.51389,-272.107912 -160.30773,-277.661135 3.20615,-5.553222 317.4093,-5.553224 320.61546,-1e-6 z"
+       transform="matrix(0.16707926,0,0,-0.16707926,82.860461,257.76491)"
+       inkscape:transform-center-y="-7.7319015"
+       inkscape:transform-center-x="1.392375e-06"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,66.409791,246.67773)"
+       id="text16976"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect16978)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103578">zenoh-writer</tspan></text>
+    <rect
+       style="fill:#b5ebc2;fill-opacity:1;stroke:#160000;stroke-width:1.38963;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.347408, 0.347408;stroke-dashoffset:1.80652;stroke-opacity:0.996967"
+       id="rect18190"
+       width="74.859688"
+       height="53.523666"
+       x="56.453709"
+       y="113.93205"
+       ry="3.0809128"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,25.220615,139.44988)"
+       id="text10342-6"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect10344-3)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103580">greetings-maker</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,29.788514,108.16448)"
+       id="text10342-6-7"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect10344-3-2)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103582">name</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,77.968318,203.65511)"
+       id="text40889"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect40891)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103584">in</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,15.028093,172.02101)"
+       id="text40895"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect40897)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103586">greeting</tspan></text>
+    <rect
+       style="fill:#f38577;fill-opacity:1;stroke:#160000;stroke-width:0.977631;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:5.7241;stroke-opacity:0.996967"
+       id="rect48342"
+       width="110.03328"
+       height="14.404967"
+       x="72.385284"
+       y="259.3511"
+       ry="3.0418117"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,38.948164,265.06483)"
+       id="text48346"
+       style="font-size:29.3333px;line-height:1.25;font-family:Comfortaa;-inkscape-font-specification:'Comfortaa, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect48348)"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         x="134.36328"
+         y="12.988447"
+         id="tspan103588">zf/geting-started/greeting</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.917;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
+       d="M 93.877393,84.663443 V 114.28811"
+       id="path20647-0-5"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.917;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-8)"
+       d="M 93.883554,167.45572 127.57501,204.8678"
+       id="path20647-0-9"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.917;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-8)"
+       d="M 93.883554,167.45572 60.197516,204.8678"
+       id="path103075"
+       inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/text48346.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
