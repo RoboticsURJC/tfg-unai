@@ -33,9 +33,10 @@ fuerza o precisión pueden comprometer la ejecución correcta de una tarea de
 \\
 
 En nuestro caso, hemos utilizado plataformas robóticas como los famosos robots
-de la familia Turtlebot, en concreto los modelos 2 y 4 \textit{Lite}, que se
-pueden apreciar en la Figura \ref{fig:turtlebots}, debido a su naturaleza móvil
-y barata, y a su disponibilidad en el laboratorio.
+de la familia Turtlebot\footnote{\url{https://www.turtlebot.com/about/}}, en
+concreto los modelos 2 y 4 \textit{Lite}, que se pueden apreciar en la Figura
+\ref{fig:turtlebots}, debido a su naturaleza móvil y barata, y a su
+disponibilidad en el laboratorio.
 \\
 
 \begin{figure} [h!]
@@ -49,10 +50,12 @@ y barata, y a su disponibilidad en el laboratorio.
 \subsection{Turtlebot 2}
 \label{sec:turtlebot2}
 
-En concreto, el robot Turtlebot 2 se fundamenta en la base \textit{Kobuki}, que
-dispone de los sensores necesarios para una navegación robusta, como puede ser
-la IMU o Unidad de Medida Inercial, para las correcciones en los datos de
-odometría y un \textit{bumper} o sensor de colisiones.
+En concreto, el robot Turtlebot
+2\footnote{\url{https://www.turtlebot.com/turtlebot2/}} se fundamenta en la base
+\textit{Kobuki}, que dispone de los sensores necesarios para una navegación
+robusta, como puede ser la IMU o Unidad de Medida Inercial, para las
+correcciones en los datos de odometría y un \textit{bumper} o sensor de
+colisiones.
 La base \textit{Kobuki} también dispone de una batería que dota al robot de
 cierta autonomía.
 Asimismo, dispone de actuadores que le permiten llevar a cabo dicha navegación,
@@ -97,12 +100,13 @@ Se puede ver una imagen del modelo en la Figura \ref{fig:turtlebot2}.
 \subsection{Turtlebot 4}
 \label{sec:turtlebot4}
 
-Por su parte, el robot Turtlebot 4 \textit{Lite} utilizado es bastante parecido
-al anterior en cuanto a los sensores de la base se refiere, correspondiendo esta
-vez con el modelo Create 3 de iRobot\footnote{
+Por su parte, el robot Turtlebot 4\footnote{\url{https://www.turtlebot.com/}}
+\textit{Lite} utilizado es bastante parecido al anterior en cuanto a los
+sensores de la base se refiere, correspondiendo esta vez con el modelo Create 3
+de iRobot\footnote{
 \url{https://www.irobot.es/es_ES/roomba.html?gad_source=1&gclid=CjwKCAjwrIixBhBbEiwACEqDJcM6GMOs9Ew0S98K9IJvOaBGm30dR6D1pk5T09dpqwcvNVTaYr7ZTBoC3HgQAvD_BwE}}
-que, a efectos prácticos, es una aspiradora robótica sin la aspiradora ni
-las escobillas que las caracterizan.
+que, a efectos prácticos, es una aspiradora robótica sin la aspiradora ni las
+escobillas que las caracterizan.
 \\
 
 Este robot también añade un sensor LIDAR y una cámara RGBD, que, en el caso de
@@ -374,7 +378,9 @@ El protocolo de comunicaciones utilizado en el \textit{software} desarrollado en
 este trabajo es Zenoh, que reduce en gran medida los bytes de la cabecera de los
 mensajes, y ofrece mejores prestaciones en comparación con otros protocolos de
 su misma índole, como se puede apreciar en la gráfica de la Figura
-\ref{fig:zenoh_performance}.
+\ref{fig:zenoh_performance}, en la que se hicieron pruebas en varias máquinas,
+con los protocolos Kafka, MQTT, CycloneDDS y distintas variantes de Zenoh,
+siendo estas últimas las que mejores resultados obtuvieron.
 \\
 
 \begin{figure} [h!]
