@@ -3,10 +3,10 @@
 
 \begin{flushright}
 \begin{minipage}[]{10cm}
-\emph{Quizás algún fragmento de libro inspirador...}\\
+\emph{La práctica es el único camino para la maestría.}\\
 \end{minipage}\\
 
-Autor, \textit{Título}\\
+Stephen R. Covey, \textit{Los 7 hábitos de la gente altamente efectiva}\\
 \end{flushright}
 
 \vspace{1cm}
@@ -414,13 +414,14 @@ envía, momento en el que se tiene el tipo de mensaje, con la ayuda de la funci�
     from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
     from rclpy.type_support import check_for_type_support
 
-    def ser_ros2_msg(ros2_msg) -> bytes:
+    def ser_ros2_msg(ros2_msg: Any) -> bytes:
         check_for_type_support(type(ros2_msg))
         return _rclpy.rclpy_serialize(ros2_msg, type(ros2_msg))
 
-    def get_ros2_deserializer(ros2_type): # Returns a function
+    def get_ros2_deserializer(ros2_type: Any): -> Callable[[bytes], Any]
         check_for_type_support(ros2_type)
-        return lambda obj: _rclpy.rclpy_deserialize(obj, ros2_type)
+        # This returns a function
+        return lambda ser_obj: _rclpy.rclpy_deserialize(ser_obj, ros2_type)
   \end{lstlisting}
 \caption[Funciones para serializar y deserializar mensajes de ROS en Zenoh-Flow]{Funciones para serializar y deserializar mensajes de ROS en Zenoh-Flow}
 \label{cod:zf_ros_serializer}
