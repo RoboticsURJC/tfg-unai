@@ -132,17 +132,16 @@ como se explica más adelante en esta sección.
 
 Para la programación de flujos de datos con este \textit{framework} es necesario
 la definición de un flujo de datos, en un archivo en formato \texttt{yaml}, como
-el que podemos ver en el Código de ejemplo \ref{cod:data_flow_example}, que
+el que podemos ver en el ejemplo del Código \ref{cod:data_flow_example}, que
 puede encontrarse en el repositorio oficial de ejemplos de Zenoh-Flow\footnote{
 \url{https://github.com/ZettaScaleLabs/zenoh-flow-examples/blob/master/getting-started}}.
 \\
 
 % Con esta linea no funciona (para usar la definición comentada en estilo.tex):
 %\begin{lstlisting}[language=yaml]
-\begin{code}[H]
+\begin{code}[h!]
   \begin{lstlisting}[style=yaml]
     flow: getting-started
-
     vars:
      BASE_DIR: "/path/to/zenoh-flow-examples/getting-started"
     
@@ -152,15 +151,12 @@ puede encontrarse en el repositorio oficial de ejemplos de Zenoh-Flow\footnote{
           key-expressions:
             out: zf/getting-started/hello
         descriptor: "builtin://zenoh"
-    
     operators:
       - id: greetings-maker
       descriptor: "file://{{ BASE_DIR }}/nodes/python/greetings-maker/greetings-maker.yaml"
-    
     sinks:
       - id: file-writer
       descriptor: "file://{{ BASE_DIR }}/nodes/python/file-writer/file-writer.yaml"
-    
       - id: zenoh-writer
         configuration:
           key-expressions:
@@ -174,14 +170,12 @@ puede encontrarse en el repositorio oficial de ejemplos de Zenoh-Flow\footnote{
         to:
           node: greetings-maker
           input: name
-    
       - from:
           node: greetings-maker
           output: greeting
         to:
           node: file-writer
           input: in
-    
       - from:
           node: greetings-maker
           output: greeting
@@ -223,6 +217,14 @@ lo que harán será recibir y información de la \textit{key-expression}
 puede observarse resumidamente en la Figura \ref{fig:zf_example}.
 \\
 
+\begin{figure} [h!]
+  \begin{center}
+    \includegraphics[width=15cm]{figs/zenoh_flow_example}
+  \end{center}
+  \caption{Flujo de datos de ejemplo en Zenoh-Flow.}
+  \label{fig:zf_example}
+\end{figure}\
+
 %Párrafo sobre los descriptores no integrados.
 El resto de nodos deben ser programados, para lo que existe un fichero
 descriptor, que indicará el nombre del nodo, las variables de configuración, la
@@ -234,7 +236,7 @@ Continuando con el mismo ejemplo, se muestran en el Código
 encontrará en la ruta declarada en su etiqueta \verb|descriptor|.
 \\
 
-\begin{code}[H]
+\begin{code}[h!]
   \begin{lstlisting}[style=yaml]
     id: greetings-maker
     vars:
@@ -247,14 +249,6 @@ encontrará en la ruta declarada en su etiqueta \verb|descriptor|.
 \label{cod:node_descriptor}
 \end{code}
 
-\begin{figure} [h!]
-  \begin{center}
-    \includegraphics[width=5cm]{figs/zenoh_flow_example}
-  \end{center}
-  \caption{Flujo de datos de ejemplo en Zenoh-Flow.}
-  \label{fig:zf_example}
-\end{figure}\
-
 %Párrafo sobre las partes del código del nodo operator de ejemplo.
 Las distintas partes del código de este nodo se muestran en el Código
 \ref{cod:operator_node}, en el que puede verse cómo se reduce a una sencilla
@@ -264,18 +258,7 @@ debe devolver la clase creada para este nodo, en nuestro caso llamada
 \verb|GreetingsMaker|.
 \\
 
-La programación de los nodos de Zenoh-Flow, realizada en \texttt{Python}, es muy
-parecida entre los distintos nodos, ya que su funcionamiento es muy similar: los
-nodos \textit{source} solo comprenden salidas de datos, los nodos \textit{sink},
-solo comprenden entradas, y los nodos \textit{operator} comprenden ambas, ya que
-pueden recibir información de otros nodos \textit{source} u \textit{operator} y
-pueden enviar datos a otros nodos \textit{operator} o \textit{sink}, como
-podemos ver en el flujo de datos representado en la anterior Figura
-\ref{fig:zf_example} o en la Figura \ref{fig:data_flow_qr_example} de la Sección
-\ref{sec:flujos_datos}.
-\\
-
-\begin{code}[H]
+\begin{code}[h!]
   \begin{lstlisting}[language=Python]
     from zenoh_flow.interfaces import Operator
     from zenoh_flow import Inputs, Outputs
@@ -323,7 +306,16 @@ podemos ver en el flujo de datos representado en la anterior Figura
 \label{cod:operator_node}
 \end{code}
 
-
+La programación de los nodos de Zenoh-Flow, realizada en \texttt{Python}, es muy
+parecida entre los distintos nodos, ya que su funcionamiento es muy similar: los
+nodos \textit{source} solo comprenden salidas de datos, los nodos \textit{sink},
+solo comprenden entradas, y los nodos \textit{operator} comprenden ambas, ya que
+pueden recibir información de otros nodos \textit{source} u \textit{operator} y
+pueden enviar datos a otros nodos \textit{operator} o \textit{sink}, como
+podemos ver en el flujo de datos representado en la anterior Figura
+\ref{fig:zf_example} o en la Figura \ref{fig:data_flow_qr_example} de la Sección
+\ref{sec:flujos_datos}.
+\\
 
 %Párrafos sobre la función constructor (__init__()) de la clase del nodo.
 La línea \verb|outputs.take("greeting", str, lambda s: bytes(s, "utf-8"))|, en
@@ -409,7 +401,7 @@ envía, momento en el que se tiene el tipo de mensaje, con la ayuda de la funci�
 \verb|type()| de \texttt{Python}.
 \\
 
-\begin{code}[H]
+\begin{code}[h!]
   \begin{lstlisting}[language=Python]
     from rclpy.impl.implementation_singleton import rclpy_implementation as _rclpy
     from rclpy.type_support import check_for_type_support
@@ -433,7 +425,7 @@ manera al sistema, el método a seguir para serializar y deserializar los
 mensajes de ROS, como se puede ver en el Código \ref{cod:ros_zf_io}.
 \\
 
-\begin{code}[H]
+\begin{code}[h!]
   \begin{lstlisting}[language=Python]
     from zenoh_flow.interfaces import Operator
     from zenoh_flow import Input, Output
