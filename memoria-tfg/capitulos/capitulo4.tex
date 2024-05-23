@@ -2,9 +2,9 @@
 \label{cap:capitulo4}
 
 \begin{flushright}
-\begin{minipage}[]{10cm}
+%\begin{minipage}[]{10cm}
 \emph{La práctica es el único camino para la maestría.}\\
-\end{minipage}\\
+%\end{minipage}\\
 
 Stephen R. Covey, \textit{Los 7 hábitos de la gente altamente efectiva}\\
 \end{flushright}
@@ -15,9 +15,9 @@ Stephen R. Covey, \textit{Los 7 hábitos de la gente altamente efectiva}\\
 
 Este capítulo describe la topografía de red utilizada, tanto a nivel de
 \textit{hardware} como a nivel de \textit{software}.
-También se describe la manera en la que dichos \textit{softwares} se
-complementan, detallando los aspectos más importantes de cada uno de ellos, y
-explicando como funcionan juntos a nivel de \textit{software}.
+También se describe la manera en la que los distintos elementos
+\textit{software} se complementan, detallando los aspectos más importantes de
+cada uno de ellos, y explicando cómo funcionan juntos.
 
 
 
@@ -26,8 +26,8 @@ explicando como funcionan juntos a nivel de \textit{software}.
 
 %párrafo sobre la topología harware de red
 La topología de red utilizada comprende varias máquinas, debido a la naturaleza
-multirobótica de este trabajo, correspondiendo todas ellas a excepción del
-\textit{router}, a los ordenadores de a bordo de los robots utilizados, siendo
+multirobótica de este trabajo, correspondiendo todas ellas ---a excepción del
+\textit{router}---, a los ordenadores de a bordo de los robots utilizados, siendo
 el \textit{router} el encargado de establecer comunicaciones entre el resto de
 máquinas y encaminar así los datos que se envían entre ellas.
 \\
@@ -41,7 +41,7 @@ dado que todos se encuentran en la misma sala, al alcance de un único
 \textit{router}.
 Asimismo dicho \textit{router} debe estar configurado de manera que permita la
 comunicación en ambos sentidos (entrante y saliente), y debe permitirla a través
-de los protocolos DDS, para los nodos de ROS2 y Zenoh, para los nodos de
+de los protocolos DDS, para los nodos de ROS2; y Zenoh, para los nodos de
 Zenoh-Flow.
 \\
 
@@ -49,7 +49,7 @@ Zenoh-Flow.
 Los ordenadores de a bordo deben tener una mínima capacidad de cómputo como para
 no saturarse a la hora de enviar o recibir una gran cantidad de mensajes.
 En nuestro caso se ha utilizado el ordenador portátil mencionado en la Sección
-\ref{sec:a_bordo} del capítulo anterior.
+\ref{sec:a_bordo}.
 Puesto que se necesitan más ordenadores para realizar los experimentos, y solo
 se dispone de un ordenador portátil, también se han utilizado las máquinas del
 modelo Raspberry Pi 4B mencionadas en la sección referenciada.
@@ -123,7 +123,7 @@ Sección \ref{sec:zenoh_flow}.
 
 Zenoh-Flow es un \textit{framework} diseñado para la programación de flujos de
 datos, que funciona sobre el protocolo Zenoh, y que se puede comunicar a través
-de DDS con nodos de ROS gracias al Zenoh-bridge-DDS como queda explicado en la
+de DDS con nodos de ROS gracias al Zenoh-bridge-DDS, como queda explicado en la
 Sección \ref{sec:zenoh_bridge}.
 Esta capacidad nos permite hacer uso de nodos de ROS en los flujos de datos, así
 como realizar aplicaciones robóticas directamente en conjunto con nodos de ROS,
@@ -132,7 +132,7 @@ como se explica más adelante en esta sección.
 
 Para la programación de flujos de datos con este \textit{framework} es necesario
 la definición de un flujo de datos, en un archivo en formato \texttt{yaml}, como
-el que podemos ver en el ejemplo del Código \ref{cod:data_flow_example}, que
+el que podemos ver en el ejemplo del Código \ref{cod:data_flow_example} y que
 puede encontrarse en el repositorio oficial de ejemplos de Zenoh-Flow\footnote{
 \url{https://github.com/ZettaScaleLabs/zenoh-flow-examples/blob/master/getting-started}}.
 \\
@@ -208,7 +208,7 @@ De esta manera, nuestra topología será centralizada.
 
 %Párrafo sobre los descriptores builtin o integrados.
 En este ejemplo se puede ver cómo los nodos \verb|zenoh-sub| y
-\verb|zenoh-writer|, contienen la línea \verb|descriptor: "builtin://zenoh"|, lo
+\verb|zenoh-writer| contienen la línea \verb|descriptor: "builtin://zenoh"|, lo
 que indica que no necesitan un fichero que describa dónde se encuentra el código
 de dicho nodo, ya que este se encuentra directamente integrado en Zenoh-Flow, y
 lo que harán será recibir y información de la \textit{key-expression}
@@ -308,7 +308,7 @@ debe devolver la clase creada para este nodo, en nuestro caso llamada
 
 La programación de los nodos de Zenoh-Flow, realizada en \texttt{Python}, es muy
 parecida entre los distintos nodos, ya que su funcionamiento es muy similar: los
-nodos \textit{source} solo comprenden salidas de datos, los nodos \textit{sink},
+nodos \textit{source} solo comprenden salidas de datos, los nodos \textit{sink}
 solo comprenden entradas, y los nodos \textit{operator} comprenden ambas, ya que
 pueden recibir información de otros nodos \textit{source} u \textit{operator} y
 pueden enviar datos a otros nodos \textit{operator} o \textit{sink}, como
@@ -369,32 +369,32 @@ Esta función se repetirá iterativamente hasta finalizar el flujo de datos.
 
 \subsection{Flujos de datos con Zenoh-Flow y ROS2}
 \label{sec:zf_ros}
-%[TODO] Explicar cómo publicar o recibir desde ROS, explicando detalles como
-%       "rt/topic_name...", los bridge y router, etc (añadir la imagen
-%       siguiente):
-Como ya se ha visto, Zenoh-Flow divide sus posibles nodos en tres tipos:
-\textit{source}, \textit{operator} y \textit{sink}, que podríamos trasladar a
-las palabras en español: origen, operador y final, pudiendo ver la relación de
-estos nodos con un grafo direccionado, como es un flujo de datos, en el que
-los datos se obtienen de los nodos origen o \textit{source}, pasan por el
-operador, en el que son computados, o tratados, hasta llegar al final o
-\textit{source}, donde los datos dejan de viajar entre nodos para terminar
-convirtiéndose en una acción o decisión del sistema.
+
+Como se ha visto en la Sección \ref{sec:zenoh_flow}, Zenoh-Flow divide sus
+posibles nodos en tres tipos: \textit{source}, \textit{operator} y
+\textit{sink}, que podríamos trasladar a las palabras en español:
+\textit{origen}, \textit{operador} y \textit{final}, pudiendo ver la relación de
+estos nodos con un grafo direccionado, como es un flujo de datos, en el que los
+datos se obtienen de los nodos origen o \textit{source}, pasan por el operador,
+en el que son computados o tratados, hasta llegar al final o \textit{sink},
+donde los datos dejan de viajar entre nodos para terminar convirtiéndose en una
+acción o decisión del sistema.
 Ya se ha visto representada esta misma comparación en la Figura
 \ref{fig:data_flow_vs_robotics} de la Sección \ref{sec:flujos_datos}.
+\\
 
-Para poder complementar los explicados flujos de datos en Zenoh-Flow con las
-acciones de los robots, que se ejecutan en nodos de ROS2, se deben crear las
-piezas faltantes, para anclar ambos sistemas, uniendo sus entradas y salidas.
+Para poder complementar los flujos de datos en Zenoh-Flow con las acciones de
+los robots, que se ejecutan en nodos de ROS2, se deben crear las piezas
+faltantes, para anclar ambos sistemas, uniendo sus entradas y salidas.
 Entre estas piezas se encuentran el serializador y el deserializador, que como
 se ha explicado previamente, debe ser el mismo utilizado internamente en ROS.
 \\
 
 Esto resulta en el Código \ref{cod:zf_ros_serializer}, en el que se pueden
 observar dos funciones: la primera, \verb|ser_ros2_msg()|, en la que se
-serializa el mensaje en su primer argumento y la segunda, que en cambio devuelve
-una función creada en el momento y que deserializará el mensaje en función de su
-tipo, especificado en su primer argumento.
+serializa el mensaje en su primer argumento; y la segunda, que devuelve una
+función \verb|lambda| creada en el momento y que deserializará el mensaje en
+función de su tipo, especificado en su primer argumento.
 Esto debe hacerse de esta manera ya que no podemos saber el tipo de mensaje que
 se recibirá, ya que estará serializado en bytes, a diferencia de cuando se
 envía, momento en el que se tiene el tipo de mensaje, con la ayuda de la función
@@ -419,10 +419,10 @@ envía, momento en el que se tiene el tipo de mensaje, con la ayuda de la funci�
 \label{cod:zf_ros_serializer}
 \end{code}
 
-Estas dos funciones, serán especificadas en los argumentos de nuestros nodos de
+Estas dos funciones serán especificadas en los argumentos de nuestros nodos de
 Zenoh-Flow a la hora de obtener las entradas y salidas, definiendo de esta
-manera al sistema, el método a seguir para serializar y deserializar los
-mensajes de ROS, como se puede ver en el Código \ref{cod:ros_zf_io}.
+manera al sistema el método a seguir para serializar y deserializar los mensajes
+de ROS, como se puede ver en el Código \ref{cod:ros_zf_io}.
 \\
 
 \begin{code}[h!]
@@ -456,20 +456,19 @@ Zenoh, para que únicamente traduzca el tráfico deseado, lo que conseguiremos c
 un argumento en la línea de comandos al ejecutarlo, o bien utilizando
 \texttt{--allow/-a} seguido de un \textit{string} que contenga los topics
 deseados (o partes de los mismos), separados por el carácter ``\texttt{|}'', o
-bien utilizando \texttt{--deny/-d} de la misma manera, lo que traducirá todos
-los topics excepto los que contengan los \textit{strings} especificados.
+bien utilizando \texttt{--deny/-d} de la misma manera, cuyo efecto será el
+contrario, traducirá todos los topics excepto los que contengan los
+\textit{strings} especificados.
 Un ejemplo del comando de ejecución con este argumento es el siguiente:
 \begin{lstlisting}[language=bash]
-  ./zenoh-bridge-dds -e tcp/<ip>:7447 --allow "goal_pose|zf/getting-started/"
+  ./zenoh-bridge-dds -e tcp/<ip>:7447 --allow "rt/robot1/goal_pose|rt/chatter"
 \end{lstlisting}
-%\verb+./zenoh-bridge-dds -e tcp/<ip>:7447 --allow "goal_pose|zf/getting-started/"+,
 siendo el argumento \texttt{-e} y el siguiente, la configuración de conexión del
 \textit{bridge}, debiéndose sustituir \verb|<ip>| por la dirección IP a la que
 se quiera conectar, como se verá más adelante en el Capítulo
 \ref{cap:capitulo5}.
 Un esquema explicativo de toda esta sección puede verse en la Figura
 \ref{fig:zenoh_dds_topology}.
-\\
 %Nota: \verb++ evita e caracteres como "|" sean interpretados.
 
 \begin{figure} [h!]
@@ -480,6 +479,11 @@ Un esquema explicativo de toda esta sección puede verse en la Figura
   \label{fig:zenoh_dds_topology}
 \end{figure}\
 
+Además, como podemos ver en la Figura \ref{fig:zenoh_dds_topology}, para que las
+\textit{key-expressions} sean traducidas a topics de ROS, deben incluir al
+principio de las mismas la partícula \verb|/rt/| en el campo
+\textit{key-expression} del archivo de definición de flujo de datos, como el
+mostrado en el anterior Código \ref{cod:data_flow_example}.
 
 
 
