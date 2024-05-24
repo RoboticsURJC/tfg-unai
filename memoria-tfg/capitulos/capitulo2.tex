@@ -21,14 +21,14 @@ del proyecto, la metodología empleada y el plan de trabajo detallado.
 \section{Descripción del problema}
 \label{sec:descripcion}
 
-Este proyecto surge como respuesta a la escasa investigación sobre los
-flujos de datos empleados en conjunto con ROS2, ofreciendo a su vez un entorno
-propicio para la creación sencilla de distintas aplicaciones robóticas basadas
-en dichos flujos de datos, que pueden replicar de manera versátil y sencilla los
-comportamientos reactivos de los robots, eludiendo la complejidad inherente de
-este \textit{middleware} robótico y dando lugar, por tanto, a un nuevo entorno
-de programación más simple, a la vez que solucionando varios problemas expuestos
-a continuación.
+Este proyecto surge como respuesta a la escasa investigación acerca del
+paradigma de programación de flujos de datos empleados en conjunto con ROS2,
+ofreciendo a su vez un entorno propicio para la creación sencilla de distintas
+aplicaciones robóticas basadas en dichos flujos de datos, que pueden replicar de
+manera versátil y sencilla los comportamientos reactivos de los robots,
+eludiendo la complejidad inherente de este \textit{middleware} robótico (ROS2) y
+dando lugar, por tanto, a un nuevo entorno de programación más simple, a la vez
+que solucionando varios problemas expuestos a continuación.
 
 
 \subsection{El problema de la congestión de red}
@@ -68,9 +68,9 @@ etapas de la educación primaria y secundaria respecto a la etapa universitaria,
 y es debido precisamente, a la complejidad de código y enseñanza de ROS, para
 los cuales, se requiere incluso de varias asignaturas en esta última etapa.
 Es por este motivo, que este trabajo pretende incorporar un paso intermedio en
-la enseñanza, simplificando el desarrollo del software en ROS2, y dando la
-posibilidad de crear aplicaciones robóticas más complejas de una manera más
-simple para robots más completos, y que a su vez permanecen dentro de la
+la enseñanza, simplificando el desarrollo del  \textit{software} en ROS2, y
+dando la posibilidad de crear aplicaciones robóticas más complejas de una manera
+más simple para robots más completos, y que a su vez permanecen dentro de la
 categoría de robots de bajo coste, siendo asequibles para instituciones como
 colegios o institutos.
 
@@ -104,25 +104,38 @@ Este trabajo pretende, por tanto, solucionar tanto el problema del escalón de
 aprendizaje, suponiendo un paso intermedio en la enseñanza de la robótica, como
 el problema de la congestión de red generada por DDS, suponiendo una posible
 solución a la misma.
+\\
+
+Con el fin de resolver ests problemas, y cumplir los objetivos principales
+descritos, se detallan a continuación los siguientes subobjetivos:
+
+\begin{enumerate}
+    \item{Desarrollo de un entorno de programación que posibilite la
+        programación de flujos de datos.}
+    \item{La solució anterior debe ser funcional en conjunto con nodos de ROS2,
+        permitiendo la mutua comunicación entre ambos \textit{softwares} de
+        manera bidireccional.}
+    \item{El desarrollo de una aplicación robótica en simulación utilizando el
+        anterior entorno de desarrollo de flujos de datos.}
+    \item{El traslado de la anterior aplicación a un entorno con robots reales.}
+    \item{Demostrar la simplicidad de código y la viabilidad de su aplicación en
+        entornos educativos, solventando el escalón de aprendizaje descrito.}
+    \item{Disminuir la congestión de red originada por DDS.}
+\end{enumerate}
 
 %Cuenta aquí el objetivo u objetivos generales y, a continuación, concrétalos mediante objetivos específicos.
 
 \section{Requisitos}
 \label{sec:requisitos}
 
-Para solucionar los problemas descritos, este trabajo deberá cumplir los
-siguientes requisitos:
+Para solucionar los problemas descritos, además de cumplir los subobjetivos
+marcados, este trabajo deberá cumplir los siguientes requisitos:
 
 \begin{enumerate}
     \item{Se utilizará \textit{GNU/Linux}, con la distribución
         \textit{Ubuntu 22.04 LTS} como sistema operativo en todos los
         \textit{hardwares}.}
-    \item{El sistema deberá desarrollar alguna forma de programación de flujos
-        de datos con ROS2.}
-    \item{El entorno de programación debe brindar la posibilidad de funcionar en
-        conjunto con nodos de ROS2, permitiendo la comunicación con los mismos
-        mediante \textit{topics}.}
-    \item{Las herramientas \textit{softwares} utilizadas deben ser compatibles
+    \item{Las herramientas \textit{software} utilizadas deben ser compatibles
         para funcionar correctamente en conjunto.}
     \item{Las aplicaciones demostrativas que se desarrollen deben ser fácilmente
         reproducibles y desplegables tanto en un entorno simulado como en un
