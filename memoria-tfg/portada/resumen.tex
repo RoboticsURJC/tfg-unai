@@ -2,10 +2,72 @@
 
 \chapter*{Resumen\markboth{Resumen}{Resumen}}
 
-Escribe aquí el resumen del trabajo. Un primer párrafo para dar contexto sobre la temática que rodea al trabajo.\\
+%Escribe aquí el resumen del trabajo. Un primer párrafo para dar contexto sobre la temática que rodea al trabajo.\\
+%
+%Un segundo párrafo concretando el contexto del problema abordado.\\
+%
+%En el tercer párrafo, comenta cómo has resuelto la problemática descrita en el anterior párrafo.\\
+%
+%Por último, en este cuarto párrafo, describe cómo han ido los experimentos.
 
-Un segundo párrafo concretando el contexto del problema abordado.\\
 
-En el tercer párrafo, comenta cómo has resuelto la problemática descrita en el anterior párrafo.\\
+%Primer párrafo (Introducción):
+La robótica es un campo amplio que se ha desarrollado con el objetivo de mejorar
+la calidad de vida de las personas en numerosos ámbitos.
+Existe una gran variedad de robots, cada uno dedicado a un propósito específico,
+en el que generalmente igualan o superan el rendimiento humano, incluso
+trabajando continuamente sin necesidad de descanso y eliminando riesgos.
 
-Por último, en este cuarto párrafo, describe cómo han ido los experimentos.
+%Segundo párrafo (Objetivos):
+
+En este ámbito y con la creciente tendencia a incluir la robótica en el
+itinerario formativo, ROS es el software mayormente utilizado, que debido a su
+dificultad, resulta difícil de aprender, lo que genera una brecha en la
+educación en este campo.
+Otro de los grandes problemas de este software reside en su protocolo de
+comunicaciones, DDS, el cuál genera una gran cantidad de mensajes, que pueden
+saturar la red.
+%El presente trabajo por tanto tiene como objetivo dar una solución a estos
+%problemas, implementando una forma de programación de flujos de datos compatible
+%con ROS2.
+
+%En este ámbito y con la creciente tendencia a incluir la robótica en el
+%itinerario formativo, surgen grandes vacíos en cuanto al aprendizaje de este
+%campo, siendo ROS el \textit{software} mayormente utilizado en robótica, uno de
+%los más complejos y dificiles de aprender para alumnos preuniversitarios.
+%Este \textit{software} genera una gran congestión de la red debido al uso de
+%DDS como protocolo, reduciendo las posibilidades que ofrece la robótica en el
+%aprendizaje, sobre todo en cuanto a la colaboración y coordinación en sistemas
+%multirobot, campos cada vez más importantes en un mundo en el que los robots
+%son cada vez más comunes.
+
+%Tercer párrafo (Plataforma de desarrollo):
+El presente trabajo pretende solucionar estos problemas, utilizando plataformas
+\textit{hardware} como los robots Turtlebot 2 y 4, en conjunto con herramientas
+\textit{software} como Zenoh-Flow, generando un entorno de programación de
+flujos de datos, compatible con nodos existentes de ROS2, haciéndolo más
+accesible a los estudiantes de este campo.
+
+%Cuarto párrafo (Arquitectura software con Zenoh y ROS2):
+Zenoh-Flow, la herramienta \textit{software} utilizada principalmente, fue
+enlazada con ROS2 aprovechando la capacidad del Zenoh-bridge-DDS para
+traducir los mensajes entre los protocolos Zenoh y DDS, logrando así una
+comunicación bidireccional entre ambos.
+
+%Quinto párrafo (Experimentos):
+Los objetivos mencionados fueron alcanzados a través de numerosos experimentos
+realizados sobre una aplicación creada siguiendo el paradigma de programación de
+flujos de datos con Zenoh-Flow.
+En ella, varios robots deben buscar y acercarse a un objeto de manera
+organizada, dividiéndose el mapa equitativamente y optimizando trayectorias de
+barrido de áreas, de modo que el robot que encuentre dicho objeto, comunique su
+posición al resto.
+
+%Sexto párrafo (Conclusiones):
+Esto se logró en simulación y, parcialmente debido a errores externos, en un
+entorno real de laboratorio, demostrando de esta manera la viabilidad de la
+programación de flujos de datos en robótica y su compatibilidad con ROS2.
+Asimismo fue demostrada su sencillez, requisito indispensable para su aplicación
+en la educación robótica preuniversitaria, ayudando a reducir la brecha
+educativa en este ámbito.
+
