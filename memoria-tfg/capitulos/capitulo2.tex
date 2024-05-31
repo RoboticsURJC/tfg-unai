@@ -36,10 +36,10 @@ que solucionando varios problemas expuestos a continuación.
 
 Con el uso de ROS2, que por defecto funciona sobre el protocolo DDS, existe un
 problema de congestión de red: los nodos de ROS2 generan una gran cantidad de
-mensajes de manera iterativa, que a su vez van a través de DDS, que es un
-protocolo de comunicaciones que también origina muchos de mensajes de
-\textit{Discovery}, lo que en conjunto conlleva a la congestión de la red, y
-dificulta de esta manera la programación de aplicaciones multirobot.
+mensajes de manera iterativa, que a su vez se transmiten a través de DDS, siendo
+este un protocolo de comunicaciones que, por su naturaleza, origina muchos de
+mensajes de \textit{Discovery}, lo que en conjunto conlleva a la congestión de
+la red, y dificulta de esta manera la programación de aplicaciones multirobot.
 \\
 
 Una solución muy sencilla a este problema consistirá en cambiar el protocolo que
@@ -92,27 +92,28 @@ cantidad los mensajes generados.
 
 La implementación conjunta con ROS2 será posible gracias a que Zenoh-Flow
 permite serializar los datos que se quieren enviar, y existe un \textit{bridge}
-que los traduce de Zenoh a DDS para que los nodos de ROS2 puedan entender dicha
-información.
+que los traduce de Zenoh a DDS y viceversa, para que los nodos de ROS2 y de
+Zenoh-Flow puedan entender la información que se envían.
 Es por este motivo que se serializarán los mensajes de la misma manera que se
 hace internamente en ROS2, y así se podrá seguir utilizando nodos de ROS2
 existentes, como pueden ser los relativos a la navegación, lo que evitará la
 complejidad de su programación.
 \\
 
-Este trabajo pretende, por tanto, solucionar tanto el problema del escalón de
-aprendizaje, suponiendo un paso intermedio en la enseñanza de la robótica, como
-el problema de la congestión de red generada por DDS, suponiendo una posible
-solución a la misma.
+Este trabajo pretende, por tanto, solucionar el problema del escalón de
+aprendizaje, suponiendo un paso intermedio en la enseñanza de la robótica, así
+como el problema de la congestión de red generada por DDS, suponiendo una
+posible solución a la misma, además de presentar una entorno en el que se puede
+aplicar el paradigma de programación de flujos de datos en conjunto con ROS2.
 \\
 
-Con el fin de resolver ests problemas, y cumplir los objetivos principales
+Con el fin de resolver estos problemas, y cumplir los objetivos principales
 descritos, se detallan a continuación los siguientes subobjetivos:
 
 \begin{enumerate}
     \item{Desarrollo de un entorno de programación que posibilite la
         programación de flujos de datos.}
-    \item{La solució anterior debe ser funcional en conjunto con nodos de ROS2,
+    \item{La solución anterior debe ser funcional en conjunto con nodos de ROS2,
         permitiendo la mutua comunicación entre ambos \textit{softwares} de
         manera bidireccional.}
     \item{El desarrollo de una aplicación robótica en simulación utilizando el
@@ -274,10 +275,12 @@ ocasionalmente cada dos semanas.
 \\
 
 Todo el proceso de trabajo se ha ido alojando en un repositorio público de
-GitHub\footnote{\url{https://github.com/RoboticsURJC/tfg-unai}}.
+GitHub\footnote{
+\href{https://github.com/RoboticsURJC/tfg-unai}{https://github.com/RoboticsURJC/tfg-unai}}.
 Asimismo, el trabajo diario se ha ido documentando detalladamente en la
-Wiki\footnote{\url{https://github.com/RoboticsURJC/tfg-unai/wiki}} de dicho
-repositorio, haciendo las veces de cuaderno de bitácora, donde quedan reflejados
-todos los contratiempos, soluciones y pruebas realizados.
+Wiki\footnote{
+\href{https://github.com/RoboticsURJC/tfg-unai/wiki}{https://github.com/RoboticsURJC/tfg-unai/wiki}}
+de dicho repositorio, haciendo las veces de cuaderno de bitácora, donde quedan
+reflejados todos los contratiempos, soluciones y pruebas realizadas.
 
 %Qué agenda has seguido. Si has ido manteniendo reuniones semanales, cumplimentando objetivos parciales, si has ido afinando poco a poco un producto final completo, etc.

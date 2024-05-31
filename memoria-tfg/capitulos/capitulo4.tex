@@ -26,10 +26,10 @@ cada uno de ellos, y explicando cómo funcionan juntos.
 
 %párrafo sobre la topología harware de red
 La topología de red utilizada comprende varias máquinas, debido a la naturaleza
-multirobótica de este trabajo, correspondiendo todas ellas ---a excepción del
-\textit{router}---, a los ordenadores de a bordo de los robots utilizados, siendo
-el \textit{router} el encargado de establecer comunicaciones entre el resto de
-máquinas y encaminar así los datos que se envían entre ellas.
+multirobótica de este trabajo, correspondiendo todas ellas, a los ordenadores de
+a bordo de los robots utilizados, a excepción del \textit{router}, que será el
+componente encargado de establecer comunicaciones entre el resto de máquinas y
+encaminar así los datos que se envían entre ellas.
 \\
 
 %párrafo sobre el router a nivel harware y configuración (software).
@@ -134,7 +134,7 @@ Para la programación de flujos de datos con este \textit{framework} es necesari
 la definición de un flujo de datos, en un archivo en formato \texttt{yaml}, como
 el que podemos ver en el ejemplo del Código \ref{cod:data_flow_example} y que
 puede encontrarse en el repositorio oficial de ejemplos de Zenoh-Flow\footnote{
-\url{https://github.com/ZettaScaleLabs/zenoh-flow-examples/blob/master/getting-started}}.
+\href{https://github.com/ZettaScaleLabs/zenoh-flow-examples/blob/master/getting-started}{https://github.com/ZettaScaleLabs/zenoh-flow-examples/blob/master/getting-started}}.
 \\
 
 % Con esta linea no funciona (para usar la definición comentada en estilo.tex):
@@ -191,11 +191,11 @@ puede encontrarse en el repositorio oficial de ejemplos de Zenoh-Flow\footnote{
 En el contenido de este archivo pueden verse varios apartados importantes, como
 son: las variables de configuración que recibirán los nodos, denominada con la
 etiqueta \verb|vars|; la definición de los distintos nodos con las etiquetas
-\verb|source|, \verb|operator| o \verb|sink|, donde se definen las rutas los
+\verb|source|, \verb|operator| o \verb|sink|, donde se definen las rutas a los
 archivos \texttt{yaml} que los describen, incluyendo sus entradas, salidas o
 variables de configuración, como se explicarán a continuación; y las conexiones
-entre ellos con la etiqueta \verb|links|, en cuyo interior se define la entradas
-y salidas de cada nodo a conectar.
+entre ellos con la etiqueta \verb|links|, en cuyo interior se definen las
+conexiones ente las entradas y salidas de cada nodo.
 \\
 
 %Párrafo sobre las etiquetas importantes que no están en el código.
@@ -323,9 +323,9 @@ la función constructor de esta clase (\verb|__init__()|), toma como argumentos
 el nombre del \textit{output}, el tipo de mensaje, y la función que utilizará
 para serializar el mensaje en el momento de enviarlo, devolviendo el
 \textit{output} correspondiente.
-Lo mismo sucede con la línea siguiente, aunque esta toma como tercer argumento
-una función que utilizará para deserializar el mensaje en el momento en el que
-sea recibido.
+Lo mismo sucede con la línea siguiente, aunque al tratarse de un \textit{input},
+esta toma como tercer argumento una función que utilizará para deserializar el
+mensaje en el momento en el que sea recibido.
 Esta línea devolverá el \textit{input} que corresponda.
 Son estas funciones las que se deberán sustituir por las análogas de ROS, si se
 quiere enviar o recibir información de los nodos de ROS con ayuda del
@@ -345,9 +345,9 @@ asociado a dicha clave.
 
 %Párrafo sobre la función finalize() de la clase del nodo.
 Dentro de esta clase existe una función llamada \verb|finalize()| que se
-ejecutará antes de destruir el nodo, por lo que aquí se podrá liberar memoria,
-cerrar o ventanas abiertas o creadas por el nodo o cualquier otra funcionalidad
-que se requiera finalizar.
+ejecutará antes de destruir el nodo, por lo que dentro de esta función se deberá
+liberar memoria, cerrar ventanas abiertas o creadas por el nodo o cualquier otra
+funcionalidad que se requiera finalizar.
 \\
 
 %Párrafo sobre la función finalize() de la clase del nodo.
@@ -356,12 +356,12 @@ deberá ser asíncrona para poder recibir mensajes, y lo hará ejecutando el mé
 \verb|recv()| del \textit{input} en cuestión como se ve en la línea
 \verb|await self.in_stream.recv()|, lo cual deserializará el dato y lo devolverá
 cuando este llegue.
-Esa misma función permitirá realizar los cálculos y tomar las decisiones que se
-necesiten, para mandar los datos resultantes de manera similar, esta vez usando
-el método \verb|send()| del output por el que se desee enviar, como sucede con
-la línea \verb|await self.output.send(greetings)|, con lo que, finalmente,
-podemos deducir la función que realizará este nodo: publicará una frase de
-bienvenida que variará en función del nombre que reciba.
+Dentro de esta parte del código se deberán realizar los cálculos y tomar las
+decisiones que se necesiten, para mandar los datos resultantes de manera
+similar, esta vez usando el método \verb|send()| del output por el que se desee
+enviar, como sucede con la línea \verb|await self.output.send(greetings)|, con
+lo que, finalmente, podemos deducir la función que realizará este nodo:
+publicará una frase de bienvenida que variará en función del nombre que reciba.
 Esta función se repetirá iterativamente hasta finalizar el flujo de datos.
 \\
 

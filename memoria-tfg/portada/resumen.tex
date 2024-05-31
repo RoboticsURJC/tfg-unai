@@ -19,14 +19,13 @@ en el que generalmente igualan o superan el rendimiento humano, incluso
 trabajando continuamente sin necesidad de descanso y eliminando riesgos.
 
 %Segundo párrafo (Objetivos):
-
-En este ámbito y con la creciente tendencia a incluir la robótica en el
-itinerario formativo, ROS es el software mayormente utilizado, que debido a su
-dificultad, resulta difícil de aprender, lo que genera una brecha en la
+En el ámbito educativo y con la creciente tendencia a incluir la robótica en el
+itinerario formativo, ROS es el software mayormente utilizado y que debido a su
+dificultad, resulta difícil de aprender, lo que a su vez genera una brecha en la
 educación en este campo.
-Otro de los grandes problemas de este software reside en su protocolo de
-comunicaciones, DDS, el cuál genera una gran cantidad de mensajes, que pueden
-saturar la red.
+Otro de los grandes problemas de este software reside en la utilización de DDS,
+un protocolo de comunicaciones que genera una gran cantidad de mensajes, que
+pueden saturar la red.
 %El presente trabajo por tanto tiene como objetivo dar una solución a estos
 %problemas, implementando una forma de programación de flujos de datos compatible
 %con ROS2.
@@ -43,16 +42,15 @@ saturar la red.
 
 %Tercer párrafo (Plataforma de desarrollo):
 El presente trabajo pretende solucionar estos problemas, utilizando plataformas
-\textit{hardware} como los robots Turtlebot 2 y 4, en conjunto con herramientas
+\textit{hardware} como los robots Turtlebot 2 y 4, y herramientas
 \textit{software} como Zenoh-Flow, generando un entorno de programación de
-flujos de datos, compatible con nodos existentes de ROS2, haciéndolo más
+flujos de datos compatible con nodos existentes de ROS2, lo que lo hace más
 accesible a los estudiantes de este campo.
 
 %Cuarto párrafo (Arquitectura software con Zenoh y ROS2):
-Zenoh-Flow, la herramienta \textit{software} utilizada principalmente, fue
-enlazada con ROS2 aprovechando la capacidad del Zenoh-bridge-DDS para
-traducir los mensajes entre los protocolos Zenoh y DDS, logrando así una
-comunicación bidireccional entre ambos.
+Zenoh-Flow, la principal herramienta \textit{software} utilizada, fue enlazada
+con ROS2 aprovechando la capacidad de Zenoh-bridge-DDS para traducir los
+mensajes bidireccionalmente entre los protocolos Zenoh y DDS.
 
 %Quinto párrafo (Experimentos):
 Los objetivos mencionados fueron alcanzados a través de numerosos experimentos
