@@ -1,0 +1,48 @@
+\cleardoublepage
+
+\chapter*{Abstract\markboth{Abstract}{Abstract}}
+
+
+
+%ENGLISH:
+%First paragraph (Introduction):
+Robotics is a broad field that has been developed with the aim of improving the
+quality of life in numerous areas.
+There is a wide variety of robots, each dedicated to a specific purpose,
+generally matching or surpassing human performance, even working continuously
+without the need for rest and eliminating risks.
+
+%Second paragraph (Objectives):
+In the educational field, with the growing trend to include robotics in the
+curriculum, ROS is the most widely used software, but due to its difficulty, it
+is hard to learn, which creates an educational gap in this field.
+Another major problem with this software lies in the use of DDS, a communication
+protocol that generates a large number of messages, which can saturate the
+network.
+
+%Third paragraph (Development Platform):
+This work aims to solve these problems by using hardware platforms such as the
+Turtlebot 2 and 4 robots, and software tools like Zenoh-Flow, creating a data
+flow programming environment compatible with existing ROS2 nodes, making it more
+accessible to students in this field.
+
+%Fourth paragraph (Software Architecture with Zenoh and ROS2):
+Zenoh-Flow, the main software tool used, was linked with ROS2 by leveraging
+Zenoh-bridge-DDS's capability to translate messages bidirectionally between the
+Zenoh and DDS protocols.
+
+%Fifth paragraph (Experiments):
+The mentioned objectives were achieved through numerous experiments conducted on
+an application created following the data flow programming paradigm with
+Zenoh-Flow.
+In it, several robots must search for and approach an object in an organized
+manner, dividing the map equitably and optimizing area sweeping trajectories, so
+that the robot that finds the object communicates its position to the rest.
+
+%Sixth paragraph (Conclusions):
+This was achieved in simulation and, partially due to external errors, in a real
+laboratory environment, demonstrating the viability of data flow programming in
+robotics and its compatibility with ROS2.
+Its simplicity was also demonstrated, which is an essential requirement for its
+application in pre-university robotics education, helping to reduce the
+educational gap in this field.
