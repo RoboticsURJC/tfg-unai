@@ -120,7 +120,7 @@ al módulo \texttt{message\_utils.py}, que se puede observar en el Código
 En este fragmento observamos la clase \verb|WorldPosition|, que se utiliza
 entre los nodos \verb|Navigator| y \verb|PathsPlanner| para informarse de
 las posiciones objetivo de los robots en el mundo o para que el nodo
-\verb|ObjPosInfer| envié la posición en el mundo del objeto detectado al nodo
+\verb|ObjPosInfer| envíe la posición en el mundo del objeto detectado al nodo
 \verb|Navigator|.
 Así como esta clase, se crearon otras, como la llamada \verb|CentroidMessage|,
 para que el nodo \verb|ObjDetector| envíe la posición del objeto detectado al
@@ -253,7 +253,7 @@ Asimismo, su operación inversa se representa en la Ecuación
   q_x &= \sin{\frac{r}{2}} * \cos{\frac{p}{2}} * \cos{\frac{y}{2}} - \cos{\frac{r}{2}} * \sin{\frac{p}{2}} * \sin{\frac{y}{2}}  \\
   q_y &= \cos{\frac{r}{2}} * \sin{\frac{p}{2}} * \cos{\frac{y}{2}} + \sin{\frac{r}{2}} * \cos{\frac{p}{2}} * \sin{\frac{y}{2}}  \\
   q_z &= \cos{\frac{r}{2}} * \cos{\frac{p}{2}} * \sin{\frac{y}{2}} - \sin{\frac{r}{2}} * \sin{\frac{p}{2}} * \cos{\frac{y}{2}}  \\
-  q_w &= \sin{\frac{r}{2}} * \cos{\frac{p}{2}} * \cos{\frac{y}{2}} + \sin{\frac{r}{2}} * \sin{\frac{p}{2}} * \sin{\frac{y}{2}}  \\
+  q_w &= \cos{\frac{r}{2}} * \cos{\frac{p}{2}} * \cos{\frac{y}{2}} + \sin{\frac{r}{2}} * \sin{\frac{p}{2}} * \sin{\frac{y}{2}}  \\
   \end{aligned}
   \label{ec:quat_to_euler}
   \end{equation}
@@ -313,7 +313,7 @@ Este cambio también fue explicado en la Wiki\footnote{
 
 \begin{figure} [h!]
   \begin{center}
-    \includegraphics[width=12cm]{figs/turtlebot_model_mods}
+    \includegraphics[width=10cm]{figs/turtlebot_model_mods}
   \end{center}
   \caption{Modelos 3D del robot antes (izq.) y después (dcha.) de modificar el sensor.}
   \label{fig:mutua_deteccion}
@@ -544,8 +544,8 @@ La prueba mencionada se llevó a cabo con dos robots distintos (Turtlebot 2 y 4)
 ya que al realizar la prueba con dos robots Turtlebot 4, sus ordenadores de a
 bordo (Raspberry Pi) no tenían capacidad suficiente para procesar la gran
 cantidad de mensajes generados, y por ello dejaban de responder en cuanto se
-iniciaban los nodos de navegación de ROS en ambas máquinas y, por tanto, los
-nodos receptores de estos mensajes dejaban de recibir información.
+iniciaban los nodos de navegación de ROS en ambas máquinas y, consecuentemente,
+los nodos receptores de estos mensajes dejaban de recibir información.
 \\
 
 Para consolidar esta teoría se realizó una prueba\footnote{
@@ -578,6 +578,8 @@ Una vez realizadas las pruebas anteriores se prosiguió con las pruebas de la
 aplicación \textit{swarm\_obj\_finder} en los robots reales que, como se ha
 explicado en la Sección \ref{sec:bases}, debe dividir la sala y enviar a cada
 robot por una ruta de búsqueda en ese área en busca de un objeto.
+Todo este proceso queda documentado en la Wiki\footnote{
+\href{https://github.com/RoboticsURJC/tfg-unai/wiki/14.-Pruebas-de-laboratorio-\%5B27-Nov-\%E2\%80\%90-Hoy\%5D}{https://github.com/RoboticsURJC/tfg-unai/wiki/14.-Pruebas-de-laboratorio}}.
 \\
 
 Primero se llevó a cabo la prueba sin la detección de objetos\footnote{
@@ -665,7 +667,8 @@ cartesianas, y se dibujan en la imagen creada para, en el segundo paso, usar la
 herramienta \verb|cv2.HoughCircles()| de detección de círculos de la librería de
 OpenCV sobre dicha imagen, como puede verse en la función
 \verb|detect_circles()| del Código \ref{cod:circle_detection}, dibujando sobre
-ella los círculos detectados, siendo el más probable el círculo blanco.
+ella los círculos detectados, siendo el círculo dibujado de color blanco, más
+probable que el resto dibujados en color gris.
 \\
 
 \begin{code}[h!]

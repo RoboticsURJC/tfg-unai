@@ -13,7 +13,7 @@ Stephen R. Covey, \textit{Los 7 hábitos de la gente altamente efectiva}\\
 
 %Escribe aquí un párrafo explicando brevemente lo que vas a contar en este capítulo. En este capítulo (y quizás alguno más) es donde, por fin, describes detalladamente qué has hecho y qué experimentos has llevado a cabo para validar tus desarrollos.
 
-Este capítulo describe la topografía de red utilizada, tanto a nivel de
+Este capítulo describe la topología de red utilizada, tanto a nivel de
 \textit{hardware} como a nivel de \textit{software}.
 También se describe la manera en la que los distintos elementos
 \textit{software} se complementan, detallando los aspectos más importantes de
@@ -33,16 +33,15 @@ encaminar así los datos que se envían entre ellas.
 \\
 
 %párrafo sobre el router a nivel harware y configuración (software).
-Comenzando con el \textit{router}, no se ha necesitado una conexión a internet,
-ya que las comunicaciones se han realizado de manera local, es decir, que todos
-los ordenadores de abordo en los robots se comunican directamente con dicho
-\textit{router}, sin necesidad de mandar datos más allá de esta red local,
-dado que todos se encuentran en la misma sala, al alcance de un único
-\textit{router}.
-Asimismo dicho \textit{router} debe estar configurado de manera que permita la
-comunicación en ambos sentidos (entrante y saliente), y debe permitirla a través
-de los protocolos DDS, para los nodos de ROS2; y Zenoh, para los nodos de
-Zenoh-Flow.
+Comenzando con el \textit{router}, podemos remarcar que no se ha necesitado una
+conexión a internet, ya que las comunicaciones se han realizado de manera local,
+es decir, que todos los ordenadores de abordo en los robots se comunican
+directamente con dicho \textit{router}, sin necesidad de mandar datos más allá
+de esta red local, dado que todos se encuentran en la misma sala, al alcance de
+un único \textit{router}.
+Asimismo este debe estar configurado de manera que permita la comunicación en
+ambos sentidos (entrante y saliente), y debe permitirla a través de los
+protocolos DDS, para los nodos de ROS2; y Zenoh, para los nodos de Zenoh-Flow.
 \\
 
 %párrafo sobre los ordenadores de a bordo de los robots.
@@ -92,7 +91,7 @@ operar con estas herramientas \textit{software}.
 Además, nuestra topología será centralizada, lo que quiere decir que una de las
 máquinas, llamada ordenador principal o centralizado, correrá todo el
 \textit{software} desarrollado en Zenoh-Flow, por lo que deberá tener instalado
-dicho \textit{software} además del \textit{router} y el bridge de Zenoh.
+dicho \textit{software} además del \textit{router} y del bridge de Zenoh.
 La máquina elegida para este propósito será consecuentemente la que mayor
 capacidad de cómputo tiene, que en este caso es el portátil, como se ha
 mencionado en la Sección \ref{sec:topologia_hw}.
@@ -195,7 +194,7 @@ etiqueta \verb|vars|; la definición de los distintos nodos con las etiquetas
 archivos \texttt{yaml} que los describen, incluyendo sus entradas, salidas o
 variables de configuración, como se explicarán a continuación; y las conexiones
 entre ellos con la etiqueta \verb|links|, en cuyo interior se definen las
-conexiones ente las entradas y salidas de cada nodo.
+conexiones entre las entradas y salidas de cada nodo.
 \\
 
 %Párrafo sobre las etiquetas importantes que no están en el código.
@@ -346,8 +345,9 @@ asociado a dicha clave.
 %Párrafo sobre la función finalize() de la clase del nodo.
 Dentro de esta clase existe una función llamada \verb|finalize()| que se
 ejecutará antes de destruir el nodo, por lo que dentro de esta función se deberá
-liberar memoria, cerrar ventanas abiertas o creadas por el nodo o cualquier otra
-funcionalidad que se requiera finalizar.
+liberar memoria, cerrar archivos o ventanas que hayan sido abiertas o creadas
+durante la ejecución del nodo o finalizar cualquier otra funcionalidad que así
+lo requiera.
 \\
 
 %Párrafo sobre la función finalize() de la clase del nodo.
@@ -392,9 +392,10 @@ se ha explicado previamente, debe ser el mismo utilizado internamente en ROS.
 
 Esto resulta en el Código \ref{cod:zf_ros_serializer}, en el que se pueden
 observar dos funciones: la primera, \verb|ser_ros2_msg()|, en la que se
-serializa el mensaje en su primer argumento; y la segunda, que devuelve una
-función \verb|lambda| creada en el momento y que deserializará el mensaje en
-función de su tipo, especificado en su primer argumento.
+serializa el mensaje en su primer argumento; y la segunda,
+\verb|get_ros2_deserializer()|, que devuelve una función \verb|lambda| creada en
+el momento y que deserializará el mensaje en función de su tipo, especificado en
+su primer argumento.
 Esto debe hacerse de esta manera ya que no podemos saber el tipo de mensaje que
 se recibirá, ya que estará serializado en bytes, a diferencia de cuando se
 envía, momento en el que se tiene el tipo de mensaje, con la ayuda de la función
