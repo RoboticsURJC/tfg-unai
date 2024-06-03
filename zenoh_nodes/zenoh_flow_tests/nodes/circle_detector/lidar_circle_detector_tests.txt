@@ -1,0 +1,32 @@
+Tests with little place (2x2[m²] aprox.):
+
+res 560 (125 m2px), lat ~1s
+res 880 (200 m2px), lat ~2s
+res 350 (75 m2px), lat 
+res 450 (100 m2px), lat
+
+
+Tests with a bigger place (6x6[m²] aprox.):
+
+res 888 (100 m2px), lat ~2s
+res 672 (75  m2px), lat 
+
+
+Tests with a bigger place (6x6[m²] aprox.) but with a max detection range of 2m:
+
+res 425 (100 m2px, 2m max+margin), lat OK
+res  (100 m2px, 1.5m max),         lat 
+
+
+
+recibimos mensajes antiguos y lo comprobamos añadiendo un if con el timestamp en
+el programa probamos a utilizar un lidar aparte de un t2 por ejemplo conectado
+directamente al protátil pero sí funciona, por lo que el problema reside en el
+lidar o en las comunicaciones (probablemente zenoh).
+
+para saber sin el lidar del robot estaba roto usamos el otro robot y sucede lo
+mismo, además, ejecutando este comando:
+"ROS_DOMAIN_ID=0 ros2 topic echo /robot2/scan | awk '/ranges:/ {flag=1; next} /intensities:/ {flag=0} flag {print $2}'"
+podemos comprobar, moviendo la mano que se actualiza a tiempo real, por lo que
+todos los mensajes son actuales (no hay mensajes pasados), lo que significa que
+el problema esta en el router o el bridge de zenoh.

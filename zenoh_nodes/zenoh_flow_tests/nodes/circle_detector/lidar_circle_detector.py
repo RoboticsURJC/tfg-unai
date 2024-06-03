@@ -24,8 +24,8 @@ from sensor_msgs.msg import LaserScan, Image
 
 import numpy as np, cv2
 #from rclpy.time import Time
-import time
-
+#import time
+from builtin_interfaces.msg import Time
 
 def ser_ros2_msg(ros2_msg) -> bytes:
     check_for_type_support(type(ros2_msg))
@@ -92,6 +92,7 @@ class LidarCircleDetector(Operator):
             raise ValueError("No output 'img_out' found")
         
         self.inverted = True
+        self.last_stamp = Time(sec=0, nanosec=0)
 
     def finalize(self) -> None:
         return None
@@ -228,27 +229,33 @@ class LidarCircleDetector(Operator):
         #img_width = self.meter2pixel(max_measured_range * 2) + DEBUG_IMG_MARGIN
         img_width = self.meter2pixel(MAX_RANGE * 2)
         #print(f"resolution: ({img_width}, {img_width})")
-        print("msg stamp:", laser_msg.header.stamp)
-        #print("rclpy.time.Time():", Time())
-        print("time.time():", time.time())
-        bg_img = self.get_bg_img(img_width)
 
-        cart_points = self.get_cart_points(laser_msg) # in [m]
-        laser_img = self.draw_points(bg_img, cart_points)
-        
-        #print("debug img saved")
-        #cv2.imwrite(
-        #    "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests/debug_img.png",
-        #    laser_img
-        #    )
+        if (self.last_stamp.sec <= laser_msg.header.stamp.sec and
+            self.last_stamp.nanosec < laser_msg.header.stamp.nanosec):
+            self.last_stamp = laser_msg.header.stamp
 
-        #debug_img = self.detect_circles(laser_img)
-        #debug_img_msg = self.arr2img(debug_img)
+            print("msg stamp:", laser_msg.header.stamp)
+            #print("rclpy.time.Time():", Time())
+            #print("time.time():", time.time())
+            bg_img = self.get_bg_img(img_width)
 
-        #debug_img_msg = self.arr2img(laser_img)
-        
-        #await self.output.send(debug_img_msg)
+            cart_points = self.get_cart_points(laser_msg) # in [m]
+            laser_img = self.draw_points(bg_img, cart_points)
 
+            #print("debug img saved")
+            #cv2.imwrite(
+            #    "/home/usanz/Desktop/Uni/22-23/tfg-unai/zenoh_nodes/zenoh_flow_tests/debug_img.png",
+            #    laser_img
+            #    )
+
+            debug_img = self.detect_circles(laser_img)
+            debug_img_msg = self.arr2img(debug_img)
+
+            #debug_img_msg = self.arr2img(laser_img)
+            
+            await self.output.send(debug_img_msg)
+        else:
+            print("receiving past msg", laser_msg.header.stamp)
         return None
 
 

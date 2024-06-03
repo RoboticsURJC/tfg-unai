@@ -13,6 +13,13 @@ ros2_ws/src/ros_tutorials/*
 ros2_ws/src/turtlebot3/*
 ros2_ws/src/urdf_tutorial_r2d2/
 tests/arduino_feedback_servo_hyoda/
+ros2_ws/src/PlotJuggler/
+ros2_ws/src/aws-robomaker-bookstore-world/
+ros2_ws/src/box_bot/
+ros2_ws/src/ros_tutorials/
+ros2_ws/src/swarm_obj_finder/
+ros2_ws/src/turtlebot3/
+
 
 TODO.txt
 zenoh_nodes/swarm_obj_finder/nodes/__pycache__/*
@@ -25,6 +32,5 @@ t4_tests.txt
 cameras_tests_info.yaml
 
 memoria-tfg/correcciones/*
-memoria-tfg.zip
+memoria-tfg/*.bak
 
-*.bak

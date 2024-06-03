@@ -114,7 +114,7 @@ class Navigator(Operator):
         self.mode = SEARCH_MODE
         # After every request a timer is needed to avoid more request while
         # receiving the response:
-        self.wp_req_timeout = 1.0 # [s].
+        self.wp_req_timeout = 0.5 # [s].
         self.last_wp_req_ts = [time.time()] * self.robot_num
 
         self.print_once = True
@@ -250,6 +250,15 @@ class Navigator(Operator):
                 self.obj_pose.header.frame_id = "map"
                 self.goal_manager.update_ts(ns)
 
+                # [TODO] Maybe if the distance is closer to the object than the
+                # received from the master we can approach different with this
+                # robot. The PROBLEM is that it's going to receive both goals
+                # at once.
+                # [TODO] maybe we can use the number of points detected by the
+                # camera to cap the distance because when ocluded (set a minimum
+                # of points needed to set that it's close enough), the camera
+                # detects the closer object.
+
                 # If the master doesn't exist this robot will be the master:
                 if not self.goal_manager.master_exists() and \
                     not self.goal_manager.has_reached_goal(ns):
@@ -262,6 +271,14 @@ class Navigator(Operator):
                 if ns == self.goal_manager.get_master():
                     trace("NAVIGATOR_OP\t",
                           f"Sending robots to the object position")
+                    
+                    #for robot_ns, output in zip(self.robot_namespaces,
+                    #                            self.outputs_wps):
+                    #    if not self.goal_manager.has_reached_goal(robot_ns):
+                    #        await output.send(self.obj_pose)
+                    #The goal is sent even if the sender has reached it
+                    for output in self.outputs_wps:
+                        await output.send(self.obj_pose)
 
                 # Set if the goal has been reached to stop receiving the object
                 # position (if this robot is the master let that role free for
@@ -270,9 +287,13 @@ class Navigator(Operator):
                                         self.obj_pose.pose.position.z)
                 if not self.goal_manager.has_reached_goal(ns) and \
                     robot_dist < self.obj_safe_dist:
+                    # [TODO] we can actually not free the master robot here and
+                    # make it send the goals to the rest. [DONE BUT TESTING]
                     self.goal_manager.set_reached(ns)
                     trace("NAVIGATOR_OP\t",
                           f"\033[0;32mObject reached by {ns}!\033[0m")
+                    #if ns == self.goal_manager.get_master():
+                    #    self.goal_manager.free_master()
 
 
             # If 5s has passed without any position received from master, its

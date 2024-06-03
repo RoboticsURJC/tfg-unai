@@ -15,7 +15,8 @@ sources:
   - id: zenoh-sub
     configuration:
       key-expressions:
-        out: rt/robot1/scan
+        #out: rt/robot1/scan
+        out: rt/robot2/scan
     descriptor: "builtin://zenoh"
 
 operators:

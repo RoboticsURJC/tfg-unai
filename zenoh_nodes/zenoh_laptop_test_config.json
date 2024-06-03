@@ -2,9 +2,9 @@
     "listen":{
         "endpoints":["tcp/0.0.0.0:7447"]
     },
-    "connect":{
-        "endpoints":["tcp/192.168.50.10:7447", "tcp/192.168.50.20:7447", "tcp/192.168.50.30:7447"]
-    },
+    //"connect":{
+    //    "endpoints":["tcp/192.168.50.10:7447"]
+    //},
     "plugins_search_dirs":["/usr/lib/"],
     "plugins":{
         "storage_manager":{
