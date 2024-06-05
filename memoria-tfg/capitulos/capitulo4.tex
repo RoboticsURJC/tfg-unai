@@ -58,7 +58,7 @@ modelo Raspberry Pi 4B mencionadas en la sección referenciada.
   \begin{center}
     \includegraphics[width=8cm]{figs/network_topology}
   \end{center}
-  \caption{Topología de red centralizada.}
+  \caption{Topología de red centralizada}
   \label{fig:network_topology}
 \end{figure}\
 
@@ -210,7 +210,7 @@ En este ejemplo se puede ver cómo los nodos \verb|zenoh-sub| y
 \verb|zenoh-writer| contienen la línea \verb|descriptor: "builtin://zenoh"|, lo
 que indica que no necesitan un fichero que describa dónde se encuentra el código
 de dicho nodo, ya que este se encuentra directamente integrado en Zenoh-Flow, y
-lo que harán será recibir y información de la \textit{key-expression}
+lo que harán será recibir información de la \textit{key-expression}
 \verb|zf/getting-started/hello| y publicar información a la
 \textit{key-expression} \verb|zf/getting-started/greeting| respectivamente, como
 puede observarse resumidamente en la Figura \ref{fig:zf_example}.
@@ -220,7 +220,7 @@ puede observarse resumidamente en la Figura \ref{fig:zf_example}.
   \begin{center}
     \includegraphics[width=15cm]{figs/zenoh_flow_example}
   \end{center}
-  \caption{Flujo de datos de ejemplo en Zenoh-Flow.}
+  \caption{Flujo de datos de ejemplo en Zenoh-Flow}
   \label{fig:zf_example}
 \end{figure}\
 
@@ -232,7 +232,8 @@ ruta al archivo de código del propio nodo y los nombres de sus \textit{inputs} 
 Continuando con el mismo ejemplo, se muestran en el Código
 \ref{cod:node_descriptor} las propiedades mencionadas, en este caso del nodo
 \textit{operator} con el nombre \verb|greetings-maker|, que consecuentemente se
-encontrará en la ruta declarada en su etiqueta \verb|descriptor|.
+encontrará en la ruta declarada en su etiqueta \verb|descriptor|, en el anterior
+Código \ref{cod:data_flow_example}.
 \\
 
 \begin{code}[h!]
@@ -476,7 +477,7 @@ Un esquema explicativo de toda esta sección puede verse en la Figura
   \begin{center}
     \includegraphics[width=15cm]{figs/zenoh_dds_topology}
   \end{center}
-  \caption{Topología software con ROS (DDS) y Zenoh-Flow (Zenoh).}
+  \caption{Topología software con ROS (DDS) y Zenoh-Flow (Zenoh)}
   \label{fig:zenoh_dds_topology}
 \end{figure}\
 
