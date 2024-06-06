@@ -13,10 +13,10 @@ Arthur Ashe\\
 
 %Escribe aquí un párrafo explicando brevemente lo que vas a contar en este capítulo, que básicamente será una recapitulación de los problemas que has abordado, las soluciones que has prouesto, así como los experimentos llevados a cabo para validarlos. Y con esto, cierras la memoria.
 
-En este último capítulo se detallan los objetivos cumplidos, presentando además
-las conclusiones derivadas, así como las habilidades, competencias y
-conocimientos adquiridos durante el desarrollo del proyecto, incluyendo futuras
-líneas de desarrollo del mismo.
+En este último capítulo se detallan los objetivos cumplidos y las conclusiones
+derivadas, así como las habilidades, competencias y conocimientos adquiridos
+durante el desarrollo del proyecto, incluyendo futuras líneas de desarrollo del
+mismo.
 
 \section{Objetivos cumplidos}
 \label{sec:objetivos_cumplidos}
@@ -24,26 +24,24 @@ líneas de desarrollo del mismo.
 %Enumera los objetivos y cómo los has cumplido.\\
 El objetivo principal de este proyecto consiste en desarrollar una forma de
 programación y aplicación de flujos de datos en conjunto con ROS2.
-\\
-
 El segundo objetivo implica el desarrollo de una aplicación robótica utilizando
 la anterior solución para demostrar su viabilidad y funcionamiento.
 \\
 
-Ambos objetivos fueron alcanzados, el primero mediante el uso de Zenoh-Flow y
-otras tecnologías como Zenoh o Zenoh-bridge-DDS, integradas en conjunto con
-ROS2.
+Ambos objetivos fueron alcanzados.
+El primero, mediante el uso de Zenoh-Flow y otras tecnologías como Zenoh o
+Zenoh-bridge-DDS, integradas en conjunto con ROS2.
 Esto dio lugar a un entorno de desarrollo para la programación de aplicaciones en
 conjunto con nodos de ROS2.
 En cuanto al segundo objetivo, se creó una aplicación robótica para la búsqueda
-de objetos, funcional en simulación y parcialmente en un entorno real debido a
-limitaciones en el uso de ciertos sensores.
+de objetos, funcional en simulación y, parcialmente, en un entorno real, debido
+a limitaciones en el uso de ciertos sensores.
 Como resultado, solo parte de la aplicación simulada fue trasladada al entorno
 real.
 \\
 
 %Enumera también los requisitos implícitos en la consecución de esos objetivos, y cómo se han satisfecho.\\
-Como objetivos secundarios se estableció la sencillez de código y comprensión
+Como objetivos secundarios, se estableció la sencillez de código y comprensión
 del entorno para su aplicación en entornos educativos.
 Este objetivo ha sido cumplido mediante el requisito de una única clase como
 mínimo para la creación de una aplicación robótica simple.
@@ -63,7 +61,7 @@ asignatura independiente, que sienta las bases para comprender ROS2 antes de la
 universidad.
 \\
 
-En cuanto a los subobjetivos cumplidos podemos detallar los siguientes:
+En cuanto a los subobjetivos cumplidos, podemos detallar los siguientes:
 
 \begin{itemize}
     \item{Se ha desarrollado un entorno de programación que permite la
@@ -79,7 +77,7 @@ En cuanto a los subobjetivos cumplidos podemos detallar los siguientes:
 
 %Anotación sobre la reducción de tráfico de DDS.
 A pesar de haber logrado reducir el tráfico de mensajes originado por DDS
-mediante el uso de Zenoh, al seguir utilizando nodos complejos de ROS2 que
+mediante el uso de Zenoh, al seguir utilizando nodos complejos de ROS2, que
 generan una gran cantidad de mensajes, esta reducción no ha sido suficiente como
 para eliminar por completo el problema de la congestión de red.
 \\
@@ -99,7 +97,7 @@ hace adecuada para propósitos educativos.
 \\
 
 %Anotación sobre los requisitos.
-Asimismo se han cumplido todos los requisitos establecidos, como son el uso del
+Asimismo, se han cumplido todos los requisitos establecidos, como son el uso del
 mismo sistema operativo en todas las máquinas (Ubuntu 22.04 LTS), la
 compatibilidad de las herramientas \textit{software} utilizadas, la facilidad de
 desarrollo y despliegue de las aplicaciones, así como la viabilidad económica
@@ -139,10 +137,12 @@ habilidades, entre los que se incluyen los siguientes:
         distintas herramientas de grabación y edición de vídeo.}
     \item{Mayor experiencia con herramientas de creación de imágenes vectoriales
         como Inkscape.}
-    \item{Desarrollo de nuevas habilidades y conocimientos respecto a LaTex.}
+    \item{Desarrollo de nuevas habilidades y conocimientos respecto a \LaTeX.}
     \item{Adquisición de conocimientos y posibilidad de tener charlas
         interesantes con otras personas del sector a través de la asistencia y
-        presentación del trabajo en ponencias.}
+        presentación del trabajo en ponencias, como la previamente mencionada en
+        la Sección \ref{sec:flujos_datos}, de la conferencia ROSCON Madrid
+        2023.}
 \end{itemize}
 
 
@@ -152,20 +152,20 @@ habilidades, entre los que se incluyen los siguientes:
 
 Las herramientas \textit{software} utilizadas relacionadas con Zenoh, como
 pueden ser Zenoh-bridge-DDS o el propio Zenoh-Flow, han pasado por muchos
-cambios durante la realización de este trabajo debido a su estado de desarrollo,
-o incluso de fase beta, como es el caso de este último, por lo que una innegable
-línea futura pasa por la actualización de estos \textit{softwares} a versiones
-estables, mejorando la experiencia de usuario así como la posible solución de
-\textit{bugs} o incompatibilidades.
-Además existen nuevos \textit{softwares}, como el reciente RMW de Zenoh, que
+cambios durante la realización de este trabajo, debido a su estado de
+desarrollo, o incluso de fase beta, como es el caso de este último, por lo que
+una innegable línea futura pasa por la actualización de estos desarrollos
+\textit{software} a versiones estables, mejorando la experiencia de usuario, así
+como la posible solución de \textit{bugs} o incompatibilidades.
+Además, existen nuevos \textit{softwares}, como el reciente RMW de Zenoh, que
 podrían ser probados en este entorno, ofreciendo posibles mejoras al mismo.
 \\
 
-Además es posible, como segunda línea futura, el empaquetamiento de estas
+Por otro lado, como segunda línea futura, se plantea el empaquetamiento de estas
 herramientas \textit{software} en una aplicación que brinde una interfaz
 gráfica, así como herramientas interactivas a este entorno, facilitando el
 despliegue y la simplicidad de uso en entornos educativos y ahorrando tiempo
-tanto a alumnos, como al profesorado.
-En esta hipotética aplicación, la instalación y compilación de las herramientas
+tanto a alumnos como al profesorado.
+En esta futura aplicación, la instalación y compilación de las herramientas
 \textit{software} utilizadas se realizaría automáticamente.
 \\

@@ -20,13 +20,13 @@ en el que generalmente igualan o superan el rendimiento humano, incluso
 trabajando continuamente sin necesidad de descanso y eliminando riesgos.
 
 %Segundo párrafo (Objetivos):
-En el ámbito educativo y con la creciente tendencia a incluir la robótica en el
-itinerario formativo, ROS es el software mayormente utilizado pero debido a su
-dificultad, resulta difícil de aprender, lo que a su vez genera una brecha en la
-educación en este campo.
+En el ámbito educativo, y con la creciente tendencia a incluir la robótica en el
+itinerario formativo, ROS es el software mayoritariamente utilizado pero, debido
+a su complejidad, resulta difícil de aprender, lo que a su vez genera una brecha
+en la educación en este campo.
 Otro de los grandes problemas de este software reside en la utilización de DDS,
-un protocolo de comunicaciones que genera una gran cantidad de mensajes, que
-pueden saturar la red.
+un protocolo de comunicaciones que genera una gran cantidad de mensajes, lo que
+puede saturar la red.
 
 %El presente trabajo por tanto tiene como objetivo dar una solución a estos
 %problemas, implementando una forma de programación de flujos de datos compatible
@@ -44,8 +44,8 @@ pueden saturar la red.
 
 %Tercer párrafo (Plataforma de desarrollo):
 El presente trabajo pretende solucionar estos problemas, utilizando plataformas
-\textit{hardware} como los robots Turtlebot 2 y 4, y herramientas
-\textit{software} como Zenoh-Flow, generando un entorno de programación de
+\textit{hardware}, como los robots Turtlebot 2 y 4; y herramientas
+\textit{software}, como Zenoh-Flow, generando un entorno de programación de
 flujos de datos compatible con nodos existentes de ROS2, lo que lo hace más
 accesible a los estudiantes de este campo.
 
@@ -54,19 +54,16 @@ Zenoh-Flow, la principal herramienta \textit{software} utilizada, fue enlazada
 con ROS2 aprovechando la capacidad de Zenoh-bridge-DDS para traducir los
 mensajes bidireccionalmente entre los protocolos Zenoh y DDS.
 
-%Quinto párrafo (Experimentos):
-Los objetivos mencionados fueron alcanzados a través de numerosos experimentos
-realizados sobre una aplicación creada siguiendo el paradigma de programación de
-flujos de datos con Zenoh-Flow.
+%Quinto párrafo (Experimentos y Conclusiones):
+Se han realizado numerosos experimentos sobre una aplicación creada siguiendo el
+paradigma de programación de flujos de datos con Zenoh-Flow.
 En ella, varios robots deben buscar y acercarse a un objeto de manera
 organizada, dividiéndose el mapa equitativamente y optimizando trayectorias de
 barrido de áreas, de modo que el robot que encuentre dicho objeto, comunique su
 posición al resto.
-
-%Sexto párrafo (Conclusiones):
-Esto se logró en simulación y, parcialmente debido a errores externos, en un
+Esto se logró en simulación y, parcialmente (debido a errores externos), en un
 entorno real de laboratorio, demostrando de esta manera la viabilidad de la
 programación de flujos de datos en robótica y su compatibilidad con ROS2.
-Asimismo fue demostrada su sencillez, requisito indispensable para su aplicación
-en la educación robótica preuniversitaria, ayudando a reducir la brecha
-educativa en este ámbito.
+Asimismo, en tales experimentos se demuestra su sencillez, requisito
+indispensable para su aplicación en la educación robótica preuniversitaria,
+ayudando a reducir la brecha educativa en este ámbito.
