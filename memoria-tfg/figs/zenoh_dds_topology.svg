@@ -23,13 +23,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.5620931"
-     inkscape:cx="478.9053"
-     inkscape:cy="91.72188"
+     inkscape:zoom="0.64052328"
+     inkscape:cx="501.15275"
+     inkscape:cy="261.50494"
      inkscape:window-width="1866"
-     inkscape:window-height="1043"
-     inkscape:window-x="54"
-     inkscape:window-y="0"
+     inkscape:window-height="1016"
+     inkscape:window-x="1974"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -159,8 +159,8 @@
     <rect
        x="345.5061"
        y="236.47842"
-       width="181.1465"
-       height="106.94827"
+       width="177.15082"
+       height="115.81974"
        id="rect214155" />
     <rect
        x="345.5061"
@@ -288,7 +288,7 @@
        inkscape:export-ydpi="96"><tspan
          x="348.6211"
          y="263.32243"
-         id="tspan3795">deserializer</tspan></text>
+         id="tspan3197">deserializer</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.14344744,0,0,0.14344744,-79.162044,9.1363854)"
@@ -301,11 +301,11 @@
        inkscape:export-ydpi="96"><tspan
          x="397.54752"
          y="263.32243"
-         id="tspan3797">Robot
+         id="tspan3199">Robot
 </tspan><tspan
          x="351.509"
          y="299.98906"
-         id="tspan3799">(ROS nodes)</tspan></text>
+         id="tspan3201">(ROS nodes)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.14344744,0,0,0.14344744,-56.975795,-18.103067)"
@@ -318,15 +318,15 @@
        inkscape:export-ydpi="96"><tspan
          x="392.69523"
          y="263.32243"
-         id="tspan3801">/scan
+         id="tspan3203">/scan
 </tspan><tspan
          x="400.02856"
          y="299.98906"
-         id="tspan3803">(DDS
+         id="tspan3205">(DDS
 </tspan><tspan
          x="393.14993"
          y="336.65568"
-         id="tspan3805">topic)</tspan></text>
+         id="tspan3207">topic)</tspan></text>
     <path
        sodipodi:type="star"
        style="fill:#1dd4ff;fill-opacity:1;stroke:#160000;stroke-width:6.67087;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.66772, 1.66772;stroke-dashoffset:8.67213;stroke-opacity:0.996967"
@@ -417,7 +417,7 @@
        inkscape:export-ydpi="96"><tspan
          x="367.9957"
          y="263.32243"
-         id="tspan3807">serializer</tspan></text>
+         id="tspan3209">serializer</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.10521414,0,0,0.10521414,72.208465,9.2943018)"
@@ -430,7 +430,7 @@
        inkscape:export-ydpi="96"><tspan
          x="363.02386"
          y="263.32243"
-         id="tspan3809">1010101110...</tspan></text>
+         id="tspan3211">1010101110...</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.09734255,0,0,0.09734255,53.596107,11.059275)"
@@ -443,11 +443,11 @@
        inkscape:export-ydpi="96"><tspan
          x="361.33703"
          y="263.32243"
-         id="tspan3811">Twist msg.
+         id="tspan3213">Twist msg.
 </tspan><tspan
          x="397.85693"
          y="299.98906"
-         id="tspan3813">(ROS)</tspan></text>
+         id="tspan3215">(ROS)</tspan></text>
     <rect
        style="fill:#f7ebd0;fill-opacity:1;stroke:#160000;stroke-width:0.420503;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0420502, 0.0420502;stroke-dashoffset:0;stroke-opacity:0.996967"
        id="rect110701"
@@ -486,7 +486,7 @@
        inkscape:export-ydpi="96"><tspan
          x="363.02386"
          y="263.32243"
-         id="tspan3815">1010101110...</tspan></text>
+         id="tspan3217">1010101110...</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.09734255,0,0,0.09734255,24.501751,11.091406)"
@@ -499,11 +499,11 @@
        inkscape:export-ydpi="96"><tspan
          x="355.61705"
          y="263.32243"
-         id="tspan3817">Laser msg.
+         id="tspan3219">Laser msg.
 </tspan><tspan
          x="397.85693"
          y="299.98906"
-         id="tspan3819">(ROS)</tspan></text>
+         id="tspan3221">(ROS)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.406145;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
        d="m 52.310108,35.72514 h 5.811364"
@@ -677,11 +677,11 @@
        inkscape:export-ydpi="96"><tspan
          x="366.48364"
          y="263.32243"
-         id="tspan3821">Data-Flow
+         id="tspan3223">Data-Flow
 </tspan><tspan
          x="347.75441"
          y="299.98906"
-         id="tspan3823">(Zenoh-Flow)</tspan></text>
+         id="tspan3225">(Zenoh-Flow)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.14344744,0,0,0.14344744,122.97959,9.1363854)"
@@ -694,11 +694,11 @@
        inkscape:export-ydpi="96"><tspan
          x="397.54752"
          y="263.32243"
-         id="tspan3825">Robot
+         id="tspan3227">Robot
 </tspan><tspan
          x="351.509"
          y="299.98906"
-         id="tspan3827">(ROS nodes)</tspan></text>
+         id="tspan3229">(ROS nodes)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.14344744,0,0,0.14344744,-21.521635,-18.103067)"
@@ -711,15 +711,15 @@
        inkscape:export-ydpi="96"><tspan
          x="374.93841"
          y="263.32243"
-         id="tspan3829">rt/scan
+         id="tspan3231">rt/scan
 </tspan><tspan
          x="378.91309"
          y="299.98906"
-         id="tspan3831">(Zenoh
+         id="tspan3233">(Zenoh
 </tspan><tspan
          x="361.15189"
          y="336.65568"
-         id="tspan3833">key-expr.)</tspan></text>
+         id="tspan3235">key-expr.)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
        d="M 27.970737,20.872916 H 53.780012"
@@ -740,15 +740,15 @@
        inkscape:export-ydpi="96"><tspan
          x="366.51149"
          y="263.32243"
-         id="tspan3835">Zenoh
+         id="tspan3237">Zenoh
 </tspan><tspan
          x="364.32613"
          y="299.98906"
-         id="tspan3837">Bridge
+         id="tspan3239">Bridge
 </tspan><tspan
          x="382.48339"
          y="336.65568"
-         id="tspan3839">DDS</tspan></text>
+         id="tspan3241">DDS</tspan></text>
     <rect
        style="fill:#ff8699;fill-opacity:1;stroke:#160000;stroke-width:0.365001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.0365001, 0.0365001;stroke-dashoffset:0;stroke-opacity:0.996967"
        id="rect214137"
@@ -770,17 +770,17 @@
        inkscape:export-filename="/home/usanz/Desktop/Uni/22-23/tfg-unai/memoria-tfg/figs/zenoh_dds_topology.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
-         x="355.83802"
+         x="353.83997"
          y="263.32243"
-         id="tspan3841">rt/cmd_vel
+         id="tspan3243">rt/cmd_vel
 </tspan><tspan
-         x="400.02856"
+         x="382.0586"
          y="299.98906"
-         id="tspan3843">(DDS
+         id="tspan3245">(Zenoh
 </tspan><tspan
-         x="393.14993"
+         x="364.2974"
          y="336.65568"
-         id="tspan3845">topic)</tspan></text>
+         id="tspan3247">key-expr.)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
        d="M 109.46243,20.872916 H 137.3397"
@@ -801,15 +801,15 @@
        inkscape:export-ydpi="96"><tspan
          x="363.30774"
          y="263.32243"
-         id="tspan3847">/cmd_vel
+         id="tspan3249">/cmd_vel
 </tspan><tspan
-         x="378.91309"
+         x="394.885"
          y="299.98906"
-         id="tspan3849">(Zenoh
+         id="tspan3251">(DDS
 </tspan><tspan
-         x="361.15189"
+         x="388.00637"
          y="336.65568"
-         id="tspan3851">key-expr.)</tspan></text>
+         id="tspan3253">topic)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.45332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker52867-2)"
        d="m 147.56247,20.872916 h 28.98426"
@@ -830,14 +830,14 @@
        inkscape:export-ydpi="96"><tspan
          x="366.51149"
          y="263.32243"
-         id="tspan3853">Zenoh
+         id="tspan3255">Zenoh
 </tspan><tspan
          x="364.32613"
          y="299.98906"
-         id="tspan3855">Bridge
+         id="tspan3257">Bridge
 </tspan><tspan
          x="382.48339"
          y="336.65568"
-         id="tspan3857">DDS</tspan></text>
+         id="tspan3259">DDS</tspan></text>
   </g>
 </svg>

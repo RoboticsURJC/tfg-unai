@@ -38,7 +38,7 @@
   \insertnote%
 }
 
-%========= [TODO]: datos internos del documento
+%========= Datos internos del documento
 \hypersetup{
 	pdftitle={Defensa de trabajo de fin de grado de Unai Sanz Conejo},
 	pdfauthor={Unai Sanz Conejo},
@@ -50,7 +50,7 @@
 }
 %=========
 
-%========= [TODO]: diapositiva de portada
+%========= Diapositiva de portada
 \title[Flujo de datos en multirobótica]{Flujo de datos en multirobótica} % El título reducido aparece en la parte inferior de todas las diapositivas
 %\title[Título reducido]{Título completo}                                % El título completo aparece solo en la diapositiva de portada
 \author[Unai Sanz Conejo]{Unai Sanz Conejo}
@@ -62,7 +62,7 @@
 \vspace{1cm}
 Trabajo fin de grado
 }
-\date{4 de Junio de 2024} %[TODO]
+\date{26 de junio de 2024}
 %=========
 
 %========= COMIENZO DEL DOCUMENTO
@@ -257,7 +257,7 @@ lo convierte en un paradigma de programación en sí mismo.}
 \end{block}
 \begin{figure}
 \centering
-\includegraphics[width=6.0cm]{figs/ROS_and_ROS2.png} %[TODO] ¿Alomejor cambiar por imagen sobre congestion de red?
+\includegraphics[width=6.0cm]{figs/ROS_and_ROS2.png}
 \includegraphics[width=4.5cm]{figs/robotics_students.jpg}
 \end{figure}
 \note[item]{Un gran problema de la robótica actualmente surge debido al envío de
@@ -276,10 +276,6 @@ congestión de red, lo que además brinda un entorno de programación más simpl
 la vez que compatible con el uso de nodos existentes de ROS, adquiriendo sus
 ventajas y paliando sus desventajas.}
 \end{frame}
-
-
-%[TODO] Trasparencia de Plantemiento de solución.
-
 
 %\subsection{Descripción del problema}
 %========= Diapositiva con bullets (outline):
@@ -314,7 +310,6 @@ objetivo.}
 \begin{figure}
 \centering
 \includegraphics[width=6.0cm]{figs/desarrollo_iterativo.png}
-%[TODO] ¿Alomejor añadir imagen sobre congestion de red?
 \end{figure}
 \note[item]{Para el cumplimiento de estos requisitos así como el desarrollo de
 la aplicacaioón demostrativa, se utilizó un método iterativo de desarrollo
@@ -387,11 +382,11 @@ demostrativa.}
 \section*{}
 \begin{frame}{}
   \centering \Huge
-  \emph{Arquitectura Software}
-\note[item]{Comencemos con la arquitectura software.}
+  \emph{Arquitectura}
+\note[item]{Comencemos con la arquitectura.}
 \end{frame}
 
-\section{Arquitectura Software}
+\section{Arquitectura}
 \subsection{Topología}
 
 \begin{frame}
@@ -432,8 +427,6 @@ mayoría del software, por lo que topológicamente hablando, es el principal.}
 \centering
 \includegraphics[width=10.0cm]{figs/software_tools_architecture.png}
 \end{figure}
-%[TODO] Añadir imagen que muestre la topologia software a nivel de que robot
-%       corre zenoh y zenoh-bridge-dds, cual zenoh-flow ademas de los anteriores
 \note[item]{En cuanto al software,  como se puede observar en la imagen, este
 trabajo se compone en su base de nodos de ROS2 (DDS), que se pueden comunicar
 con los nodos de Zenoh-Flow (Zenoh) mediante el Zenoh-bridge-DDS, encargado de
@@ -442,25 +435,11 @@ traducir los mensajes.}
 para que estas puedan recibir los mensajes de Zenoh enviados por Zenoh-Flow
 desde la máquina principal y traducirlos mediante el uso del bridge a DDS, y
 poder así comunicarse con los nodos de ROS2.}
-
-%[TODO] Mover la imagen de los archivos y el siguiente texto a posteriores
-%       trasparencias para explicar como funciona un flujo de datos en
-%       Zenoh-Flow y su sencillez/complejidad segun la necesidad de la
-%       aplicación.
-%\note[item]{Como podemos observar en la imagen, la estructura de archivos de la
-%aplicación desarrollada puede ser escalada de manera más compleja, aunque lo
-%único necesario para poder hacer funcionar un flujo de datos en Zenoh-flow son 2
-%archivos, uno de ellos yaml, y el otro deberá contener una clase sencilla de
-%Python, por lo que se puede llegar a convertir en todo lo simple o complejo que
-%se requiera en cada aplicación, dandoa demás la libertad de eliminar o añadir
-%nodos fácilmente.}
 \end{frame}
 
 
 
 
-
-%[TODO] Tal vez los flujos de datos no deberian tener seccion propia? (yo creo que sí)
 
 %========= Diapositiva "vacía" de comienzo de sección:
 \section*{}
@@ -470,12 +449,11 @@ poder así comunicarse con los nodos de ROS2.}
 \note[item]{Comencemos con la rogramación de flujos de datos.}
 \end{frame}
 
-\section{Programación de flujos de datos con Zenoh-Flow y ROS2}
+\section{Desarrollo}
 \subsection{Flujos de datos}
 
 
 
-%[TODO] Hablar en las notas sobre cómo se realiza la serialización de los mensajes (/rt/ y serializadores internos de ROS)
 \subsection*{}
 \begin{frame}
 \frametitle{Programación de flujo de datos}
@@ -558,9 +536,6 @@ como protocolo, así como la propia aplicación robótica desarrollada, tanto en
 simulación, como en un entorno de laboratorio con robots reales.}
 \end{frame}
 
-%[TODO] Añadir vídeos (sim, real, y ¿robots rotando?)
-% vdeo resumen: https://youtu.be/JNb0i57Nfjg
-
 \begin{frame}
 \frametitle{Pruebas}
 \begin{block}{Pruebas de laboratorio}
@@ -630,6 +605,3 @@ láser generada por Zenoh-Flow a la hora de comenzar el flujo de datos.}
 \end{document}
 
 
-
-% [TODO] Hacer diapositivas extra al final para resolver dudas (explicando más a
-%        fondo algún tema complejo que tal vez pueda no haber quedado claro).
