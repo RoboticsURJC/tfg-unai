@@ -50,6 +50,11 @@ Este proyecto ha sido probado en un portátil y un araspberry con las siguientes
 
 ### Ejecución:
 
- - Ejecución en simulación (ver pasos en el [apartado "Layout de terminales y comandos de ejecución" de la página 11 de la wiki](https://github.com/RoboticsURJC/tfg-unai/wiki/11.-Mejoras-y-correcciones-del-swarm_obj_finder-%5B30-Sep-%E2%80%90-9-Nov%5D#layout-de-terminales-y-comandos-de-ejecuci%C3%B3n)]).
+ - Ejecución en simulación (ver pasos en el [apartado "Layout de terminales y comandos de ejecución" de la página 11 de la wiki](https://github.com/RoboticsURJC/tfg-unai/wiki/11.-Mejoras-y-correcciones-del-swarm_obj_finder-%5B30-Sep-%E2%80%90-9-Nov%5D#layout-de-terminales-y-comandos-de-ejecuci%C3%B3n)).
 
- - Ejecución en robots reales (en proceso de desarrollo).
+ - Ejecución en robots reales (ver pasos en el [apartado "Pruebas con varios robots y modelos mixtos (Turtlebot2 y Turtlebot4)" de la página 14 de la wiki](https://github.com/RoboticsURJC/tfg-unai/wiki/14.-Pruebas-de-laboratorio-%5B27-Nov-%E2%80%90-Hoy%5D#pruebas-con-varios-robots-y-modelos-mixtos-turtlebot2-y-turtlebot4)).
+
+### Documentación del proyecto:
+
+ - [Wiki del proyecto](https://github.com/RoboticsURJC/tfg-unai/wiki).
+ - [Lista de reproducción en YouTube de vídeos de las pruebas](https://www.youtube.com/watch?v=x8VAZFSAH1w&list=PL3OZgGkAPYdkHaZFa2naBTB4b5aglx1h4)
